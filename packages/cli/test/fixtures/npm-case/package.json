@@ -1,0 +1,15 @@
+{
+  "name": "npm-case",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "weapp-tailwindcss-webpack-plugin": "^1.6.4"
+  }
+}

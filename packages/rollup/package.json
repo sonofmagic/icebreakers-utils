@@ -1,0 +1,38 @@
+{
+  "name": "@icebreakers/rollup",
+  "version": "0.0.8",
+  "description": "",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsc -p tsconfig.json --sourceMap",
+    "build": "yarn clean && tsc -p tsconfig.json",
+    "clean": "rimraf dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "@rollup/plugin-alias": "^3.1.9",
+    "@rollup/plugin-commonjs": "^22.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-replace": "^4.0.0",
+    "@rollup/plugin-typescript": "^8.3.3",
+    "defu": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.2"
+  },
+  "devDependencies": {
+    "@icebreakers/tsconfig": "*",
+    "@types/rimraf": "^3.0.2",
+    "rimraf": "^3.0.2"
+  }
+}

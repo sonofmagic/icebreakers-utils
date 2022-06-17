@@ -1,0 +1,12 @@
+{
+  "name": "yarn-case",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "weapp-tailwindcss-webpack-plugin": "^1.6.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0"
+  }
+}

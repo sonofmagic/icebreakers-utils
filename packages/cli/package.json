@@ -1,0 +1,30 @@
+{
+  "name": "@icebreakers/cli",
+  "version": "0.0.4",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development rollup -cw",
+    "build": "cross-env NODE_ENV=production rollup -c",
+    "dev:tsc": "tsc -p tsconfig.json --sourceMap",
+    "build:tsc": "tsc -p tsconfig.json",
+    "test": "jest"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "@icebreakers/rollup": "*",
+    "@icebreakers/tsconfig": "*",
+    "execa": "^5.1.1"
+  }
+}

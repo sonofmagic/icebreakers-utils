@@ -1,0 +1,52 @@
+{
+  "name": "icebreakers-utils",
+  "description": "",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "apps/*"
+    ],
+    "nohoist": []
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "build:pkg": "turbo run build --filter=./packages/*",
+    "build:app": "turbo run build --filter=./apps/*",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "dev": "turbo run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonofmagic/utils.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sonofmagic/utils/issues"
+  },
+  "homepage": "https://github.com/sonofmagic/utils#readme",
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.1",
+    "@types/jest": "^28.1.1",
+    "@typescript-eslint/eslint-plugin": "^5.28.0",
+    "@typescript-eslint/parser": "^5.28.0",
+    "babel-jest": "^28.1.1",
+    "cross-env": "^7.0.3",
+    "defu": "^6.0.0",
+    "del": "^6.1.1",
+    "eslint": "8.0.1",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "2.25.2",
+    "eslint-plugin-jest": "^26.5.3",
+    "eslint-plugin-n": "15.0.0",
+    "eslint-plugin-promise": "6.0.0",
+    "jest": "^28.1.1",
+    "rollup": "^2.75.6",
+    "ts-jest": "^28.0.5",
+    "turbo": "^1.2.16",
+    "typescript": "^4.7.3"
+  }
+}

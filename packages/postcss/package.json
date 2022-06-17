@@ -1,0 +1,27 @@
+{
+  "name": "@icebreakers/postcss",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development rollup -cw",
+    "build": "cross-env NODE_ENV=production rollup -c"
+  },
+  "files": [
+    "dist",
+    "px-to-viewport.*"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@icebreakers/postcss-px-to-viewport": "^0.0.1"
+  },
+  "devDependencies": {
+    "@icebreakers/rollup": "*",
+    "@icebreakers/tsconfig": "*"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
