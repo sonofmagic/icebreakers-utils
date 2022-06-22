@@ -5,6 +5,6 @@ module.exports = {
   transform: {
     '\\.[jt]sx?$': 'babel-jest'
   },
-  projects: ['<rootDir>/packages/*', '<rootDir>/apps/*'],
+  projects: ['<rootDir>/packages/*'],
   setupFiles: ['./jest.setup.js']
 }
