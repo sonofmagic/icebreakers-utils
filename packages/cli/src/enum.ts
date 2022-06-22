@@ -9,7 +9,7 @@ export const lockFileMap: Record<PkgManager, string> = {
 export const addPkgDirective: Record<PkgManager, string> = {
   yarn: 'add',
   npm: 'i',
-  pnpm: 'i'
+  pnpm: 'add'
 }
 
 export const runDirective: Record<PkgManager, string> = {
