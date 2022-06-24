@@ -16,11 +16,13 @@ describe('default', () => {
     await install(path.resolve(__dirname, 'fixtures'))
     await install(
       path.resolve(__dirname, 'fixtures'),
-      '-D weapp-tailwindcss-webpack-plugin@latest'
+      '-D weapp-tailwindcss-webpack-plugin@latest tailwindcss-rem2px-preset@latest postcss-rem-to-responsive-pixel@latest'
     )
+    expect(true).toBe(true)
   })
 
   test('run', async () => {
     await run(path.resolve(__dirname, 'fixtures'), 'test')
+    expect(true).toBe(true)
   })
 })

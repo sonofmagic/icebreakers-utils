@@ -13,9 +13,12 @@ export const addPkgDirective: Record<PkgManager, string> = {
 }
 
 export const runDirective: Record<PkgManager, string> = {
-  yarn: '',
+  yarn: 'run',
   npm: 'run',
-  pnpm: ''
+  pnpm: 'run'
 }
 
-export const lockFileEntries = Object.entries(lockFileMap)
+export const lockFileEntries = Object.entries(lockFileMap) as [
+  PkgManager,
+  string
+][]
