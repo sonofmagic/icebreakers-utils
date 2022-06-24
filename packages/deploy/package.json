@@ -23,7 +23,7 @@
     "@types/cli-progress": "^3.11.0",
     "@types/klaw": "^3.0.3",
     "cli-progress": "^3.11.1",
-    "cos-nodejs-sdk-v5": "^2.11.11",
+    "cos-nodejs-sdk-v5": "latest",
     "klaw": "^4.0.1"
   },
   "publishConfig": {
