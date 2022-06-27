@@ -15,13 +15,12 @@ describe('default', () => {
       SecretId: TENCENT_SECRET_ID
     })
   })
-  test('should', async () => {
+  test('batch delete list', async () => {
     const { TENCENT_COS_REGION, TENCENT_COS_BUCKET } = process.env
     const res = await deployer.cleanWebsiteContent({
       Bucket: TENCENT_COS_BUCKET,
       Region: TENCENT_COS_REGION
     })
-
     expect(res.statusCode).toBe(200)
     expect(res.Error.length).toBe(0)
   })

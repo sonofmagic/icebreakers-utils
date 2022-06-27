@@ -62,17 +62,25 @@ export class TencentCOSWebsiteDeployer {
       MaxKeys,
       Prefix
     })
-
-    const deleteMultipleObjectRes = await this.deleteMultipleObject({
-      Bucket,
-      Region,
-      Objects: getBucketRes.Contents.map((x) => ({
-        Key: x.Key
-      })),
-      // @ts-ignore
-      Quiet: true
-    })
-    return deleteMultipleObjectRes
+    if (getBucketRes.Contents.length) {
+      const deleteMultipleObjectRes = await this.deleteMultipleObject({
+        Bucket,
+        Region,
+        Objects: getBucketRes.Contents.map((x) => ({
+          Key: x.Key
+        })),
+        // @ts-ignore
+        Quiet: true
+      })
+      return deleteMultipleObjectRes
+    } else {
+      const result: COS.DeleteMultipleObjectResult = {
+        Deleted: [],
+        Error: [],
+        statusCode: 200
+      }
+      return result
+    }
   }
 
   async uploadDir (options: UploadDirOptions = {}) {
