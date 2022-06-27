@@ -10,12 +10,19 @@ const isWindows = os.type() === 'Windows_NT'
 export interface UploadDirOptions {
   Region?: string
   Bucket?: string
+  CacheControl?: string
   /**
    * @description cwd() is the current working directory of the process.
    */
   root?: string
   targetDir?: string
-  CacheControl?: string
+  clean?: boolean
+}
+
+export interface CleanWebsiteContentParams {
+  Region: string
+  Bucket: string
+  Prefix?: string
 }
 
 export class TencentCOSWebsiteDeployer {
@@ -34,19 +41,63 @@ export class TencentCOSWebsiteDeployer {
     return cos.getBucketWebsite(params)
   }
 
+  getBucket (params: COS.GetBucketParams) {
+    const { cos } = this
+    return cos.getBucket(params)
+  }
+
+  deleteMultipleObject (params: COS.DeleteMultipleObjectParams) {
+    const { cos } = this
+    return cos.deleteMultipleObject(params)
+  }
+
+  async cleanWebsiteContent (params: CleanWebsiteContentParams) {
+    const { Bucket, Region, Prefix = '' } = params
+    const MaxKeys = 1000
+    const Marker = ''
+    const getBucketRes = await this.getBucket({
+      Bucket,
+      Region,
+      Marker,
+      MaxKeys,
+      Prefix
+    })
+
+    const deleteMultipleObjectRes = await this.deleteMultipleObject({
+      Bucket,
+      Region,
+      Objects: getBucketRes.Contents.map((x) => ({
+        Key: x.Key
+      })),
+      // @ts-ignore
+      Quiet: true
+    })
+    return deleteMultipleObjectRes
+  }
+
   async uploadDir (options: UploadDirOptions = {}) {
     const {
       Bucket = '',
       Region = '',
       targetDir = 'dist',
       CacheControl = 'public,max-age=31536000',
-      root = process.cwd()
+      root = process.cwd(),
+      clean = false
     } = options
     if (!Bucket) {
       throw new Error('Bucket is required')
     }
     if (!Region) {
       throw new Error('Region is required')
+    }
+
+    if (clean) {
+      await this.cleanWebsiteContent({
+        Bucket,
+        Region
+      })
+      // TODO
+      console.log('clean successfully!')
     }
 
     const absTargetPath = path.resolve(root, targetDir)

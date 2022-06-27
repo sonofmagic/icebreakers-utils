@@ -1,6 +1,6 @@
 {
   "name": "@icebreakers/deploy",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
@@ -23,12 +23,13 @@
     "@types/cli-progress": "^3.11.0",
     "@types/klaw": "^3.0.3",
     "cli-progress": "^3.11.2",
-    "cos-nodejs-sdk-v5": "latest",
     "klaw": "^4.0.1"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "dependencies": {}
+  "dependencies": {
+    "cos-nodejs-sdk-v5": "latest"
+  }
 }

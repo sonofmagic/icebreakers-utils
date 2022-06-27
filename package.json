@@ -37,6 +37,7 @@
     "cross-env": "^7.0.3",
     "defu": "^6.0.0",
     "del": "^6.1.1",
+    "dotenv": "^16.0.1",
     "eslint": "8.18.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "2.26.0",
