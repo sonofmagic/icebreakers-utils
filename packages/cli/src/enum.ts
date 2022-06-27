@@ -12,6 +12,12 @@ export const addPkgDirective: Record<PkgManager, string> = {
   pnpm: 'add'
 }
 
+export const removePkgDirective: Record<PkgManager, string> = {
+  yarn: 'remove',
+  npm: 'uninstall',
+  pnpm: 'rm'
+}
+
 export const runDirective: Record<PkgManager, string> = {
   yarn: 'run',
   npm: 'run',

@@ -1,4 +1,5 @@
 export * from './utils'
 export * from './install'
+export * from './remove'
 export * from './run'
 export * from './raw'
