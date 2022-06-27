@@ -12,6 +12,15 @@ describe('default', () => {
     expect(res).toEqual(fs.readdirSync(t))
   })
 
+  test('eachDir', async () => {
+    const res = []
+    const t = path.resolve(__dirname, 'fixtures')
+    await eachDir(t, (p) => {
+      res.push(p)
+    })
+    expect(res).toEqual(fs.readdirSync(t))
+  })
+
   test('install', async () => {
     await install(path.resolve(__dirname, 'fixtures'))
     await install(

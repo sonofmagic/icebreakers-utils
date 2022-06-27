@@ -1,37 +1,22 @@
 import typescript from '@rollup/plugin-typescript'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
+import type { CreateRollupConfigOptions, PackageJson } from './type'
 import type {
   RollupOptions,
   OutputOptions,
   Plugin,
-  ExternalOption,
-  InputOption
+  ExternalOption
 } from 'rollup'
 import json from '@rollup/plugin-json'
 import defu from 'defu'
 import path from 'path'
 import del from './del'
-import type { deletePluginOptions } from './del'
+
 // import replace from '@rollup/plugin-replace'
-import { terser } from 'rollup-plugin-terser'
-const isProd = process.env.NODE_ENV === 'production'
+// import { terser } from 'rollup-plugin-terser'
+// const isProd = process.env.NODE_ENV === 'production'
 const isDev = process.env.NODE_ENV === 'development'
-
-export interface PackageJson {
-  main?: string
-  module?: string
-  dependencies?: { [key: string]: string }
-}
-
-export interface CreateRollupConfigOptions {
-  rollupOptions?: RollupOptions
-  external?: string[]
-  plugins?: Plugin[]
-  input?: InputOption
-  output?: OutputOptions | OutputOptions[]
-  deletePluginOptions?: deletePluginOptions
-}
 
 export function createRollupConfig (
   options: CreateRollupConfigOptions = {},
@@ -92,9 +77,9 @@ export function createRollupConfig (
     ),
     ...postPlugins
   ]
-  if (isProd) {
-    plugins.push(terser())
-  }
+  // if (isProd) {
+  //   plugins.push(terser())
+  // }
 
   const external: ExternalOption = [
     ...(pkg.dependencies ? Object.keys(pkg.dependencies) : []),

@@ -1,7 +1,7 @@
 import internalDel from 'del'
 import type { Plugin } from 'rollup'
 
-export interface deletePluginOptions extends internalDel.Options {
+export interface DeletePluginOptions extends internalDel.Options {
   /**
    * Rollup hook the plugin should use.
    * @default 'buildStart'
@@ -27,7 +27,7 @@ export interface deletePluginOptions extends internalDel.Options {
   readonly verbose?: boolean
 }
 
-export default function del (options: deletePluginOptions = {}): Plugin {
+export default function del (options: DeletePluginOptions = {}): Plugin {
   const {
     hook = 'buildStart',
     runOnce = false,
