@@ -132,7 +132,10 @@ export class TencentCOSWebsiteDeployer {
           Bucket,
           Region
         }
-        if (!/\.html$/.test(absPath)) {
+        // .html?文件不缓存
+        if (/\.html?$/.test(absPath)) {
+          opt.CacheControl = 'no-cache'
+        } else {
           opt.CacheControl = CacheControl
         }
         res.push(await this.putObject(opt))
