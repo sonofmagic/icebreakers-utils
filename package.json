@@ -31,8 +31,8 @@
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1",
     "@types/jest": "^28.1.4",
-    "@typescript-eslint/eslint-plugin": "^5.30.5",
-    "@typescript-eslint/parser": "^5.30.5",
+    "@typescript-eslint/eslint-plugin": "^5.30.6",
+    "@typescript-eslint/parser": "^5.30.6",
     "babel-jest": "^28.1.2",
     "cross-env": "^7.0.3",
     "defu": "^6.0.0",
