@@ -2,7 +2,7 @@
   "name": "template-pkg",
   "version": "0.0.1",
   "description": "",
-  "module": "dist/index.js",
+  "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "files": [
     "dist"

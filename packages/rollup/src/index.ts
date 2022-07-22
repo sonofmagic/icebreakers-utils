@@ -48,17 +48,17 @@ export function createRollupConfig (
     output = [postOutput]
   } else {
     output = []
-  }
-  if (pkg.main) {
-    output.push({
-      file: pkg.main,
-      format: 'cjs',
-      sourcemap: isDev,
-      exports: 'auto'
-    })
-  }
-  if (pkg.module) {
-    output.push({ format: 'esm', file: pkg.module, sourcemap: isDev })
+    if (pkg.main) {
+      output.push({
+        file: pkg.main,
+        format: 'cjs',
+        sourcemap: isDev,
+        exports: 'auto'
+      })
+    }
+    if (pkg.module) {
+      output.push({ format: 'esm', file: pkg.module, sourcemap: isDev })
+    }
   }
 
   const plugins: Plugin[] = [

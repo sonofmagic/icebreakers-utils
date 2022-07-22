@@ -2,14 +2,22 @@
   "name": "weapp-ide-cli",
   "version": "0.0.1",
   "description": "",
+  "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "bin"
   ],
+  "bin": {
+    "weapp": "bin/weapp.js",
+    "weapp-ide-cli": "bin/weapp.js"
+  },
   "scripts": {
     "dev": "cross-env NODE_ENV=development rollup -cw",
-    "build": "cross-env NODE_ENV=production rollup -c"
+    "build": "cross-env NODE_ENV=production rollup -c",
+    "debug": "ts-node src/cli.ts",
+    "raw": "node bin/weapp.js"
   },
   "publishConfig": {
     "access": "public",
@@ -22,5 +30,7 @@
     "@icebreakers/rollup": "*",
     "@icebreakers/tsconfig": "*"
   },
-  "dependencies": {}
+  "dependencies": {
+    "execa": "5.1.1"
+  }
 }
