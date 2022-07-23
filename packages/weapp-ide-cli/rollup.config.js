@@ -1,5 +1,5 @@
 import { createRollupConfig } from '@icebreakers/rollup'
-
+const sourcemap = process.env.NODE_ENV === 'development'
 export default createRollupConfig({
   input: {
     index: 'src/index.ts',
@@ -8,6 +8,6 @@ export default createRollupConfig({
   output: {
     dir: 'dist',
     format: 'cjs',
-    sourcemap: false
+    sourcemap
   }
 })
