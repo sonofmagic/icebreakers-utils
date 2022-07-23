@@ -16,11 +16,19 @@
     "registry": "https://registry.npmjs.org/"
   },
   "keywords": [],
-  "author": "",
+  "author": "SonOfMagic <qq1324318532@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@icebreakers/rollup": "*",
     "@icebreakers/tsconfig": "*"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonofmagic/utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sonofmagic/utils/issues"
+  },
+  "homepage": "https://github.com/sonofmagic/utils/tree/main/packages/_template#readme"
 }
