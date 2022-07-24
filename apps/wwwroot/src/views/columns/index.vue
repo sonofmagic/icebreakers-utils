@@ -21,6 +21,8 @@ export default defineComponent({
   //   }
   // },
   data () {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const vm = this
     return {
       data: tableData,
       headerColor: null,
@@ -32,6 +34,7 @@ export default defineComponent({
             const h = this.$createElement
             // @ts-ignore
             const headerColor = this.headerColor
+            console.log('render headerColor')
             return h('div', {
               style: {
                 color: headerColor
@@ -53,7 +56,11 @@ export default defineComponent({
           children: [
             {
               prop: 'name',
-              label: '姓名',
+              label: vm.$createElement('div', {
+                style: {
+                  color: vm.headerColor
+                }
+              }, ['姓名']),
               width: 120
             },
             {
