@@ -1,6 +1,6 @@
 const hasOwnProperty = Object.prototype.hasOwnProperty
 
-export function hasOwn (obj: any, key: string | symbol) {
+export function hasOwn (obj: unknown, key: string | symbol) {
   return hasOwnProperty.call(obj, key)
 }
 
@@ -10,4 +10,20 @@ export function isVNode (node: unknown) {
     typeof node === 'object' &&
     hasOwn(node, 'componentOptions')
   )
+}
+
+export const VNodes = {
+  functional: true,
+  render: (
+    h: (...args: unknown[]) => unknown,
+    {
+      props
+    }: {
+      props: {
+        vnodes: unknown
+      }
+    }
+  ) => {
+    return props.vnodes
+  }
 }

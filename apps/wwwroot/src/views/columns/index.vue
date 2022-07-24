@@ -21,32 +21,33 @@ export default defineComponent({
   //   }
   // },
   data () {
+    // leafColumnsLength
+    // columns
+
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const vm = this
+    const h = vm.$createElement
     return {
       data: tableData,
       headerColor: null,
       columns: [
         {
           prop: 'date',
-          label: (vm) => {
-            // this.vm = vm
-            const h = this.$createElement
-            // @ts-ignore
-            const headerColor = this.headerColor
-            console.log('render headerColor')
-            return h('div', {
-              style: {
-                color: headerColor
-              }
-            }, ['日期'])
-          },
-          // label: '日期',
-          width: 150,
-          render: (text, record, index) => {
-            const h = this.$createElement
-            return h('a', undefined, ['2020-01-01'])
-          }
+          // label: () => {
+          //   // @ts-ignore
+          //   const headerColor = this.headerColor
+          //   console.log('render headerColor')
+          //   return h('div', {
+          //     style: {
+          //       color: headerColor
+          //     }
+          //   }, ['日期'])
+          // },
+          label: '日期',
+          width: 150
+          // render: (text, record, index) => {
+          //   return h('a', undefined, ['2020-01-01'])
+          // }
           // render: (text, record, index) => {
           //   return <div>{ text } </div>
           // }
@@ -56,11 +57,12 @@ export default defineComponent({
           children: [
             {
               prop: 'name',
-              label: vm.$createElement('div', {
-                style: {
-                  color: vm.headerColor
-                }
-              }, ['姓名']),
+              // label: () => vm.$createElement('div', {
+              //   style: {
+              //     color: vm.headerColor
+              //   }
+              // }, ['姓名']),
+              label: '姓名',
               width: 120
             },
             {
