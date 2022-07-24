@@ -8,7 +8,11 @@
     </template>
     <template>
       <slot>
-        <ProColumn :key="idx" v-bind="col" v-for="(col,idx) in columns"></ProColumn>
+        <ProColumn :key="idx" v-bind="col" v-for="(col, idx) in columns">
+          <template #header>
+            <slot name="header" :column="col" :index="idx"></slot>
+          </template>
+        </ProColumn>
       </slot>
     </template>
   </el-table>

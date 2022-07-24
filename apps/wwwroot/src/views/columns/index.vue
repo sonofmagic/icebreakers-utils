@@ -1,26 +1,52 @@
 <template>
   <div>
     <ProTable :data="data" :columns="columns"></ProTable>
+    <el-color-picker v-model="headerColor"></el-color-picker>
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from 'vue'
 import ProTable from './Table.vue'
 import { tableData } from './demo'
+
 export default defineComponent({
   name: 'ColumnsIndex',
   components: {
     ProTable
   },
+  // watch: {
+  //   headerColor () {
+  //     this.vm && this.vm._update()
+  //   }
+  // },
   data () {
     return {
       data: tableData,
+      headerColor: null,
       columns: [
         {
           prop: 'date',
-          label: '日期',
-          width: 150
+          label: (vm) => {
+            // this.vm = vm
+            const h = this.$createElement
+            // @ts-ignore
+            const headerColor = this.headerColor
+            return h('div', {
+              style: {
+                color: headerColor
+              }
+            }, ['日期'])
+          },
+          // label: '日期',
+          width: 150,
+          render: (text, record, index) => {
+            const h = this.$createElement
+            return h('a', undefined, ['2020-01-01'])
+          }
+          // render: (text, record, index) => {
+          //   return <div>{ text } </div>
+          // }
         },
         {
           label: '配送信息',
