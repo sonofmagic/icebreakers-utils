@@ -1,5 +1,5 @@
 <template>
-  <el-table>
+  <el-table :data="data">
     <template #empty>
       <slot name="empty"></slot>
     </template>
@@ -7,16 +7,21 @@
       <slot name="append"></slot>
     </template>
     <template>
-      <slot></slot>
+      <slot>
+        <ProColumn :key="idx" v-bind="col" v-for="(col,idx) in columns"></ProColumn>
+      </slot>
     </template>
   </el-table>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-
+import ProColumn from './Column.vue'
 export default defineComponent({
   name: 'ProTable',
+  components: {
+    ProColumn
+  },
   props: {
     data: {
       type: [Array],
