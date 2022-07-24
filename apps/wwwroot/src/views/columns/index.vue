@@ -1,6 +1,26 @@
 <template>
   <div>
-    <ProTable :data="data" :columns="columns"></ProTable>
+    <ProTable :data="data" :columns="columns">
+      <el-table-column prop="date" label="日期" width="150">
+      </el-table-column>
+      <el-table-column label="配送信息">
+        <el-table-column prop="name" label="姓名" width="120">
+        </el-table-column>
+        <el-table-column label="地址1">
+          <template #default>
+            <el-table-column prop="province" label="省份" width="120">
+            </el-table-column>
+            <el-table-column prop="city" label="市区" width="120">
+            </el-table-column>
+            <el-table-column prop="address" label="地址" width="300">
+            </el-table-column>
+            <el-table-column prop="zip" label="邮编" width="120">
+            </el-table-column>
+          </template>
+
+        </el-table-column>
+      </el-table-column>
+    </ProTable>
     <el-color-picker v-model="headerColor"></el-color-picker>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <el-table-column v-if="renderTimes < 3" v-bind="$attrs">
+  <el-table-column v-bind="$attrs">
     <template #header="{ column, $index }">
       <template v-if="typeof label === 'function'">
         <VNodes :vnodes="label(column, $index)" />
@@ -7,17 +7,17 @@
       <template v-else>{{ label }}</template>
     </template>
 
-    <!-- <template #default="{ row, column, $index }"> -->
-    <!-- <slot> -->
-    <template v-if="renderChildrenFlag">
-      <ProColumn :renderTimes="renderTimes + 1" v-bind="child" :key="idx" v-for="(child, idx) in children">
-      </ProColumn>
+    <template v-if="renderChildrenFlag || typeof render === 'function'" #default>
+      <!-- <slot> -->
+      <template v-if="renderChildrenFlag">
+        <ProColumn :renderTimes="renderTimes + 1" v-bind="child" :key="idx" v-for="(child, idx) in children">
+        </ProColumn>
+      </template>
+      <template v-else-if="typeof render === 'function'">
+        <VNodes :vnodes="render()" />
+      </template>
+      <!-- </slot> -->
     </template>
-    <template v-else-if="typeof render === 'function'">
-      <VNodes :vnodes="render()" />
-    </template>
-    <!-- </slot> -->
-    <!-- </template> -->
     <!-- <template v-else v-slot="{ row, column, $index }">
       <slot :row="row" :column="column" :index="$index"></slot>
     </template> -->
@@ -65,6 +65,9 @@ export default defineComponent({
   },
   methods: {
     isVNode
+  },
+  mounted () {
+    console.log(this)
   }
 
 })
