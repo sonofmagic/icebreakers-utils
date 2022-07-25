@@ -3,7 +3,7 @@
 微信开发者工具的命令行(v2) 的一个二次封装的包裹实现，来让开发者更加方便的使用微信开发者工具。
 
 > 要使用命令行，注意首先需要在开发者工具的设置 -> 安全设置中开启服务端口。
-## 快速使用
+## 快速安装
 
 ```bash
 npm i -g weapp-ide-cli
@@ -29,6 +29,15 @@ weapp open --project
 weapp open -p dist/dev/mp-weixin
 # 工具会把它转化为绝对路径，然后打开
 ```
+
+## 常用命令
+
+1. `weapp login` 在命令行进行微信扫码登录
+2. `weapp open -p` 启动工具进行调试开发
+3. `weapp preview` 开始预览
+4. `weapp upload` 上传代码
+5. `weapp quit` 关闭开发者工具
+
 
 ### 自定义配置
 
