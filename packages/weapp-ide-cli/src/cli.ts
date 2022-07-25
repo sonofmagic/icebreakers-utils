@@ -37,14 +37,14 @@ async function createCustomConfig (params: IBaseConfig) {
     }
   )
 }
-async function getConfig (): Promise<{ cliPath: string }> {
+async function getConfig (): Promise<IBaseConfig> {
   const isExisted = await exist(defaultCustomConfigFilePath)
   if (isExisted) {
     const content = await fs.readFile(defaultCustomConfigFilePath, {
       encoding: 'utf8'
     })
     const config = JSON.parse(content)
-    console.log('自定义Cli路径：', config.cliPath)
+    console.log('自定义cli路径：', config.cliPath)
     return config
   } else {
     return {
@@ -56,12 +56,12 @@ async function getConfig (): Promise<{ cliPath: string }> {
 // https://developers.weixin.qq.com/miniprogram/dev/devtools/cli.html
 
 function rlSetConfig () {
-  console.log('请设置微信web开发者工具 cli 的路径：')
-  console.log('提示：命令行工具默认所在位置：')
-  console.log('macOS: <安装路径>/Contents/MacOS/cli')
-  console.log('Windows: <安装路径>/cli.bat')
+  console.log('请设置微信web开发者工具 cli 的路径')
+  console.log('> 提示：命令行工具默认所在位置：')
+  console.log('- MacOS: <安装路径>/Contents/MacOS/cli')
+  console.log('- Windows: <安装路径>/cli.bat')
   return new Promise((resolve, reject) => {
-    rl.question('请输入微信web开发者工具 cli 的路径：', async (cliPath) => {
+    rl.question('请输入微信web开发者工具cli路径：', async (cliPath) => {
       await createCustomConfig({
         cliPath
       })
@@ -109,6 +109,9 @@ async function main () {
       // task.exitCode === 0
       // task.exitCode === -1
     } else {
+      console.log(
+        '在当前自定义路径中,未找到微信web开发者命令行工具，请重新指定路径'
+      )
       await rlSetConfig()
     }
   } else {
