@@ -36,11 +36,6 @@ export default defineComponent({
       type: [String, Function]
     }
   },
-  data () {
-    return {
-
-    }
-  },
   computed: {
     renderChildrenFlag () {
       return Array.isArray(this.children) && this.children.length > 0
@@ -48,11 +43,7 @@ export default defineComponent({
   },
   methods: {
     isVNode
-  },
-  mounted () {
-    console.log(this)
   }
-
 })
 </script>
 
