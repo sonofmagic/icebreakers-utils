@@ -40,7 +40,8 @@
   "license": "MIT",
   "devDependencies": {
     "@icebreakers/rollup": "*",
-    "@icebreakers/tsconfig": "*"
+    "@icebreakers/tsconfig": "*",
+    "consola": "^2.15.3"
   },
   "dependencies": {
     "execa": "5.1.1"
