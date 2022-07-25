@@ -6,36 +6,23 @@
       </template>
       <template v-else>{{ label }}</template>
     </template>
-
-    <template v-if="renderChildrenFlag || typeof render === 'function'" #default>
-      <!-- <slot> -->
-      <template v-if="renderChildrenFlag">
-        <ProColumn :renderTimes="renderTimes + 1" v-bind="child" :key="idx" v-for="(child, idx) in children">
-        </ProColumn>
-      </template>
-      <template v-else-if="typeof render === 'function'">
-        <VNodes :vnodes="render()" />
-      </template>
-      <!-- </slot> -->
+    <template v-if="renderChildrenFlag" #default>
+      <ProColumn v-bind="child" :key="idx" v-for="(child, idx) in children">
+      </ProColumn>
     </template>
-    <!-- <template v-else v-slot="{ row, column, $index }">
-      <slot :row="row" :column="column" :index="$index"></slot>
-    </template> -->
-
+    <template v-else-if="typeof render === 'function'" #default="{row, column, $index }">
+      <VNodes :vnodes="render(row, column, $index)" />
+    </template>
   </el-table-column>
 </template>
 
-<script>
-// v-bind="child"
-//  #default="{ row, column, $index }"
-// import ProColumnItem from './Column'
+<script lang="ts">
 import { defineComponent } from 'vue'
 import { isVNode, VNodes } from './utils'
 export default defineComponent({
   name: 'ProColumn',
   components: {
     VNodes
-
   },
   props: {
     children: {
@@ -47,10 +34,6 @@ export default defineComponent({
     },
     label: {
       type: [String, Function]
-    },
-    renderTimes: {
-      type: [Number],
-      default: 0
     }
   },
   data () {
