@@ -1,6 +1,6 @@
 {
   "name": "weapp-ide-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "让微信开发者工具，用起来更加方便吧！",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -40,8 +40,7 @@
   "license": "MIT",
   "devDependencies": {
     "@icebreakers/rollup": "*",
-    "@icebreakers/tsconfig": "*",
-    "consola": "^2.15.3"
+    "@icebreakers/tsconfig": "*"
   },
   "dependencies": {
     "execa": "5.1.1"
