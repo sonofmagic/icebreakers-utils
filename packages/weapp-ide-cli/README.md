@@ -22,12 +22,12 @@ weapp-ide-cli open
 weapp open -p
 # 等价
 weapp open --project
-# 官方 cli 项目选项中 `--project` 等价于 `-h`
+
 
 # 在相对的路径，打开微信开发者工具
 # 比如 uni-app 就可以在项目目录执行
 weapp open -p dist/dev/mp-weixin
-# 工具会把它转化为绝对路径，然后打开
+# 工具会把相对路径转化为绝对路径，然后打开(绝对路径不转化)
 ```
 
 ## 常用命令
