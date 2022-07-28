@@ -1,4 +1,3 @@
-import execa from 'execa'
 import fs from 'fs/promises'
 import readline from 'readline'
 import path from 'path'
@@ -8,7 +7,8 @@ import {
   defaultPath,
   operatingSystemName
 } from './defaults'
-import { exist } from './utils'
+import { exist, execute } from './utils'
+import { compose } from './compose'
 import type { IBaseConfig } from './types'
 const rl = readline.createInterface({
   input: process.stdin,
@@ -71,6 +71,41 @@ function rlSetConfig () {
   })
 }
 
+interface IAliasEntry {
+  find: string
+  replacement: string
+}
+
+function alias (argv: string[], entry: IAliasEntry) {
+  let projectOptionIdx = argv.indexOf(entry.find)
+  // alias -p as --project
+  if (projectOptionIdx > -1) {
+    argv[projectOptionIdx] = entry.replacement
+  } else {
+    projectOptionIdx = argv.indexOf(entry.replacement)
+  }
+
+  if (projectOptionIdx > -1) {
+    const projectPathIdx = projectOptionIdx + 1
+    const projectPath = argv[projectPathIdx]
+    // 存在项目目录
+    if (projectPath && projectPath[0] !== '-') {
+      if (!path.isAbsolute(projectPath)) {
+        argv[projectPathIdx] = path.resolve(process.cwd(), projectPath)
+      }
+    } else {
+      argv.splice(projectPathIdx, 0, process.cwd())
+    }
+  }
+  return argv
+}
+
+function createAlias (entry: IAliasEntry) {
+  return function (argv: string[]) {
+    return alias(argv, entry)
+  }
+}
+
 async function main () {
   if (isSupported) {
     const { cliPath } = await getConfig()
@@ -80,34 +115,12 @@ async function main () {
         await rlSetConfig()
         return
       }
-      let projectOptionIdx = argv.indexOf('-p')
-      // alias -p as --project
-      if (projectOptionIdx > -1) {
-        argv[projectOptionIdx] = '--project'
-      } else {
-        projectOptionIdx = argv.indexOf('--project')
-      }
 
-      if (projectOptionIdx > -1) {
-        const projectPathIdx = projectOptionIdx + 1
-        const projectPath = argv[projectPathIdx]
-        // 存在项目目录
-        if (projectPath) {
-          if (!path.isAbsolute(projectPath)) {
-            argv[projectPathIdx] = path.resolve(process.cwd(), projectPath)
-          }
-        } else {
-          argv.splice(projectPathIdx, 0, process.cwd())
-        }
-      }
-      const task = execa(cliPath, argv)
+      const formattedArgv = compose(
+        createAlias({ find: '-p', replacement: '--project' })
+      )(argv)
 
-      task?.stdout?.pipe(process.stdout)
-
-      await task
-      // 调用返回码为 0 时代表正常，为 -1 时错误。
-      // task.exitCode === 0
-      // task.exitCode === -1
+      await execute(cliPath, formattedArgv)
     } else {
       console.log(
         '在当前自定义路径中,未找到微信web开发者命令行工具，请重新指定路径'
