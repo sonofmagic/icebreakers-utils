@@ -1,6 +1,6 @@
 {
   "name": "weapp-ide-cli",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "让微信开发者工具，用起来更加方便吧！",
   "main": "dist/index.js",
   "module": "dist/index.js",
