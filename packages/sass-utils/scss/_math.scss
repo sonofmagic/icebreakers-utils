@@ -1,0 +1,42 @@
+@use 'sass:math';
+@use 'sass:meta';
+
+@function decimal-round($number, $digits: 0, $mode: round) {
+  $n: 1;
+  // $number must be a number
+  @if meta.type-of($number) != number {
+    @warn '#{ $number } is not a number.';
+    @return $number;
+  }
+  // $digits must be a unitless number
+  @if meta.type-of($digits) != number {
+    @warn '#{ $digits } is not a number.';
+    @return $number;
+  } @else if not math.is-unitless($digits) {
+    @warn '#{ $digits } has a unit.';
+    @return $number;
+  }
+  @if $digits > 0 {
+    @for $i from 1 through $digits {
+      $n: $n * 10;
+    }
+  }
+  @if $mode == round {
+    @return math.round($number * $n) / $n;
+  } @else if $mode == ceil {
+    @return math.ceil($number * $n) / $n;
+  } @else if $mode == floor {
+    @return math.floor($number * $n) / $n;
+  } @else {
+    @warn '#{ $mode } is undefined keyword.';
+    @return $number;
+  }
+}
+
+@function remove-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@function px2vw($number, $base: 750) {
+  @return math.div(remove-unit($number) * 100vw, $base);
+}
