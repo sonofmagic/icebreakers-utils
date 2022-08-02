@@ -1,7 +1,7 @@
 {
   "name": "@icebreakers/sass-utils",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.0.2",
+  "description": "This is a collection of Sass utility functions",
   "main": "index.scss",
   "files": [
     "scss",
@@ -16,7 +16,12 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "keywords": [],
+  "keywords": [
+    "sass",
+    "utils",
+    "scss",
+    "sass-true"
+  ],
   "author": "SonOfMagic <qq1324318532@gmail.com>",
   "license": "ISC",
   "devDependencies": {

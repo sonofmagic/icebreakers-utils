@@ -1,6 +1,10 @@
 @use 'sass:math';
 @use 'sass:meta';
 
+@function remove-unit($value) {
+  @return math.div($value, $value * 0 + 1);
+}
+
 @function decimal-round($number, $digits: 0, $mode: round) {
   $n: 1;
   // $number must be a number
@@ -33,10 +37,6 @@
   }
 }
 
-@function remove-unit($value) {
-  @return math.div($value, $value * 0 + 1);
-}
-
 @function px2vw($number, $base: 750) {
-  @return math.div(remove-unit($number) * 100vw, $base);
+  @return math.div(remove-unit($number) * 100vw, remove-unit($base));
 }

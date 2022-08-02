@@ -27,6 +27,8 @@
     // Assert the expected results
     @include assert-equal(index.px2vw(750px), 100vw);
     @include assert-equal(index.px2vw(750), 100vw);
+    @include assert-equal(index.px2vw(750, 375), 200vw);
+    @include assert-equal(index.px2vw(750, 375px), 200vw);
   }
 }
 
