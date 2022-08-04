@@ -20,7 +20,11 @@ export function raw (
           typeof getCommand === 'string' ? getCommand : getCommand(pkgM)
         const subprocess = execa(createExecFile(pkgM, command))
         subprocess.stdout?.pipe(process.stdout)
-        await subprocess
+        try {
+          await subprocess
+        } catch (error) {
+          console.error(error)
+        }
         break
       }
     }

@@ -8,8 +8,6 @@
     "index.scss"
   ],
   "scripts": {
-    "dev": "cross-env NODE_ENV=development rollup -cw",
-    "build": "cross-env NODE_ENV=production rollup -c",
     "test": "jest"
   },
   "publishConfig": {
@@ -25,7 +23,7 @@
   "author": "SonOfMagic <qq1324318532@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "sass": "^1.54.0",
+    "sass": "^1.54.2",
     "sass-true": "^6.1.0"
   },
   "dependencies": {},

@@ -25,6 +25,7 @@
   "devDependencies": {
     "@icebreakers/rollup": "*",
     "@icebreakers/tsconfig": "*",
-    "execa": "^5.1.1"
+    "execa": "^5.1.1",
+    "fast-glob": "^3.2.11"
   }
 }

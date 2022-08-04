@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "weapp-tailwindcss-webpack-plugin": "^1.6.7"
+    "weapp-tailwindcss-webpack-plugin": "^1.7.0"
   }
 }
