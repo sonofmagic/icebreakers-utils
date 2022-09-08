@@ -1,3 +1,2 @@
-const s = 1
-
-export default s
+export * from './mdt'
+export * from './render'
