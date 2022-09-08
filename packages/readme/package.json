@@ -1,30 +1,26 @@
 {
-  "name": "@icebreakers/sass-utils",
-  "version": "0.0.2",
-  "description": "This is a collection of Sass utility functions",
-  "main": "index.scss",
+  "name": "@icebreakers/readme",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/types/index.d.ts",
   "files": [
-    "scss",
-    "index.scss"
+    "dist"
   ],
   "scripts": {
-    "test": "jest"
+    "dev": "cross-env NODE_ENV=development rollup -cw",
+    "build": "cross-env NODE_ENV=production rollup -c"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "keywords": [
-    "sass",
-    "utils",
-    "scss",
-    "sass-true"
-  ],
+  "keywords": [],
   "author": "SonOfMagic <qq1324318532@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "sass": "^1.54.9",
-    "sass-true": "^6.1.0"
+    "@icebreakers/rollup": "*",
+    "@icebreakers/tsconfig": "*"
   },
   "dependencies": {},
   "repository": {
@@ -34,5 +30,5 @@
   "bugs": {
     "url": "https://github.com/sonofmagic/utils/issues"
   },
-  "homepage": "https://github.com/sonofmagic/utils/tree/main/packages/_template#readme"
+  "homepage": "https://github.com/sonofmagic/utils/tree/main/packages/readme#readme"
 }

@@ -93,5 +93,5 @@ export function createRollupConfig (
     external
   }
 
-  return defu<RollupOptions, RollupOptions>(rollupOptions, config)
+  return defu(rollupOptions, config)
 }
