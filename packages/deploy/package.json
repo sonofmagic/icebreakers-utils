@@ -1,8 +1,9 @@
 {
   "name": "@icebreakers/deploy",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "dist/index.js",
+  "module": "dist/index.es.js",
   "types": "dist/types/index.d.ts",
   "files": [
     "dist"
@@ -30,6 +31,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "cos-nodejs-sdk-v5": "latest"
+    "cos-nodejs-sdk-v5": "latest",
+    "tencentcloud-sdk-nodejs": "^4.0.459"
   }
 }

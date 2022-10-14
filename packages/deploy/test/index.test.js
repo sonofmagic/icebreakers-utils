@@ -15,13 +15,24 @@ describe('default', () => {
       SecretId: TENCENT_SECRET_ID
     })
   })
-  test('batch delete list', async () => {
-    const { TENCENT_COS_REGION, TENCENT_COS_BUCKET } = process.env
-    const res = await deployer.cleanWebsiteContent({
-      Bucket: TENCENT_COS_BUCKET,
-      Region: TENCENT_COS_REGION
-    })
-    expect(res.statusCode).toBe(200)
-    expect(res.Error.length).toBe(0)
+  // test('batch delete list', async () => {
+  //   const { TENCENT_COS_REGION, TENCENT_COS_BUCKET } = process.env
+  //   const res = await deployer.cleanWebsiteContent({
+  //     Bucket: TENCENT_COS_BUCKET,
+  //     Region: TENCENT_COS_REGION
+  //   })
+  //   expect(res.statusCode).toBe(200)
+  //   expect(res.Error.length).toBe(0)
+  // })
+
+  test('export functions', () => {
+    expect(deployer.cdn).toBeTruthy()
+    expect(deployer.cos).toBeTruthy()
+    expect(deployer.purgePathCache).toBeTruthy()
+    expect(deployer.purgeUrlsCache).toBeTruthy()
+    expect(deployer.uploadDir).toBeTruthy()
+    expect(deployer.cleanWebsiteContent).toBeTruthy()
+    expect(deployer.deleteMultipleObject).toBeTruthy()
+    expect(deployer.putObject).toBeTruthy()
   })
 })

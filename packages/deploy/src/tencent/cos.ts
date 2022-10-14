@@ -4,31 +4,27 @@ import klaw from 'klaw'
 import fs from 'fs'
 import path from 'path'
 import cliProgress from 'cli-progress'
-import { directorySize } from './util'
+import { directorySize } from '../util'
+import type { CleanWebsiteContentParams, UploadDirOptions } from './types'
+import {
+  TencentCDNClient,
+  ITencentCDNClient,
+  PurgeUrlsCacheRequest,
+  PurgePathCacheRequest
+} from './cdn'
 const isWindows = os.type() === 'Windows_NT'
-
-export interface UploadDirOptions {
-  Region?: string
-  Bucket?: string
-  CacheControl?: string
-  /**
-   * @description cwd() is the current working directory of the process.
-   */
-  root?: string
-  targetDir?: string
-  clean?: boolean
-}
-
-export interface CleanWebsiteContentParams {
-  Region: string
-  Bucket: string
-  Prefix?: string
-}
 
 export class TencentCOSWebsiteDeployer {
   public cos: COS
+  public cdn: ITencentCDNClient
   constructor (options: COS.COSOptions) {
     this.cos = new COS(options)
+    this.cdn = new TencentCDNClient({
+      credential: {
+        secretId: options.SecretId,
+        secretKey: options.SecretKey
+      }
+    })
   }
 
   putObject (params: COS.PutObjectParams) {
@@ -154,5 +150,13 @@ export class TencentCOSWebsiteDeployer {
       console.log(`https://${Bucket}.cos-website.${Region}.myqcloud.com`)
     }
     return res
+  }
+
+  purgeUrlsCache (options: PurgeUrlsCacheRequest) {
+    return this.cdn.PurgeUrlsCache(options)
+  }
+
+  purgePathCache (options: PurgePathCacheRequest) {
+    return this.cdn.PurgePathCache(options)
   }
 }
