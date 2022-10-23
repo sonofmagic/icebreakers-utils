@@ -31,7 +31,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "cos-nodejs-sdk-v5": "latest",
-    "tencentcloud-sdk-nodejs": "^4.0.459"
+    "cos-nodejs-sdk-v5": "2.11.14",
+    "tencentcloud-sdk-nodejs": "^4.0.464"
   }
 }
