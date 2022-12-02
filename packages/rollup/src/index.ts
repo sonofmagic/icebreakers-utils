@@ -17,6 +17,15 @@ import del from './del'
 // import { terser } from 'rollup-plugin-terser'
 // const isProd = process.env.NODE_ENV === 'production'
 const isDev = process.env.NODE_ENV === 'development'
+// https://rollupjs.org/guide/en/#changed-defaults
+const legacyOutputOptions:Partial<OutputOptions> = {
+  esModule: true,
+  generatedCode: {
+    reservedNamesAsProps: false
+  },
+  interop: 'compat',
+  systemNullSetters: false
+}
 
 export function createRollupConfig (
   options: CreateRollupConfigOptions = {},
@@ -53,11 +62,12 @@ export function createRollupConfig (
         file: pkg.main,
         format: 'cjs',
         sourcemap: isDev,
-        exports: 'auto'
+        exports: 'auto',
+        ...legacyOutputOptions
       })
     }
     if (pkg.module) {
-      output.push({ format: 'esm', file: pkg.module, sourcemap: isDev })
+      output.push({ format: 'esm', file: pkg.module, sourcemap: isDev, ...legacyOutputOptions })
     }
   }
 
@@ -90,7 +100,9 @@ export function createRollupConfig (
     input,
     output,
     plugins,
-    external
+    external,
+    makeAbsoluteExternalsRelative: true,
+    preserveEntrySignatures: 'strict'
   }
 
   return defu(rollupOptions, config)

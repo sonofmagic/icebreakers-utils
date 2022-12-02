@@ -9,8 +9,8 @@
   },
   "dependencies": {
     "@icebreakers/vue-use-pdf": "*",
-    "core-js": "^3.25.5",
-    "element-ui": "^2.15.10",
+    "core-js": "^3.26.1",
+    "element-ui": "^2.15.12",
     "vue": "npm:vue@v2-latest",
     "vue-router": "^3.5.1",
     "vuex": "^3.6.2"
