@@ -31,6 +31,7 @@
     "@icebreakers/rollup": "*",
     "@icebreakers/tsconfig": "*",
     "execa": "^5.1.1",
-    "fast-glob": "^3.2.12"
+    "fast-glob": "^3.2.12",
+    "p-queue": "6.6.2"
   }
 }
