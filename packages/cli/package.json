@@ -1,7 +1,7 @@
 {
   "name": "@icebreakers/cli",
-  "version": "0.1.0",
-  "description": "",
+  "version": "0.1.1",
+  "description": "icebreaker's cli",
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "files": [
