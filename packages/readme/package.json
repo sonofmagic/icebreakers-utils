@@ -1,7 +1,7 @@
 {
   "name": "@icebreakers/readme",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.0.2",
+  "description": "icebreaker's readme markdown generator",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
