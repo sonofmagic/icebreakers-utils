@@ -17,7 +17,7 @@ const isWindows = os.type() === 'Windows_NT'
 export class TencentCOSWebsiteDeployer {
   public cos: COS
   public cdn: ITencentCDNClient
-  constructor (options: COS.COSOptions) {
+  constructor(options: COS.COSOptions) {
     this.cos = new COS(options)
     this.cdn = new TencentCDNClient({
       credential: {
@@ -27,27 +27,27 @@ export class TencentCOSWebsiteDeployer {
     })
   }
 
-  putObject (params: COS.PutObjectParams) {
+  putObject(params: COS.PutObjectParams) {
     const { cos } = this
     return cos.putObject(params)
   }
 
-  getBucketWebsite (params: COS.GetBucketWebsiteParams) {
+  getBucketWebsite(params: COS.GetBucketWebsiteParams) {
     const { cos } = this
     return cos.getBucketWebsite(params)
   }
 
-  getBucket (params: COS.GetBucketParams) {
+  getBucket(params: COS.GetBucketParams) {
     const { cos } = this
     return cos.getBucket(params)
   }
 
-  deleteMultipleObject (params: COS.DeleteMultipleObjectParams) {
+  deleteMultipleObject(params: COS.DeleteMultipleObjectParams) {
     const { cos } = this
     return cos.deleteMultipleObject(params)
   }
 
-  async cleanWebsiteContent (params: CleanWebsiteContentParams) {
+  async cleanWebsiteContent(params: CleanWebsiteContentParams) {
     const { Bucket, Region, Prefix = '' } = params
     const MaxKeys = 1000
     const Marker = ''
@@ -79,7 +79,7 @@ export class TencentCOSWebsiteDeployer {
     }
   }
 
-  async uploadDir (options: UploadDirOptions = {}) {
+  async uploadDir(options: UploadDirOptions = {}) {
     const {
       Bucket = '',
       Region = '',
@@ -152,11 +152,11 @@ export class TencentCOSWebsiteDeployer {
     return res
   }
 
-  purgeUrlsCache (options: PurgeUrlsCacheRequest) {
+  purgeUrlsCache(options: PurgeUrlsCacheRequest) {
     return this.cdn.PurgeUrlsCache(options)
   }
 
-  purgePathCache (options: PurgePathCacheRequest) {
+  purgePathCache(options: PurgePathCacheRequest) {
     return this.cdn.PurgePathCache(options)
   }
 }

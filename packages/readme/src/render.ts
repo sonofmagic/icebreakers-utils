@@ -6,7 +6,7 @@ export interface ReadmeRenderOptions {
   outputPath?: string
 }
 
-function getAbsPath (p: string) {
+function getAbsPath(p: string) {
   if (path.isAbsolute(p)) {
     return p
   } else {
@@ -18,13 +18,13 @@ export class ReadmeRender {
   public templatePath?: string
   public template?: string
   public outputPath: string
-  constructor (options: ReadmeRenderOptions) {
+  constructor(options: ReadmeRenderOptions) {
     this.template = options.template
     this.templatePath = options.templatePath
     this.outputPath = options.outputPath ?? './README.md'
   }
 
-  render (data: [RegExp, string][]) {
+  render(data: [RegExp, string][]) {
     const { template, templatePath } = this
     if (template || templatePath) {
       const tp = getAbsPath(templatePath as string)
@@ -44,7 +44,7 @@ export class ReadmeRender {
     )
   }
 
-  write (data: [RegExp, string][]) {
+  write(data: [RegExp, string][]) {
     const source = this.render(data)
     fs.writeFileSync(getAbsPath(this.outputPath), source, {
       encoding: 'utf-8'

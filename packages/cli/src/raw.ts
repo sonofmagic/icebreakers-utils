@@ -7,7 +7,7 @@ import PQueue from 'p-queue'
 //   return `${pkgM} ${command}`
 // }
 
-export function raw (
+export function raw(
   pathLike: string,
   getCommand: string | ((pkgM: PkgManager) => string),
   subDir: boolean = false

@@ -21,7 +21,7 @@ const argv = process.argv.slice(2)
 // https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html
 // https://developers.weixin.qq.com/miniprogram/dev/devtools/cli.html
 
-function rlSetConfig () {
+function rlSetConfig() {
   console.log('请设置微信web开发者工具 cli 的路径')
   console.log('> 提示：命令行工具默认所在位置：')
   console.log('- MacOS: <安装路径>/Contents/MacOS/cli')
@@ -47,7 +47,7 @@ const parseArgv = compose(
   createPathCompat('-i')
 )
 
-async function main () {
+async function main() {
   if (isSupported) {
     const { cliPath } = await getConfig()
     const isExisted = await exist(cliPath)

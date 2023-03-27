@@ -5,7 +5,7 @@ import type { Options } from 'http-proxy-middleware'
 
 export type ServerlessHttpProxyOptions = Record<string, Options>
 
-export function createProxyExpressInstance (
+export function createProxyExpressInstance(
   options: ServerlessHttpProxyOptions
 ) {
   const app = express()

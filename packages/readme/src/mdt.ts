@@ -7,7 +7,7 @@ export interface MarkdownTableOptions {
   stringLength?: (s: string) => number
 }
 
-export function markdownTable (
+export function markdownTable(
   table: (string | null | undefined)[][],
   options: MarkdownTableOptions = {}
 ) {
@@ -100,9 +100,9 @@ export function markdownTable (
       options.alignDelimiters === false
         ? 1
         : Math.max(
-          1,
-          longestCellByColumn[columnIndex] - before.length - after.length
-        )
+            1,
+            longestCellByColumn[columnIndex] - before.length - after.length
+          )
 
     const cell = before + '-'.repeat(size) + after
 
@@ -209,7 +209,7 @@ export function markdownTable (
  * @param {string|null|undefined} [value]
  * @returns {string}
  */
-function serialize (value?: string | null) {
+function serialize(value?: string | null) {
   return value === null || value === undefined ? '' : String(value)
 }
 
@@ -217,7 +217,7 @@ function serialize (value?: string | null) {
  * @param {string} value
  * @returns {number}
  */
-function defaultStringLength (value: string) {
+function defaultStringLength(value: string) {
   return value.length
 }
 
@@ -225,14 +225,14 @@ function defaultStringLength (value: string) {
  * @param {string|null|undefined} value
  * @returns {number}
  */
-function toAlignment (value?: string | null) {
+function toAlignment(value?: string | null) {
   const code = typeof value === 'string' ? value.codePointAt(0) : 0
 
   return code === 67 /* `C` */ || code === 99 /* `c` */
     ? 99 /* `c` */
     : code === 76 /* `L` */ || code === 108 /* `l` */
-      ? 108 /* `l` */
-      : code === 82 /* `R` */ || code === 114 /* `r` */
-        ? 114 /* `r` */
-        : 0
+    ? 108 /* `l` */
+    : code === 82 /* `R` */ || code === 114 /* `r` */
+    ? 114 /* `r` */
+    : 0
 }

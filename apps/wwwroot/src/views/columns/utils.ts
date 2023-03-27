@@ -1,10 +1,10 @@
 const hasOwnProperty = Object.prototype.hasOwnProperty
 
-export function hasOwn (obj: unknown, key: string | symbol) {
+export function hasOwn(obj: unknown, key: string | symbol) {
   return hasOwnProperty.call(obj, key)
 }
 
-export function isVNode (node: unknown) {
+export function isVNode(node: unknown) {
   return (
     node !== null &&
     typeof node === 'object' &&

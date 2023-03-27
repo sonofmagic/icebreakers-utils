@@ -3,7 +3,7 @@ export interface CollapseOptions {
   body?: string
 }
 
-export function collapse (options: CollapseOptions = {}) {
+export function collapse(options: CollapseOptions = {}) {
   const { summary = '', body = '' } = options
   return `<details><summary>${summary}</summary><br/>
     ${body}

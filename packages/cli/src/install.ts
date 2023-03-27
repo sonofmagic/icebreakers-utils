@@ -1,7 +1,7 @@
 import { raw } from './raw'
 import { PkgManager, addPkgDirective } from './enum'
 
-export function install (pathLike: string, pkg?: string, subDir?: boolean) {
+export function install(pathLike: string, pkg?: string, subDir?: boolean) {
   const getCommand = (pkgM: PkgManager) => {
     if (pkg) {
       return `${addPkgDirective[pkgM]} ${pkg}`

@@ -2,7 +2,7 @@ const { install, eachDir, run, currentDir, raw, remove } = require('../')
 const path = require('path')
 const fs = require('fs')
 
-function getPkgJson (p) {
+function getPkgJson(p) {
   return JSON.parse(
     fs.readFileSync(p, {
       encoding: 'utf-8'

@@ -62,11 +62,11 @@ services:
   framework:
     component: fc
     actions:
-      pre-deploy: 
-        - run: npm install --production 
-          path: ./code 
-    props: 
-      region: ${vars.region} 
+      pre-deploy:
+        - run: npm install --production
+          path: ./code
+    props:
+      region: ${vars.region}
       service: ${vars.service}
       function:
         name: http-proxy-server
@@ -92,5 +92,4 @@ services:
           protocol: HTTP
           routeConfigs:
             - path: /*
-
 ```

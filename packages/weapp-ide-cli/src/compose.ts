@@ -1,4 +1,4 @@
-export function compose<TArgs extends any[]> (...funcs: TArgs) {
+export function compose<TArgs extends any[]>(...funcs: TArgs) {
   if (funcs.length === 0) {
     return (arg: any) => arg
   }

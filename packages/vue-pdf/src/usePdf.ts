@@ -11,7 +11,7 @@ import type { PageViewport } from 'pdfjs-dist/types/src/display/display_utils'
 import type { PDFHookOptions, PDFHookReturn } from './type'
 const _pdfjs = require('pdfjs-dist/webpack')
 
-function isFunction (value: unknown): value is Function {
+function isFunction(value: unknown): value is Function {
   return typeof value === 'function'
 }
 

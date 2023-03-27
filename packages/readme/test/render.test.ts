@@ -9,9 +9,7 @@ describe('ReadmeRender test', () => {
       templatePath: './fixtures/template.md'
     })
     const v = 'hello world'
-    const source = render.render([
-      [/{{scoped}}/, v]
-    ])
+    const source = render.render([[/{{scoped}}/, v]])
     expect(source.replace(/[\r\n]/g, '')).toBe(v)
   })
 })

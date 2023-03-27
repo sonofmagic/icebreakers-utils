@@ -9,7 +9,7 @@ import { exist } from './utils'
 
 import type { IBaseConfig } from './types'
 
-export async function createCustomConfig (params: IBaseConfig) {
+export async function createCustomConfig(params: IBaseConfig) {
   const isExisted = await exist(defaultCustomConfigDirPath)
   if (!isExisted) {
     await fs.mkdir(defaultCustomConfigDirPath, { recursive: true })
@@ -28,7 +28,7 @@ export async function createCustomConfig (params: IBaseConfig) {
     }
   )
 }
-export async function getConfig (): Promise<IBaseConfig> {
+export async function getConfig(): Promise<IBaseConfig> {
   const isExisted = await exist(defaultCustomConfigFilePath)
   if (isExisted) {
     const content = await fs.readFile(defaultCustomConfigFilePath, {

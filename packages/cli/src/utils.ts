@@ -1,7 +1,7 @@
 import fs from 'fs/promises'
 import path from 'path'
 
-export async function currentDir (pathLike: string, cb: (...args: any) => any) {
+export async function currentDir(pathLike: string, cb: (...args: any) => any) {
   const stat = await fs.stat(pathLike)
   if (stat.isDirectory()) {
     process.chdir(pathLike)
@@ -11,7 +11,7 @@ export async function currentDir (pathLike: string, cb: (...args: any) => any) {
   }
 }
 
-export async function eachDir (pathLike: string, cb: (...args: any) => any) {
+export async function eachDir(pathLike: string, cb: (...args: any) => any) {
   const filenames = await fs.readdir(pathLike)
   for (let i = 0; i < filenames.length; i++) {
     const filename = filenames[i]
@@ -20,7 +20,7 @@ export async function eachDir (pathLike: string, cb: (...args: any) => any) {
   }
 }
 
-export async function isExist (pathLike: string) {
+export async function isExist(pathLike: string) {
   try {
     await fs.access(pathLike)
     return true

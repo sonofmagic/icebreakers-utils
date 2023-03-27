@@ -10,7 +10,10 @@
       <ProColumn v-bind="child" :key="idx" v-for="(child, idx) in children">
       </ProColumn>
     </template>
-    <template v-else-if="typeof render === 'function'" #default="{row, column, $index }">
+    <template
+      v-else-if="typeof render === 'function'"
+      #default="{ row, column, $index }"
+    >
       <VNodes :vnodes="render(row, column, $index)" />
     </template>
   </el-table-column>
@@ -37,7 +40,7 @@ export default defineComponent({
     }
   },
   computed: {
-    renderChildrenFlag () {
+    renderChildrenFlag() {
       return Array.isArray(this.children) && this.children.length > 0
     }
   },
@@ -47,5 +50,4 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

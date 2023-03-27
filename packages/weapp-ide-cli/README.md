@@ -3,6 +3,7 @@
 微信开发者工具的命令行(v2) 的一个二次封装的包裹实现，来让开发者更加方便的使用微信开发者工具。
 
 > 要使用命令行，注意首先需要在开发者工具的设置 -> 安全设置中开启服务端口。
+
 ## 快速安装
 
 ```bash
@@ -38,13 +39,11 @@ weapp open -p dist/dev/mp-weixin
 4. `weapp upload` 上传代码
 5. `weapp quit` 关闭开发者工具
 
-
 ### 自定义配置
 
 `weapp config` 可以对微信开发者工具的 `cli` 目录进行配置，而配置文件就存放在用户的 `${homedir}/.weapp-ide-cli/config.json` 中，您可以随时进行更改。
 
 > 比如 windows 存放位置就在 `C:\Users\${你的用户名}\.weapp-ide-cli/config.json`
-
 
 ### 更多命令
 

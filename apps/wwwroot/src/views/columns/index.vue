@@ -42,7 +42,10 @@
         </el-table-column>
       </el-table-column>
     </el-table> -->
-    <el-color-picker @active-change="onActiveChange" v-model="headerColor"></el-color-picker>
+    <el-color-picker
+      @active-change="onActiveChange"
+      v-model="headerColor"
+    ></el-color-picker>
   </div>
 </template>
 
@@ -61,7 +64,7 @@ export default defineComponent({
   //     this.vm && this.vm._update()
   //   }
   // },
-  data () {
+  data() {
     // leafColumnsLength
     // columns
 
@@ -72,16 +75,28 @@ export default defineComponent({
         {
           prop: 'date',
           label: () => {
-            return <div style={{
-              color: this.headerColor
-            }}>日期</div>
+            return (
+              <div
+                style={{
+                  color: this.headerColor
+                }}
+              >
+                日期
+              </div>
+            )
           },
           // label: '日期',
           width: 150,
           render: (row, col, index) => {
-            return <div style={{
-              color: this.headerColor
-            }}>{row.date} + {index}</div>
+            return (
+              <div
+                style={{
+                  color: this.headerColor
+                }}
+              >
+                {row.date} + {index}
+              </div>
+            )
           }
         },
         {
@@ -123,13 +138,11 @@ export default defineComponent({
     }
   },
   methods: {
-    onActiveChange (val) {
+    onActiveChange(val) {
       this.headerColor = val
     }
   }
 })
-
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

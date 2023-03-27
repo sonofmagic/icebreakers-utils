@@ -27,7 +27,7 @@ export interface DeletePluginOptions extends internalDel.Options {
   readonly verbose?: boolean
 }
 
-export default function del (options: DeletePluginOptions = {}): Plugin {
+export default function del(options: DeletePluginOptions = {}): Plugin {
   const {
     hook = 'buildStart',
     runOnce = false,

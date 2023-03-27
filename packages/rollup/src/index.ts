@@ -18,7 +18,7 @@ import del from './del'
 // const isProd = process.env.NODE_ENV === 'production'
 const isDev = process.env.NODE_ENV === 'development'
 // https://rollupjs.org/guide/en/#changed-defaults
-const legacyOutputOptions:Partial<OutputOptions> = {
+const legacyOutputOptions: Partial<OutputOptions> = {
   esModule: true,
   generatedCode: {
     reservedNamesAsProps: false
@@ -27,7 +27,7 @@ const legacyOutputOptions:Partial<OutputOptions> = {
   systemNullSetters: false
 }
 
-export function createRollupConfig (
+export function createRollupConfig(
   options: CreateRollupConfigOptions = {},
   pkg?: any
 ): RollupOptions {
@@ -67,7 +67,12 @@ export function createRollupConfig (
       })
     }
     if (pkg.module) {
-      output.push({ format: 'esm', file: pkg.module, sourcemap: isDev, ...legacyOutputOptions })
+      output.push({
+        format: 'esm',
+        file: pkg.module,
+        sourcemap: isDev,
+        ...legacyOutputOptions
+      })
     }
   }
 

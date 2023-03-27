@@ -2,7 +2,7 @@ import execa from 'execa'
 import fs from 'fs/promises'
 import path from 'path'
 import type { IAliasEntry } from './types'
-export async function exist (filepath: string, mode?: number): Promise<boolean> {
+export async function exist(filepath: string, mode?: number): Promise<boolean> {
   try {
     await fs.access(filepath, mode)
     return true
@@ -11,7 +11,7 @@ export async function exist (filepath: string, mode?: number): Promise<boolean> 
   }
 }
 
-export async function execute (cliPath: string, argv: string[]) {
+export async function execute(cliPath: string, argv: string[]) {
   const task = execa(cliPath, argv)
 
   task?.stdout?.pipe(process.stdout)
@@ -22,7 +22,7 @@ export async function execute (cliPath: string, argv: string[]) {
   // task.exitCode === -1
 }
 
-export function resolvePath (filePath: string) {
+export function resolvePath(filePath: string) {
   if (path.isAbsolute(filePath)) {
     return filePath
   } else {
@@ -30,7 +30,7 @@ export function resolvePath (filePath: string) {
   }
 }
 
-function alias (argv: string[], entry: IAliasEntry) {
+function alias(argv: string[], entry: IAliasEntry) {
   let findIdx = argv.indexOf(entry.find)
   // alias -p as --project
   if (findIdx > -1) {
@@ -52,7 +52,7 @@ function alias (argv: string[], entry: IAliasEntry) {
   return argv
 }
 
-function pathCompat (argv: string[], option: string) {
+function pathCompat(argv: string[], option: string) {
   const findIdx = argv.indexOf(option)
 
   if (findIdx > -1) {
@@ -68,13 +68,13 @@ function pathCompat (argv: string[], option: string) {
   return argv
 }
 
-export function createAlias (entry: IAliasEntry) {
+export function createAlias(entry: IAliasEntry) {
   return function (argv: string[]) {
     return alias(argv, entry)
   }
 }
 
-export function createPathCompat (option: string) {
+export function createPathCompat(option: string) {
   return function (argv: string[]) {
     return pathCompat(argv, option)
   }
