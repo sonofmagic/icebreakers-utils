@@ -1,10 +1,10 @@
-import os from 'os'
 import COS from 'cos-nodejs-sdk-v5'
 import klaw from 'klaw'
 import fs from 'fs'
 import path from 'path'
 import cliProgress from 'cli-progress'
 import { directorySize } from '../util'
+import { isWindows } from '../env'
 import type { CleanWebsiteContentParams, UploadDirOptions } from './types'
 import {
   TencentCDNClient,
@@ -12,7 +12,6 @@ import {
   PurgeUrlsCacheRequest,
   PurgePathCacheRequest
 } from './cdn'
-const isWindows = os.type() === 'Windows_NT'
 
 export class TencentCOSWebsiteDeployer {
   public cos: COS
@@ -94,7 +93,12 @@ export class TencentCOSWebsiteDeployer {
     if (!Region) {
       throw new Error('Region is required')
     }
+    const absTargetPath = path.resolve(root, targetDir)
 
+    const isExisted = fs.existsSync(absTargetPath)
+    if (!isExisted) {
+      throw new Error('target dir is not existed')
+    }
     if (clean) {
       await this.cleanWebsiteContent({
         Bucket,
@@ -104,7 +108,6 @@ export class TencentCOSWebsiteDeployer {
       console.log('clean successfully!')
     }
 
-    const absTargetPath = path.resolve(root, targetDir)
     // create bar
     const totalSize = await directorySize(absTargetPath)
     const bar = new cliProgress.SingleBar(

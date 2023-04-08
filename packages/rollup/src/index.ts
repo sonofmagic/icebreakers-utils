@@ -8,23 +8,45 @@ import type {
   Plugin,
   ExternalOption
 } from 'rollup'
+import terser from '@rollup/plugin-terser'
+import replace from '@rollup/plugin-replace'
 import json from '@rollup/plugin-json'
 import defu from 'defu'
 import path from 'path'
 import del from './del'
 
-// import replace from '@rollup/plugin-replace'
-// import { terser } from 'rollup-plugin-terser'
 // const isProd = process.env.NODE_ENV === 'production'
 const isDev = process.env.NODE_ENV === 'development'
 // https://rollupjs.org/guide/en/#changed-defaults
-const legacyOutputOptions: Partial<OutputOptions> = {
+export const legacyOutputOptions: Partial<OutputOptions> = {
   esModule: true,
   generatedCode: {
     reservedNamesAsProps: false
   },
   interop: 'compat',
   systemNullSetters: false
+}
+
+export function getDefaultOutputs(pkgJson: PackageJson) {
+  const output: OutputOptions[] = []
+  if (pkgJson.main) {
+    output.push({
+      file: pkgJson.main,
+      format: 'cjs',
+      sourcemap: isDev,
+      exports: 'auto',
+      ...legacyOutputOptions
+    })
+  }
+  if (pkgJson.module) {
+    output.push({
+      format: 'esm',
+      file: pkgJson.module,
+      sourcemap: isDev,
+      ...legacyOutputOptions
+    })
+  }
+  return output
 }
 
 export function createRollupConfig(
@@ -56,24 +78,7 @@ export function createRollupConfig(
   } else if (typeof postOutput !== 'undefined') {
     output = [postOutput]
   } else {
-    output = []
-    if (pkgJson.main) {
-      output.push({
-        file: pkgJson.main,
-        format: 'cjs',
-        sourcemap: isDev,
-        exports: 'auto',
-        ...legacyOutputOptions
-      })
-    }
-    if (pkgJson.module) {
-      output.push({
-        format: 'esm',
-        file: pkgJson.module,
-        sourcemap: isDev,
-        ...legacyOutputOptions
-      })
-    }
+    output = getDefaultOutputs(pkgJson)
   }
 
   const plugins: Plugin[] = [
@@ -82,10 +87,6 @@ export function createRollupConfig(
       preferBuiltins: true
     }),
     commonjs(),
-    typescript({
-      tsconfig: options.tsconfig ?? './tsconfig.json',
-      sourceMap: isDev
-    }),
     del(
       defu(deletePluginOptions, {
         targets: 'dist/*',
@@ -95,6 +96,21 @@ export function createRollupConfig(
     ),
     ...postPlugins
   ]
+  if (options.typescript !== false) {
+    plugins.push(
+      typescript({
+        tsconfig: options.tsconfig ?? './tsconfig.json',
+        sourceMap: isDev,
+        ...(options.typescript ?? {})
+      })
+    )
+  }
+  if (options.terser) {
+    plugins.push(terser(options.terser))
+  }
+  if (options.replace) {
+    plugins.push(replace(options.replace))
+  }
   // if (isProd) {
   //   plugins.push(terser())
   // }

@@ -1,6 +1,6 @@
 {
   "name": "@icebreakers/rollup",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "icebreaker's rollup preset",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -34,16 +34,15 @@
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^15.0.2",
     "@rollup/plugin-replace": "^5.0.2",
+    "@rollup/plugin-terser": "^0.4.0",
     "@rollup/plugin-typescript": "11.1.0",
     "defu": "^6.1.2",
     "del": "^6.1.1"
   },
   "devDependencies": {
-    "@rollup/plugin-terser": "^0.4.0",
     "@icebreakers/tsconfig": "*",
-    "@types/rimraf": "^4.0.5",
-    "babel-jest": "^29.5.0",
     "rimraf": "^4.4.1",
-    "rollup": "^3.20.2"
+    "rollup": "^3.20.2",
+    "terser": "^5.16.8"
   }
 }

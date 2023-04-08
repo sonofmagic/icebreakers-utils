@@ -144,18 +144,24 @@ importers:
       '@icebreakers/tsconfig': '*'
       '@types/cli-progress': ^3.11.0
       '@types/klaw': ^3.0.3
+      '@types/minimist': ^1.2.2
       cli-progress: ^3.12.0
       cos-nodejs-sdk-v5: 2.11.19
+      dotenv: ^16.0.3
       klaw: ^4.1.0
-      tencentcloud-sdk-nodejs: ^4.0.556
+      minimist: ^1.2.8
+      tencentcloud-sdk-nodejs: ^4.0.575
     dependencies:
       cos-nodejs-sdk-v5: 2.11.19
-      tencentcloud-sdk-nodejs: 4.0.556
+      dotenv: 16.0.3
+      minimist: 1.2.8
+      tencentcloud-sdk-nodejs: 4.0.575
     devDependencies:
       '@icebreakers/rollup': link:../rollup
       '@icebreakers/tsconfig': link:../tsconfig
       '@types/cli-progress': 3.11.0
       '@types/klaw': 3.0.3
+      '@types/minimist': 1.2.2
       cli-progress: 3.12.0
       klaw: 4.1.0
 
@@ -188,28 +194,26 @@ importers:
       '@rollup/plugin-replace': ^5.0.2
       '@rollup/plugin-terser': ^0.4.0
       '@rollup/plugin-typescript': 11.1.0
-      '@types/rimraf': ^4.0.5
-      babel-jest: ^29.5.0
       defu: ^6.1.2
       del: ^6.1.1
       rimraf: ^4.4.1
       rollup: ^3.20.2
+      terser: ^5.16.8
     dependencies:
       '@rollup/plugin-alias': 5.0.0_rollup@3.20.2
       '@rollup/plugin-commonjs': 24.0.1_rollup@3.20.2
       '@rollup/plugin-json': 6.0.0_rollup@3.20.2
       '@rollup/plugin-node-resolve': 15.0.2_rollup@3.20.2
       '@rollup/plugin-replace': 5.0.2_rollup@3.20.2
+      '@rollup/plugin-terser': 0.4.0_rollup@3.20.2
       '@rollup/plugin-typescript': 11.1.0_rollup@3.20.2
       defu: 6.1.2
       del: 6.1.1
     devDependencies:
       '@icebreakers/tsconfig': link:../tsconfig
-      '@rollup/plugin-terser': 0.4.0_rollup@3.20.2
-      '@types/rimraf': 4.0.5
-      babel-jest: 29.5.0
       rimraf: 4.4.1
       rollup: 3.20.2
+      terser: 5.16.8
 
   packages/sass-utils:
     specifiers:
@@ -2299,12 +2303,10 @@ packages:
       '@jridgewell/set-array': 1.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
       '@jridgewell/trace-mapping': 0.3.18
-    dev: true
 
   /@jridgewell/resolve-uri/3.1.0:
     resolution: {integrity: sha512-F2msla3tad+Mfht5cJq7LSXcdudKTWCVYUgw6pLFOOHSTtZlj6SWNYAp+AhuqLmWdBO2X5hPrLcu8cVP8fy28w==}
     engines: {node: '>=6.0.0'}
-    dev: true
 
   /@jridgewell/resolve-uri/3.1.1:
     resolution: {integrity: sha512-dSYZh7HhCDtCKm4QakX0xFpsRDqjjtZf/kjI/v3T3Nwt5r8/qz/M19F9ySyOqU94SXBmeG9ttTul+YnR4LOxFA==}
@@ -2314,18 +2316,15 @@ packages:
   /@jridgewell/set-array/1.1.2:
     resolution: {integrity: sha512-xnkseuNADM0gt2bs+BvhO0p78Mk762YnZdsuzFV018NoG1Sj1SCQvpSqa7XUaTam5vAGasABV9qXASMKnFMwMw==}
     engines: {node: '>=6.0.0'}
-    dev: true
 
   /@jridgewell/source-map/0.3.2:
     resolution: {integrity: sha512-m7O9o2uR8k2ObDysZYzdfhb08VuEml5oWGiosa1VdaPZ/A6QyPkAJuwN0Q1lhULOf6B7MtQmHENS743hWtCrgw==}
     dependencies:
-      '@jridgewell/gen-mapping': 0.3.2
-      '@jridgewell/trace-mapping': 0.3.17
-    dev: true
+      '@jridgewell/gen-mapping': 0.3.3
+      '@jridgewell/trace-mapping': 0.3.18
 
   /@jridgewell/sourcemap-codec/1.4.14:
     resolution: {integrity: sha512-XPSJHWmi394fuUuzDnGz1wiKqWfo1yXecHQMRf2l6hztTO+nPru658AyDngaBe7isIxEkRsPR3FZh+s7iVa4Uw==}
-    dev: true
 
   /@jridgewell/sourcemap-codec/1.4.15:
     resolution: {integrity: sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==}
@@ -2342,7 +2341,6 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
-    dev: true
 
   /@jridgewell/trace-mapping/0.3.9:
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
@@ -2472,8 +2470,8 @@ packages:
       rollup: 3.20.2
       serialize-javascript: 6.0.0
       smob: 0.0.6
-      terser: 5.16.0
-    dev: true
+      terser: 5.16.8
+    dev: false
 
   /@rollup/plugin-typescript/11.1.0_rollup@3.20.2:
     resolution: {integrity: sha512-86flrfE+bSHB69znnTV6kVjkncs2LBMhcTCyxWgRxLyfXfQrxg4UwlAqENnjrrxnSNS/XKCDJCl8EkdFJVHOxw==}
@@ -2786,13 +2784,6 @@ packages:
 
   /@types/retry/0.12.0:
     resolution: {integrity: sha512-wWKOClTTiizcZhXnPY4wikVAwmdYHp8q6DmC+EJUzAMsycb7HB32Kh9RN4+0gExjmPmZSAQjgURXIGATPegAvA==}
-    dev: true
-
-  /@types/rimraf/4.0.5:
-    resolution: {integrity: sha512-DTCZoIQotB2SUJnYgrEx43cQIUYOlNZz0AZPbKU4PSLYTUdML5Gox0++z4F9kQocxStrCmRNhi4x5x/UlwtKUA==}
-    deprecated: This is a stub types definition. rimraf provides its own type definitions, so you do not need this installed.
-    dependencies:
-      rimraf: 4.4.1
     dev: true
 
   /@types/semver/7.3.13:
@@ -3953,7 +3944,6 @@ packages:
     resolution: {integrity: sha512-xjIYgE8HBrkpd/sJqOGNspf8uHG+NOHGOw6a/Urj8taM2EXfdNAH2oFcPeIFfsv3+kz/mJrS5VuMqbNLjCa2vw==}
     engines: {node: '>=0.4.0'}
     hasBin: true
-    dev: true
 
   /address/1.2.1:
     resolution: {integrity: sha512-B+6bi5D34+fDYENiH5qOlA0cV2rAGKuWZ9LeyUUehbXy8e0VS9e498yO0Jeeh+iM+6KbfudHTFjXw2MmJD4QRA==}
@@ -4541,7 +4531,6 @@ packages:
 
   /buffer-from/1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
-    dev: true
 
   /buffer/5.7.1:
     resolution: {integrity: sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==}
@@ -4831,7 +4820,6 @@ packages:
 
   /commander/2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
-    dev: true
 
   /commander/7.2.0:
     resolution: {integrity: sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==}
@@ -5490,7 +5478,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       globby: 11.1.0
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.11
       is-glob: 4.0.3
       is-path-cwd: 2.2.0
       is-path-inside: 3.0.3
@@ -5654,7 +5642,6 @@ packages:
   /dotenv/16.0.3:
     resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
     engines: {node: '>=12'}
-    dev: true
 
   /duplexer/0.1.2:
     resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==}
@@ -7153,10 +7140,10 @@ packages:
 
   /graceful-fs/4.2.10:
     resolution: {integrity: sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==}
+    dev: true
 
   /graceful-fs/4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
-    dev: true
 
   /grapheme-splitter/1.0.4:
     resolution: {integrity: sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==}
@@ -8706,7 +8693,6 @@ packages:
 
   /minimist/1.2.8:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
-    dev: true
 
   /minipass/3.3.6:
     resolution: {integrity: sha512-DxiNidxSEK+tHG6zOIklvNOwm3hvCrbUrdtzY74U6HKTJxvIDfOUL5W5P2Ghd3DTkhhKPYGqeNUIh5qcM4YBfw==}
@@ -8737,7 +8723,7 @@ packages:
     dev: true
 
   /ms/2.0.0:
-    resolution: {integrity: sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=}
+    resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==}
     dev: true
 
   /ms/2.1.2:
@@ -9782,7 +9768,6 @@ packages:
     resolution: {integrity: sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==}
     dependencies:
       safe-buffer: 5.2.1
-    dev: true
 
   /range-parser/1.2.1:
     resolution: {integrity: sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==}
@@ -10234,7 +10219,6 @@ packages:
     resolution: {integrity: sha512-Qr3TosvguFt8ePWqsvRfrKyQXIiW+nGbYpy8XK24NQHE83caxWt+mIymTT19DGFbNWNLfEwsrkSmN64lVWB9ag==}
     dependencies:
       randombytes: 2.1.0
-    dev: true
 
   /serve-index/1.9.1:
     resolution: {integrity: sha512-pXHfKNP4qujrtteMrSBb0rc8HJ9Ms/GrXwcUtUtD5s4ewDJI8bT3Cz2zTVRMKtri49pLx2e0Ya8ziP5Ya2pZZw==}
@@ -10339,7 +10323,7 @@ packages:
 
   /smob/0.0.6:
     resolution: {integrity: sha512-V21+XeNni+tTyiST1MHsa84AQhT1aFZipzPpOFAVB8DkHzwJyjjAmt9bgwnuZiZWnIbMo2duE29wybxv/7HWUw==}
-    dev: true
+    dev: false
 
   /sockjs/0.3.24:
     resolution: {integrity: sha512-GJgLTZ7vYb/JtPSSZ10hsOYIvEYsjbNU+zPdIHcUaWVNUEPivzxku31865sSSud0Da0W4lEeOPlmw93zLQchuQ==}
@@ -10373,7 +10357,6 @@ packages:
     dependencies:
       buffer-from: 1.1.2
       source-map: 0.6.1
-    dev: true
 
   /source-map/0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
@@ -10695,8 +10678,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /tencentcloud-sdk-nodejs/4.0.556:
-    resolution: {integrity: sha512-heZBhTGMh+QLfQFp9kCtxcRlK3dnqSB42DlJKOjVRXaidD3x+TcVAWO15WHh8KZecpE7D0pbUZjnrdyyy7Nw3g==}
+  /tencentcloud-sdk-nodejs/4.0.575:
+    resolution: {integrity: sha512-NteWvTBrCB/AhwtV0vuELIic3TCwGbOzZg9ImpPCs6CkcWxCtS5/72fEJYooEQ6KCn93V39LBS2AipvSZ6z4rQ==}
     engines: {node: '>=10'}
     dependencies:
       form-data: 3.0.1
@@ -10744,6 +10727,16 @@ packages:
       commander: 2.20.3
       source-map-support: 0.5.21
     dev: true
+
+  /terser/5.16.8:
+    resolution: {integrity: sha512-QI5g1E/ef7d+PsDifb+a6nnVgC4F22Bg6T0xrBrz6iloVB4PUkkunp6V8nzoOOZJIzjWVdAGqCdlKlhLq/TbIA==}
+    engines: {node: '>=10'}
+    hasBin: true
+    dependencies:
+      '@jridgewell/source-map': 0.3.2
+      acorn: 8.8.2
+      commander: 2.20.3
+      source-map-support: 0.5.21
 
   /test-exclude/6.0.0:
     resolution: {integrity: sha512-cAGWPIyOHU6zlmg88jwm7VRyXnMN7iV68OGAbYDk/Mh/xC/pzVPlQtY6ngoIH/5/tciuhGfvESU8GrHrcxD56w==}

@@ -1,12 +1,13 @@
 {
   "name": "@icebreakers/deploy",
-  "version": "0.1.1",
-  "description": "",
+  "version": "0.1.2",
+  "description": "icebreaker's deploy frontend to cdn pkg",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "types": "dist/types/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "bin"
   ],
   "scripts": {
     "dev": "cross-env NODE_ENV=development rollup -cw",
@@ -15,14 +16,23 @@
     "build:tsc": "tsc -p tsconfig.json",
     "test": "jest"
   },
+  "bin": {
+    "ice-deploy": "bin/ice-deploy.js"
+  },
   "keywords": [],
-  "author": "",
+  "author": "SonOfMagic <qq1324318532@gmail.com>",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonofmagic/utils.git"
+  },
+  "homepage": "https://github.com/sonofmagic/utils/tree/main/packages/deploy",
   "devDependencies": {
     "@icebreakers/rollup": "*",
     "@icebreakers/tsconfig": "*",
     "@types/cli-progress": "^3.11.0",
     "@types/klaw": "^3.0.3",
+    "@types/minimist": "^1.2.2",
     "cli-progress": "^3.12.0",
     "klaw": "^4.1.0"
   },
@@ -32,6 +42,8 @@
   },
   "dependencies": {
     "cos-nodejs-sdk-v5": "2.11.19",
-    "tencentcloud-sdk-nodejs": "^4.0.556"
+    "dotenv": "^16.0.3",
+    "minimist": "^1.2.8",
+    "tencentcloud-sdk-nodejs": "^4.0.575"
   }
 }
