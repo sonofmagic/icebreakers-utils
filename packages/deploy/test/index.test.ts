@@ -1,13 +1,12 @@
+import { TencentCOSWebsiteDeployer } from '../src/index'
 const path = require('path')
 
 require('dotenv').config({
   path: path.resolve(__dirname, '.env')
 })
-
-const { TencentCOSWebsiteDeployer } = require('../')
+// const { TencentCOSWebsiteDeployer } = require('../dist/types')
 describe('default', () => {
-  /** @type {TencentCOSWebsiteDeployer} */
-  let deployer
+  let deployer: TencentCOSWebsiteDeployer
   beforeEach(() => {
     const { TENCENT_SECRET_ID, TENCENT_SECRET_KEY } = process.env
     deployer = new TencentCOSWebsiteDeployer({

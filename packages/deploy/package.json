@@ -1,6 +1,6 @@
 {
   "name": "@icebreakers/deploy",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "icebreaker's deploy frontend to cdn pkg",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
