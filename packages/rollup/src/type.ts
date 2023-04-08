@@ -14,4 +14,5 @@ export interface CreateRollupConfigOptions {
   input?: InputOption
   output?: OutputOptions | OutputOptions[]
   deletePluginOptions?: DeletePluginOptions
+  tsconfig?: string
 }

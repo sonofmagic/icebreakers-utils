@@ -40,7 +40,7 @@ export function createRollupConfig(
       )
     }
   }
-  pkg as PackageJson
+  const pkgJson = pkg as PackageJson
   const {
     rollupOptions = {},
     external: postExternal = [],
@@ -57,19 +57,19 @@ export function createRollupConfig(
     output = [postOutput]
   } else {
     output = []
-    if (pkg.main) {
+    if (pkgJson.main) {
       output.push({
-        file: pkg.main,
+        file: pkgJson.main,
         format: 'cjs',
         sourcemap: isDev,
         exports: 'auto',
         ...legacyOutputOptions
       })
     }
-    if (pkg.module) {
+    if (pkgJson.module) {
       output.push({
         format: 'esm',
-        file: pkg.module,
+        file: pkgJson.module,
         sourcemap: isDev,
         ...legacyOutputOptions
       })
@@ -82,7 +82,10 @@ export function createRollupConfig(
       preferBuiltins: true
     }),
     commonjs(),
-    typescript({ tsconfig: './tsconfig.json', sourceMap: isDev }),
+    typescript({
+      tsconfig: options.tsconfig ?? './tsconfig.json',
+      sourceMap: isDev
+    }),
     del(
       defu(deletePluginOptions, {
         targets: 'dist/*',
@@ -97,7 +100,7 @@ export function createRollupConfig(
   // }
 
   const external: ExternalOption = [
-    ...(pkg.dependencies ? Object.keys(pkg.dependencies) : []),
+    ...(pkgJson.dependencies ? Object.keys(pkgJson.dependencies) : []),
     ...postExternal
   ]
 
