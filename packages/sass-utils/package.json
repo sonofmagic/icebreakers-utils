@@ -23,10 +23,9 @@
   "author": "SonOfMagic <qq1324318532@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "sass": "^1.55.0",
-    "sass-true": "^6.1.0"
+    "sass": "^1.62.1",
+    "sass-true": "^7.0.0"
   },
-  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sonofmagic/utils.git"

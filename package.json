@@ -10,12 +10,13 @@
     "nohoist": []
   },
   "scripts": {
+    "dev": "turbo run dev --parallel",
+    "dev:pkg": "turbo run dev --parallel --filter=./packages/*",
     "build": "turbo run build",
     "build:pkg": "turbo run build --filter=./packages/*",
     "build:app": "turbo run build --filter=./apps/*",
     "test": "turbo run test",
     "lint": "turbo run lint",
-    "dev": "turbo run dev",
     "format": "prettier --write ."
   },
   "repository": {
@@ -32,20 +33,20 @@
   "devDependencies": {
     "@icebreakers/eslint-config-ts": "^1.0.4",
     "@tsconfig/recommended": "^1.0.2",
-    "@types/jest": "^29.5.0",
-    "@types/node": "^18.15.11",
+    "@types/jest": "^29.5.1",
+    "@types/node": "^18.16.1",
     "babel-jest": "^29.5.0",
     "cross-env": "^7.0.3",
     "defu": "^6.1.2",
     "del": "^6.1.1",
     "dotenv": "^16.0.3",
-    "eslint": "8.38.0",
+    "eslint": "8.39.0",
     "jest": "^29.5.0",
-    "rollup": "^3.20.2",
+    "rollup": "^3.21.0",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
     "tslib": "^2.5.0",
-    "turbo": "^1.8.8",
+    "turbo": "^1.9.3",
     "typescript": "^5.0.4"
   }
 }

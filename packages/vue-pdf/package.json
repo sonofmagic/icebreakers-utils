@@ -19,13 +19,13 @@
   "devDependencies": {
     "@icebreakers/rollup": "*",
     "@icebreakers/tsconfig": "*",
-    "vue": "^3.2.41"
+    "vue": "^3.2.47"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "pdfjs-dist": "^2.16.105"
+    "pdfjs-dist": "^3.5.141"
   }
 }
