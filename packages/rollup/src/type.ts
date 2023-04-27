@@ -1,23 +1,37 @@
-import type { RollupOptions, OutputOptions, Plugin, InputOption } from 'rollup'
-import type { DeletePluginOptions } from './del'
-import type { MinifyOptions } from 'terser'
+import type {
+  RollupOptions,
+  OutputOptions,
+  Plugin,
+  InputOption,
+  ExternalOption
+} from 'rollup'
+import type { DeletePluginOptions as RollupDeletePluginOptions } from './del'
+import type { Options as RollupTerserOptions } from '@rollup/plugin-terser'
 import type { RollupReplaceOptions } from '@rollup/plugin-replace'
 import type { RollupTypescriptOptions } from '@rollup/plugin-typescript'
+import type { RollupJsonOptions } from '@rollup/plugin-json'
+import type { RollupCommonJSOptions } from '@rollup/plugin-commonjs'
+import type { RollupNodeResolveOptions } from '@rollup/plugin-node-resolve'
 export interface PackageJson {
   main?: string
   module?: string
   dependencies?: { [key: string]: string }
 }
 
+type PluginLoad<T> = false | T
+
 export interface CreateRollupConfigOptions {
   rollupOptions?: RollupOptions
-  external?: string[]
+  external?: ExternalOption
   plugins?: Plugin[]
   input?: InputOption
   output?: OutputOptions | OutputOptions[]
-  deletePluginOptions?: DeletePluginOptions
   tsconfig?: string
-  terser?: false | MinifyOptions
-  replace?: false | RollupReplaceOptions
-  typescript?: false | RollupTypescriptOptions
+  del?: PluginLoad<RollupDeletePluginOptions>
+  terser?: PluginLoad<RollupTerserOptions>
+  replace?: PluginLoad<RollupReplaceOptions>
+  typescript?: PluginLoad<RollupTypescriptOptions>
+  json?: PluginLoad<RollupJsonOptions>
+  commonjs?: PluginLoad<RollupCommonJSOptions>
+  nodeResolve?: PluginLoad<RollupNodeResolveOptions>
 }

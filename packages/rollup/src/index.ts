@@ -64,13 +64,36 @@ export function createRollupConfig(
   }
   const pkgJson = pkg as PackageJson
   const {
-    rollupOptions = {},
-    external: postExternal = [],
-    plugins: postPlugins = [],
-    input = 'src/index.ts',
+    rollupOptions,
+    external: postExternal,
+    plugins: postPlugins,
+    input,
     output: postOutput,
-    deletePluginOptions = {}
-  } = options
+    del: rollupDeletePluginOptions,
+    typescript: rollupTypescriptOptions,
+    json: rollupJsonOptions,
+    terser: rollupTerserOptions,
+    replace: rollupReplaceOptions,
+    nodeResolve: rollupNodeResolveOptions,
+    commonjs: rollupCommonJSOptions
+  } = defu(options, <CreateRollupConfigOptions>{
+    input: 'src/index.ts',
+    plugins: [],
+    external: [],
+    del: {
+      targets: 'dist/*',
+      verbose: true,
+      runOnce: true
+    },
+    rollupOptions: {},
+    typescript: {
+      tsconfig: './tsconfig.json',
+      sourceMap: isDev
+    },
+    nodeResolve: {
+      preferBuiltins: true
+    }
+  })
 
   let output: OutputOptions[]
   if (Array.isArray(postOutput)) {
@@ -81,44 +104,41 @@ export function createRollupConfig(
     output = getDefaultOutputs(pkgJson)
   }
 
-  const plugins: Plugin[] = [
-    json(),
-    nodeResolve({
-      preferBuiltins: true
-    }),
-    commonjs(),
-    del(
-      defu(deletePluginOptions, {
-        targets: 'dist/*',
-        verbose: true,
-        runOnce: true
-      })
-    ),
-    ...postPlugins
-  ]
-  if (options.typescript !== false) {
-    plugins.push(
-      typescript({
-        tsconfig: options.tsconfig ?? './tsconfig.json',
-        sourceMap: isDev,
-        ...(options.typescript ?? {})
-      })
-    )
-  }
-  if (options.terser) {
-    plugins.push(terser(options.terser))
-  }
-  if (options.replace) {
-    plugins.push(replace(options.replace))
-  }
-  // if (isProd) {
-  //   plugins.push(terser())
-  // }
+  const plugins = [...(<Plugin[]>postPlugins)]
+  // default open
 
-  const external: ExternalOption = [
-    ...(pkgJson.dependencies ? Object.keys(pkgJson.dependencies) : []),
-    ...postExternal
-  ]
+  if (rollupJsonOptions !== false) {
+    plugins.push(json(rollupJsonOptions))
+  }
+  if (rollupTypescriptOptions !== false) {
+    plugins.push(typescript(rollupTypescriptOptions))
+  }
+  if (rollupDeletePluginOptions !== false) {
+    plugins.push(del(rollupDeletePluginOptions))
+  }
+  if (rollupNodeResolveOptions !== false) {
+    plugins.push(nodeResolve(rollupNodeResolveOptions))
+  }
+  if (rollupCommonJSOptions !== false) {
+    plugins.push(commonjs(rollupCommonJSOptions))
+  }
+
+  if (rollupTerserOptions) {
+    plugins.push(terser(rollupTerserOptions))
+  }
+  if (rollupReplaceOptions) {
+    plugins.push(replace(rollupReplaceOptions))
+  }
+
+  const defaultExternal = pkgJson.dependencies
+    ? Object.keys(pkgJson.dependencies)
+    : []
+  const external: ExternalOption =
+    typeof postExternal === 'function'
+      ? postExternal
+      : Array.isArray(postExternal)
+      ? [...defaultExternal, ...postExternal]
+      : [...defaultExternal, postExternal!]
 
   const config: RollupOptions = {
     input,
@@ -128,6 +148,6 @@ export function createRollupConfig(
     makeAbsoluteExternalsRelative: true,
     preserveEntrySignatures: 'strict'
   }
-
+  // rollupOptions first
   return defu(rollupOptions, config)
 }
