@@ -1,6 +1,6 @@
 {
   "name": "create-functional-loader",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "forked from `simple-functional-loader` and rewrite by typescript",
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
@@ -10,8 +10,10 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development rollup -cw",
     "build": "cross-env NODE_ENV=production rollup -c",
+    "build:tsc": "tsc",
     "sync": "cnpm sync create-functional-loader",
-    "test": "vitest",
+    "test": "vitest run",
+    "test:dev": "vitest",
     "jest": "jest"
   },
   "publishConfig": {
