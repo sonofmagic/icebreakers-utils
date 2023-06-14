@@ -1,0 +1,13 @@
+{
+  "extends": "@icebreakers/tsconfig/tsconfig.cjs.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "declarationDir": "types",
+    "lib": [
+      "ES2021"
+    ]
+  },
+  "include": [
+    "src"
+  ]
+}
