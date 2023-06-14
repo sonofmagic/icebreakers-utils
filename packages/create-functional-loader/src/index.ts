@@ -6,13 +6,14 @@ const pkg = require('../package.json')
 const { name } = pkg
 
 // https://github.com/vuejs/vue-loader/blob/main/src/util.ts#L193
-const testWebpack5 = (compiler?: webpack5.Compiler) => {
-  if (!compiler) {
-    return false
-  }
-  const webpackVersion = compiler?.webpack?.version
-  return Boolean(webpackVersion && Number(webpackVersion.split('.')[0]) > 4)
-}
+// const testWebpack5 = (compiler?: webpack5.Compiler | webpack4.Compiler) => {
+//   if (!compiler) {
+//     return false
+//   }
+//   // @ts-ignore
+//   const webpackVersion = compiler?.webpack?.version
+//   return Boolean(webpackVersion && Number(webpackVersion.split('.')[0]) > 4)
+// }
 
 export type Webpack5LoaderContext = webpack5.LoaderContext<{
   processor: webpack5.LoaderDefinitionFunction
@@ -26,25 +27,27 @@ function simpleFunctionalLoader(
     | Parameters<webpack5.LoaderDefinitionFunction>
     | Parameters<webpack4.loader.Loader>
 ) {
-  const loaderContext = this
+  // const loaderContext = this
+
+  // const isWebpack5 = testWebpack5(loaderContext._compiler)
+  // if (isWebpack5) {
+  //   const params = args as Parameters<webpack5.LoaderDefinitionFunction>
+  //   const ctx = loaderContext as Webpack5LoaderContext
+  //   const { processor } = ctx.getOptions(loaderContext)
+  //   return processor.apply(ctx, params)
+  // } else {
+  //   const params = args as Parameters<webpack4.loader.Loader>
+  //   const ctx = loaderContext as Webpack4LoaderContext
+  //   const { processor } = loaderUtils.getOptions(ctx)
+  //   return (processor as unknown as webpack4.loader.Loader).apply(ctx, params)
+  // }
   // @ts-ignore
-  const isWebpack5 = testWebpack5(loaderContext._compiler)
-  if (isWebpack5) {
-    const params = args as Parameters<webpack5.LoaderDefinitionFunction>
-    const ctx = loaderContext as Webpack5LoaderContext
-    const { processor } = ctx.getOptions(this)
-    return processor.apply(ctx, params)
-  } else {
-    const params = args as Parameters<webpack4.loader.Loader>
-    const ctx = loaderContext as Webpack4LoaderContext
-    const { processor } = loaderUtils.getOptions(ctx)
-    return (processor as unknown as webpack4.loader.Loader).apply(ctx, params)
-  }
+  const { processor } = loaderUtils.getOptions(this)
+  // @ts-ignore
+  return processor.call(this, ...args)
 }
 
-simpleFunctionalLoader.createLoader = function createLoader(
-  processor: webpack5.LoaderDefinitionFunction
-) {
+function createLoader(processor: webpack5.LoaderDefinitionFunction) {
   if (
     typeof processor !== 'function' ||
     Function.prototype.toString.call(processor).indexOf('function')
@@ -59,5 +62,5 @@ simpleFunctionalLoader.createLoader = function createLoader(
     ident: name + '-' + Math.random()
   }
 }
-
-export default simpleFunctionalLoader
+simpleFunctionalLoader.createLoader = createLoader
+module.exports = simpleFunctionalLoader

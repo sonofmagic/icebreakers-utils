@@ -1,6 +1,6 @@
 {
   "name": "create-functional-loader",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "forked from `simple-functional-loader` and rewrite by typescript",
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
@@ -10,7 +10,9 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development rollup -cw",
     "build": "cross-env NODE_ENV=production rollup -c",
-    "sync": "cnpm sync create-functional-loader"
+    "sync": "cnpm sync create-functional-loader",
+    "test": "vitest",
+    "jest": "jest"
   },
   "publishConfig": {
     "access": "public",
@@ -27,7 +29,9 @@
   "license": "ISC",
   "devDependencies": {
     "@icebreakers/rollup": "*",
-    "@icebreakers/tsconfig": "*"
+    "@icebreakers/tsconfig": "*",
+    "memfs": "^3.5.3",
+    "webpack": "^5.86.0"
   },
   "dependencies": {
     "@types/loader-utils": "^2.0.3",

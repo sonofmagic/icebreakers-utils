@@ -14,7 +14,7 @@ This is a fork of `simple-functional-loader` but rewrite with `Typescript` for T
 
 ```js
 // webpack.config.js
-const { createLoader } = require('simple-functional-loader')
+const { createLoader } = require('create-functional-loader')
 module.exports = {
   //...
   module: {
