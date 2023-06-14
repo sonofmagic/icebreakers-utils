@@ -47,7 +47,7 @@ function simpleFunctionalLoader(
   return processor.call(this, ...args)
 }
 
-function createLoader(processor: webpack5.LoaderDefinitionFunction) {
+function _createLoader(processor: webpack5.LoaderDefinitionFunction) {
   if (
     typeof processor !== 'function' ||
     Function.prototype.toString.call(processor).indexOf('function')
@@ -62,5 +62,8 @@ function createLoader(processor: webpack5.LoaderDefinitionFunction) {
     ident: name + '-' + Math.random()
   }
 }
-simpleFunctionalLoader.createLoader = createLoader
+
+export type createLoader = typeof _createLoader
+
+simpleFunctionalLoader.createLoader = _createLoader
 module.exports = simpleFunctionalLoader
