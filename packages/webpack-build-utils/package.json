@@ -1,7 +1,7 @@
 {
   "name": "webpack-build-utils",
   "version": "0.0.1",
-  "description": "",
+  "description": "webpack-build-utils for build and test",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/types/index.d.ts",
@@ -10,20 +10,30 @@
   ],
   "scripts": {
     "dev": "cross-env NODE_ENV=development rollup -cw",
-    "build": "cross-env NODE_ENV=production rollup -c"
+    "build": "cross-env NODE_ENV=production rollup -c",
+    "sync": "cnpm sync webpack-build-utils"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "keywords": [],
+  "keywords": [
+    "webpack",
+    "build",
+    "utils",
+    "loader"
+  ],
   "author": "SonOfMagic <qq1324318532@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@icebreakers/rollup": "*",
-    "@icebreakers/tsconfig": "*"
+    "@icebreakers/tsconfig": "*",
+    "webpack": "^5.86.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "create-functional-loader": "*",
+    "memfs": "^3.5.3"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sonofmagic/utils.git"
@@ -31,5 +41,5 @@
   "bugs": {
     "url": "https://github.com/sonofmagic/utils/issues"
   },
-  "homepage": "https://github.com/sonofmagic/utils/tree/main/packages/_template#readme"
+  "homepage": "https://github.com/sonofmagic/utils/tree/main/packages/webpack-build-utils#readme"
 }

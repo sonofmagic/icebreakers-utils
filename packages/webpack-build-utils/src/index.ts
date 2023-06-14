@@ -1,5 +1,5 @@
 export { default as execute } from './execute'
-export { getCompiler5 } from './getCompiler'
+export { getMemfsCompiler5 } from './getCompiler'
 export { default as compile } from './compile'
 export { default as createLoader } from './createLoader'
 export { default as readAsset } from './readAsset'

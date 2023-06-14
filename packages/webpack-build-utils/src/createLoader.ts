@@ -1,5 +1,5 @@
 import type { LoaderDefinitionFunction } from 'webpack'
-const { createLoader } = require('simple-functional-loader')
+import { createLoader } from 'create-functional-loader'
 
 export default function (processor: LoaderDefinitionFunction) {
   return createLoader(processor)
