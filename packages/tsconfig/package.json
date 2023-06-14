@@ -1,15 +1,19 @@
 {
   "name": "@icebreakers/tsconfig",
-  "version": "0.0.6",
-  "description": "",
+  "version": "0.0.7",
+  "description": "icebreaker's tsconfig",
   "main": "index.js",
   "scripts": {},
-  "keywords": [],
+  "keywords": [
+    "tsconfig",
+    "typescript",
+    "ts"
+  ],
   "files": [
     "*.json"
   ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@tsconfig/recommended": "^1.0.2"
   },

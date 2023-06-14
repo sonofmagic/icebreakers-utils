@@ -7,8 +7,13 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "removeComments": true,
+    "lib": [
+      "ES2021"
+    ],
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": [
+        "src/*"
+      ]
     }
   }
 }
