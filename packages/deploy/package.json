@@ -44,6 +44,6 @@
     "dotenv": "^16.1.4",
     "klaw": "^4.1.0",
     "minimist": "^1.2.8",
-    "tencentcloud-sdk-nodejs": "^4.0.621"
+    "tencentcloud-sdk-nodejs": "^4.0.622"
   }
 }
