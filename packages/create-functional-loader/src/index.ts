@@ -47,7 +47,10 @@ function simpleFunctionalLoader(
   return processor.call(this, ...args)
 }
 
-export function createLoader(processor: webpack5.LoaderDefinitionFunction) {
+export function createLoader(
+  processor: webpack5.LoaderDefinitionFunction
+): webpack5.NormalModule['loaders'][number] | webpack4.NewLoader {
+  // webpack4.Loader
   if (
     typeof processor !== 'function' ||
     Function.prototype.toString.call(processor).indexOf('function')
@@ -60,6 +63,7 @@ export function createLoader(processor: webpack5.LoaderDefinitionFunction) {
     loader: __filename,
     options: { processor },
     ident: name + '-' + Math.random()
+    // type: undefined
   }
 }
 
