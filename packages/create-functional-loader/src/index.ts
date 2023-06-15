@@ -53,10 +53,14 @@ export type CompatLoaderItem = Exclude<
 > // NormalModule['loaders'][number]
 // | Partial<webpack4.NewLoader>
 
-export function createLoader(
+export type WebpackMajorVersion = 4 | 5
+
+export function createLoader<V extends WebpackMajorVersion = 5>(
   processor: webpack5.LoaderDefinitionFunction,
-  options?: Partial<CompatLoaderItem>
-): CompatLoaderItem {
+  options?: V extends 5
+    ? Partial<CompatLoaderItem>
+    : Partial<webpack4.NewLoader>
+): V extends 5 ? Partial<CompatLoaderItem> : Partial<webpack4.NewLoader> {
   // webpack4.Loader
   if (
     typeof processor !== 'function' ||
