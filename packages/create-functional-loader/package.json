@@ -1,6 +1,6 @@
 {
   "name": "create-functional-loader",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "forked from `simple-functional-loader` and rewrite by typescript",
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
@@ -33,6 +33,7 @@
     "@icebreakers/rollup": "*",
     "@icebreakers/tsconfig": "*",
     "memfs": "^3.5.3",
+    "tsd": "^0.28.1",
     "webpack": "^5.87.0"
   },
   "dependencies": {

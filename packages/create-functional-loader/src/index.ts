@@ -47,9 +47,11 @@ function simpleFunctionalLoader(
   return processor.call(this, ...args)
 }
 
-export type CompatLoaderItem =
-  | webpack5.NormalModule['loaders'][number]
-  | webpack4.NewLoader
+export type CompatLoaderItem = Exclude<
+  webpack5.RuleSetUseItem,
+  string | Function
+> // NormalModule['loaders'][number]
+// | Partial<webpack4.NewLoader>
 
 export function createLoader(
   processor: webpack5.LoaderDefinitionFunction,
