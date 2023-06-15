@@ -47,9 +47,14 @@ function simpleFunctionalLoader(
   return processor.call(this, ...args)
 }
 
+export type CompatLoaderItem =
+  | webpack5.NormalModule['loaders'][number]
+  | webpack4.NewLoader
+
 export function createLoader(
-  processor: webpack5.LoaderDefinitionFunction
-): webpack5.NormalModule['loaders'][number] | webpack4.NewLoader {
+  processor: webpack5.LoaderDefinitionFunction,
+  options?: CompatLoaderItem
+): CompatLoaderItem {
   // webpack4.Loader
   if (
     typeof processor !== 'function' ||
@@ -59,12 +64,15 @@ export function createLoader(
       name + ': parameter passed to "createLoader" must be an ES5 function.'
     )
   }
-  return {
-    loader: __filename,
-    options: { processor },
-    ident: name + '-' + Math.random()
-    // type: undefined
-  }
+  return Object.assign(
+    {
+      loader: __filename,
+      options: { processor },
+      ident: name + '-' + Math.random()
+      // type: undefined
+    },
+    options
+  )
 }
 
 // export type createLoader = typeof _createLoader

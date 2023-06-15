@@ -1,6 +1,6 @@
 {
   "name": "create-functional-loader",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "forked from `simple-functional-loader` and rewrite by typescript",
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
