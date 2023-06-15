@@ -53,7 +53,7 @@ export type CompatLoaderItem =
 
 export function createLoader(
   processor: webpack5.LoaderDefinitionFunction,
-  options?: CompatLoaderItem
+  options?: Partial<CompatLoaderItem>
 ): CompatLoaderItem {
   // webpack4.Loader
   if (

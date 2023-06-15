@@ -4,7 +4,7 @@ import type { CompatLoaderItem } from 'create-functional-loader'
 
 export default function (
   processor: LoaderDefinitionFunction,
-  options?: CompatLoaderItem
+  options?: Partial<CompatLoaderItem>
 ) {
   return createLoader(processor, options)
 }
