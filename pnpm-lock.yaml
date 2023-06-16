@@ -275,6 +275,22 @@ importers:
         specifier: '*'
         version: link:../tsconfig
 
+  packages/promisify-loader-runner:
+    dependencies:
+      '@types/loader-runner':
+        specifier: ^2.2.4
+        version: 2.2.4
+      loader-runner:
+        specifier: ^4.3.0
+        version: 4.3.0
+    devDependencies:
+      '@icebreakers/rollup':
+        specifier: '*'
+        version: link:../rollup
+      '@icebreakers/tsconfig':
+        specifier: '*'
+        version: link:../tsconfig
+
   packages/readme:
     devDependencies:
       '@icebreakers/rollup':
@@ -400,18 +416,15 @@ importers:
 
   packages/webpack-build-utils:
     dependencies:
-      '@types/loader-runner':
-        specifier: ^2.2.4
-        version: 2.2.4
       create-functional-loader:
         specifier: '*'
         version: link:../create-functional-loader
-      loader-runner:
-        specifier: ^4.3.0
-        version: 4.3.0
       memfs:
         specifier: ^3.5.3
         version: 3.5.3
+      promisify-loader-runner:
+        specifier: '*'
+        version: link:../promisify-loader-runner
     devDependencies:
       '@icebreakers/rollup':
         specifier: '*'

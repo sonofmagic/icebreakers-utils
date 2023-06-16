@@ -1,7 +1,7 @@
 {
-  "name": "webpack-build-utils",
-  "version": "0.0.4",
-  "description": "webpack-build-utils for build and test",
+  "name": "promisify-loader-runner",
+  "version": "1.0.0",
+  "description": "a promisify wrapper of `loader-runner`",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/types/index.d.ts",
@@ -11,7 +11,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development rollup -cw",
     "build": "cross-env NODE_ENV=production rollup -c",
-    "sync": "cnpm sync webpack-build-utils"
+    "test": "jest"
   },
   "publishConfig": {
     "access": "public",
@@ -19,21 +19,19 @@
   },
   "keywords": [
     "webpack",
-    "build",
-    "utils",
-    "loader"
+    "loader",
+    "loader-runner",
+    "promisify"
   ],
   "author": "SonOfMagic <qq1324318532@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@icebreakers/rollup": "*",
-    "@icebreakers/tsconfig": "*",
-    "webpack": "^5.87.0"
+    "@icebreakers/tsconfig": "*"
   },
   "dependencies": {
-    "create-functional-loader": "*",
-    "promisify-loader-runner": "*",
-    "memfs": "^3.5.3"
+    "@types/loader-runner": "^2.2.4",
+    "loader-runner": "^4.3.0"
   },
   "repository": {
     "type": "git",
@@ -42,5 +40,5 @@
   "bugs": {
     "url": "https://github.com/sonofmagic/utils/issues"
   },
-  "homepage": "https://github.com/sonofmagic/utils/tree/main/packages/webpack-build-utils#readme"
+  "homepage": "https://github.com/sonofmagic/utils/tree/main/packages/promisify-loader-runner#readme"
 }
