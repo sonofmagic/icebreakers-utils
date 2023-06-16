@@ -31,7 +31,9 @@
     "webpack": "^5.87.0"
   },
   "dependencies": {
+    "@types/loader-runner": "^2.2.4",
     "create-functional-loader": "*",
+    "loader-runner": "^4.3.0",
     "memfs": "^3.5.3"
   },
   "repository": {

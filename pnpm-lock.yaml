@@ -400,9 +400,15 @@ importers:
 
   packages/webpack-build-utils:
     dependencies:
+      '@types/loader-runner':
+        specifier: ^2.2.4
+        version: 2.2.4
       create-functional-loader:
         specifier: '*'
         version: link:../create-functional-loader
+      loader-runner:
+        specifier: ^4.3.0
+        version: 4.3.0
       memfs:
         specifier: ^3.5.3
         version: 3.5.3
@@ -3321,6 +3327,12 @@ packages:
     dependencies:
       '@types/node': 18.11.10
     dev: true
+
+  /@types/loader-runner@2.2.4:
+    resolution: {integrity: sha512-loD63p9KWQPgTvMBbhu9nD/2AeLqzP7ey/h1cWUK3wzLtilRO1kcCtlJvGrT/LEtOM7bjzaFSX1hxXaOdZdt8g==}
+    dependencies:
+      '@types/node': 20.3.1
+    dev: false
 
   /@types/loader-utils@2.0.3:
     resolution: {integrity: sha512-sDXXzZnTLXgdso54/iOpAFSDgqhVXabCvwGAt77Agadh/Xk0QYgOk520r3tpOouI098gyqGIFywx8Op1voc3vQ==}
@@ -8889,7 +8901,6 @@ packages:
   /loader-runner@4.3.0:
     resolution: {integrity: sha512-3R/1M+yS3j5ou80Me59j7F9IMs4PXs3VqRrm0TU3AbKPxlmpoY1TNscJV/oGJXo8qCatFGTfDbY6W6ipGOYXfg==}
     engines: {node: '>=6.11.5'}
-    dev: true
 
   /loader-utils@1.4.2:
     resolution: {integrity: sha512-I5d00Pd/jwMD2QCduo657+YM/6L3KZu++pmX9VFncxaxvHcru9jx1lBaFft+r4Mt2jK0Yhp41XlRAihzPxHNCg==}
