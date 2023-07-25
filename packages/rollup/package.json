@@ -37,7 +37,7 @@
     "@rollup/plugin-terser": "^0.4.3",
     "@rollup/plugin-typescript": "11.1.2",
     "defu": "^6.1.2",
-    "del": "^6.1.1"
+    "del": "^7.0.0"
   },
   "devDependencies": {
     "@icebreakers/tsconfig": "*",
