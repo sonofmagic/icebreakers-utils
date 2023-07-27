@@ -43,7 +43,7 @@
     "@icebreakers/tsconfig": "*"
   },
   "dependencies": {
-    "execa": "5.1.1"
+    "execa": "7.2.0"
   },
   "repository": {
     "type": "git",
