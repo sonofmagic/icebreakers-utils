@@ -26,6 +26,6 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "pdfjs-dist": "^3.8.162"
+    "pdfjs-dist": "^3.9.179"
   }
 }

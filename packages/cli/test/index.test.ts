@@ -1,18 +1,18 @@
-const { install, eachDir, run, currentDir, raw, remove } = require('../')
+import { install, eachDir, run, currentDir, raw, remove } from '@/index'
 const path = require('path')
 const fs = require('fs')
 
-function getPkgJson(p) {
+function getPkgJson(p: string) {
   return JSON.parse(
     fs.readFileSync(p, {
       encoding: 'utf-8'
     })
   )
 }
-jest.setTimeout(120000)
+
 describe('default', () => {
-  const fixtures = []
-  const fixturesPaths = []
+  const fixtures: string[] = []
+  const fixturesPaths: string[] = []
   const fixturesPath = path.resolve(__dirname, 'fixtures')
 
   beforeAll(async () => {
@@ -26,7 +26,7 @@ describe('default', () => {
   })
 
   test('currentDir', async () => {
-    const res = []
+    const res: string[] = []
     const name = 'npm-case'
     const t = path.resolve(__dirname, 'fixtures/' + name)
     await currentDir(t, (p) => {
@@ -42,7 +42,7 @@ describe('default', () => {
       'postcss-rem-to-responsive-pixel'
     ]
     await raw(path.resolve(__dirname, 'fixtures/pnpm-case'), 'install')
-    await install(path.resolve(__dirname, 'fixtures'), true)
+    await install(path.resolve(__dirname, 'fixtures'), '', true)
     await install(
       path.resolve(__dirname, 'fixtures'),
       '-D ' + installPkgs.map((x) => x + '@latest').join(' '),

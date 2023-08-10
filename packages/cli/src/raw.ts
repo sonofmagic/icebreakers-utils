@@ -13,7 +13,7 @@ export function raw(
   subDir: boolean = false
 ) {
   const fn = subDir ? eachDir : currentDir
-  return fn(pathLike, async (p) => {
+  return fn(pathLike, async (b, cwd) => {
     // os.cpus().length
     const queue = new PQueue({ concurrency: 1 })
     for (let index = 0; index < lockFileEntries.length; index++) {
@@ -21,7 +21,9 @@ export function raw(
       if (await isExist(lockFile)) {
         const command =
           typeof getCommand === 'string' ? getCommand : getCommand(pkgM)
-        const subprocess = execa(pkgM, command.split(/\s/))
+        const subprocess = execa(pkgM, command.split(/\s/), {
+          cwd
+        })
         subprocess.stdout?.pipe(process.stdout)
         // 并发
         queue.add(() => subprocess)
