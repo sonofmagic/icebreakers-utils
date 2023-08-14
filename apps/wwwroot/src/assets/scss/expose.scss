@@ -1,5 +1,0 @@
-@use './constants.scss' as C;
-
-$style0: expose(C.$root-vars);
-$style1: expose-with-selector(C.$root-style1-vars, "[data-color-mode='light']");
-$style2: expose-with-selector(C.$root-style2-vars, "[data-color-mode='dark']");
