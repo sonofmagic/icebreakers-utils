@@ -1,11 +1,11 @@
 import path from 'node:path'
 import fs from 'node:fs/promises'
-import { install } from '@/index'
+import { run } from '@/index'
 import { eachDir } from '@/utils'
 
-async function getPkgJson(p: string) {
-  return JSON.parse(await fs.readFile(p, 'utf8'))
-}
+// async function getPkgJson(p: string) {
+//   return JSON.parse(await fs.readFile(p, 'utf8'))
+// }
 
 describe('default', () => {
   const fixtures: string[] = []
@@ -23,7 +23,7 @@ describe('default', () => {
   })
 
   it('install', async () => {
-    await install({
+    await run({
       cwd: fixturesPath
     })
   })

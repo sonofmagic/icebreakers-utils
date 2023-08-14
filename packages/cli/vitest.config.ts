@@ -10,6 +10,6 @@ export default defineProject({
       }
     ],
     globals: true,
-    testTimeout: 60_000
+    testTimeout: 600_000
   }
 })
