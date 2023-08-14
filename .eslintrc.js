@@ -1,3 +1,5 @@
+/** @type {import('eslint').Linter.Config} */
 module.exports = {
-  extends: ['@icebreakers/eslint-config-ts']
+  root: true,
+  extends: ['icebreaker', 'plugin:prettier/recommended']
 }

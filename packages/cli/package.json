@@ -1,6 +1,6 @@
 {
   "name": "@icebreakers/cli",
-  "version": "0.1.2",
+  "version": "1.0.0-alpha.0",
   "description": "icebreaker's cli",
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
@@ -32,5 +32,8 @@
     "execa": "^5.1.1",
     "fast-glob": "^3.3.1",
     "p-queue": "6.6.2"
+  },
+  "dependencies": {
+    "@antfu/ni": "^0.21.5"
   }
 }

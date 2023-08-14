@@ -1,36 +1,25 @@
-import fs from 'fs/promises'
-import { Stats } from 'node:fs'
-import path from 'path'
-
-export async function currentDir(
-  pathLike: string,
-  cb: (basename: string, pathLike: string, stat: Stats) => void | Promise<void>
-) {
-  const stat = await fs.stat(pathLike)
-  if (stat.isDirectory()) {
-    if (await isExist(path.resolve(pathLike, 'package.json'))) {
-      await cb(path.basename(pathLike), pathLike, stat)
-    }
-  }
-}
+import { readdir, access, stat } from 'node:fs/promises'
+import { resolve } from 'node:path'
 
 export async function eachDir(
   pathLike: string,
-  cb: (basename: string, pathLike: string, stat: Stats) => void | Promise<void>
+  cb: (path: string) => void | Promise<void>
 ) {
-  const filenames = await fs.readdir(pathLike)
-  for (let i = 0; i < filenames.length; i++) {
-    const filename = filenames[i]
-    const p = path.resolve(pathLike, filename)
-    await currentDir(p, cb)
+  const filenames = await readdir(pathLike)
+  for (const filename of filenames) {
+    const path = resolve(pathLike, filename)
+    const s = await stat(path)
+    if (s.isDirectory()) {
+      await cb(path)
+    }
   }
 }
 
 export async function isExist(pathLike: string) {
   try {
-    await fs.access(pathLike)
+    await access(pathLike)
     return true
-  } catch (error) {
+  } catch {
     return false
   }
 }
