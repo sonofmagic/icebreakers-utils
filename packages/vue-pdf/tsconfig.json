@@ -1,9 +1,0 @@
-{
-  "extends": "@icebreakers/tsconfig/tsconfig.com.json",
-  "compilerOptions": {
-    "outDir": "dist",
-    "declarationDir": "types",
-    "types": ["dom", "node"]
-  },
-  "include": ["src"]
-}

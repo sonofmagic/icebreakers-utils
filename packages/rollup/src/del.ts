@@ -1,7 +1,7 @@
-import internalDel from 'del'
+import { Options, deleteAsync } from 'del'
 import type { Plugin } from 'rollup'
 
-export interface DeletePluginOptions extends internalDel.Options {
+export interface DeletePluginOptions extends Options {
   /**
    * Rollup hook the plugin should use.
    * @default 'buildStart'
@@ -45,7 +45,7 @@ export default function del(options: DeletePluginOptions = {}): Plugin {
         return
       }
 
-      const paths = await internalDel(targets, rest)
+      const paths = await deleteAsync(targets, rest)
 
       if (verbose || rest.dryRun) {
         const message = rest.dryRun

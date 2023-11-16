@@ -33,11 +33,11 @@
     "@icebreakers/rollup": "*",
     "@icebreakers/tsconfig": "*",
     "memfs": "^3.5.3",
-    "tsd": "^0.28.1",
-    "webpack": "^5.88.2"
+    "tsd": "^0.29.0",
+    "webpack": "^5.89.0"
   },
   "dependencies": {
-    "@types/loader-utils": "^2.0.3",
+    "@types/loader-utils": "^2.0.6",
     "@types/webpack4": "npm:@types/webpack@^4.41.26",
     "loader-utils": "^2.0.3"
   },

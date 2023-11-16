@@ -11,10 +11,16 @@ import type {
 import terser from '@rollup/plugin-terser'
 import replace from '@rollup/plugin-replace'
 import json from '@rollup/plugin-json'
-import defu from 'defu'
+import { createDefu } from 'defu'
 import path from 'path'
 import del from './del'
 
+const defu = createDefu((obj, key, value) => {
+  if (Array.isArray(obj[key]) && Array.isArray(value)) {
+    obj[key] = value
+    return true
+  }
+})
 // const isProd = process.env.NODE_ENV === 'production'
 const isDev = process.env.NODE_ENV === 'development'
 // https://rollupjs.org/guide/en/#changed-defaults
@@ -137,8 +143,8 @@ export function createRollupConfig(
     typeof postExternal === 'function'
       ? postExternal
       : Array.isArray(postExternal)
-      ? [...defaultExternal, ...postExternal]
-      : [...defaultExternal, postExternal!]
+        ? [...defaultExternal, ...postExternal]
+        : [...defaultExternal, postExternal!]
 
   const config: RollupOptions = {
     input,
@@ -149,5 +155,5 @@ export function createRollupConfig(
     preserveEntrySignatures: 'strict'
   }
   // rollupOptions first
-  return defu(rollupOptions, config)
+  return defu(rollupOptions!, config)
 }

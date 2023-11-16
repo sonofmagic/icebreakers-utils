@@ -9,7 +9,6 @@
 - `rollup`: 预设的 `rollup` 策略
 - `serverless-http-proxy`: 快速部署一个 `serverless` 应用的代理函数
 - `tsconfig`: 预设的 `tsconfig` 配置，用于继承
-- `vue-pdf`: `headless vue hook for display pdf by pdfjs-dist`
 - `weapp-ide-cli`: 二次封装的微信开发者工具 `cli` 来让它更加的好用
 
 ## 使用方法

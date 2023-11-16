@@ -30,7 +30,7 @@
     "@icebreakers/tsconfig": "*"
   },
   "dependencies": {
-    "@types/loader-runner": "^2.2.4",
+    "@types/loader-runner": "^2.2.7",
     "loader-runner": "^4.3.0"
   },
   "repository": {

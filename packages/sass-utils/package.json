@@ -23,7 +23,7 @@
   "author": "SonOfMagic <qq1324318532@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "sass": "^1.64.1",
+    "sass": "^1.69.5",
     "sass-true": "^7.0.0"
   },
   "repository": {

@@ -28,11 +28,11 @@
   "devDependencies": {
     "@icebreakers/rollup": "*",
     "@icebreakers/tsconfig": "*",
-    "webpack": "^5.88.2"
+    "webpack": "^5.89.0"
   },
   "dependencies": {
     "create-functional-loader": "*",
-    "memfs": "^3.5.3",
+    "memfs": "^4.6.0",
     "promisify-loader-runner": "*"
   },
   "repository": {
