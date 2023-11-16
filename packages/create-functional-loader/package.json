@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@types/loader-utils": "^2.0.6",
-    "@types/webpack4": "npm:@types/webpack@^4.41.26",
+    "@types/webpack4": "npm:@types/webpack@^5.0.0",
     "loader-utils": "^2.0.3"
   },
   "repository": {
