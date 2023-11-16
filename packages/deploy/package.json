@@ -2,19 +2,26 @@
   "name": "@icebreakers/deploy",
   "version": "0.1.4",
   "description": "icebreaker's deploy frontend to cdn pkg",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist",
     "bin"
   ],
   "scripts": {
-    "dev": "cross-env NODE_ENV=development rollup -cw",
-    "build": "cross-env NODE_ENV=production rollup -c",
+    "build": "unbuild",
     "dev:tsc": "tsc -p tsconfig.json --sourceMap",
     "build:tsc": "tsc -p tsconfig.json",
-    "test": "jest"
+    "test": "vitest run",
+    "test:dev": "vitest"
   },
   "bin": {
     "ice-deploy": "bin/ice-deploy.js"

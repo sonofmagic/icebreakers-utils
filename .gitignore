@@ -5,3 +5,4 @@ types
 dist
 .env
 .DS_store
+coverage

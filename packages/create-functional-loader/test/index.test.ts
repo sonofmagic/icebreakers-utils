@@ -8,12 +8,12 @@ import readAssets from './helper/readAssets'
 
 const { createLoader } = require('../')
 
-const resolve = (p) => path.resolve(__dirname, p)
+const resolve = (p: string) => path.resolve(__dirname, p)
 // jest.setTimeout(60_000)
 test('simple functional loader', async function () {
   const markHTML = Date.now() + '_html_' + Math.random()
   const markTs = Date.now() + '_ts_' + Math.random()
-  const simple = function (source, map) {
+  const simple: webpack.LoaderDefinitionFunction = function (source, map) {
     expect(source).toEqual(fs.readFileSync(resolve('test.ts'), 'utf8'))
     expect('resource' in this).toEqual(true)
     expect(this.webpack).toEqual(true)
@@ -23,7 +23,7 @@ test('simple functional loader', async function () {
       null,
       source.replace(/:\s*\w+? /g, ' ') + `/*${markTs}*/`,
       map,
-      { foo: 'bar' }
+      { foo: 'bar', webpackAST: {} }
     )
   }
   const compiler = webpack({
@@ -52,7 +52,7 @@ test('simple functional loader', async function () {
             return `module.exports = ${JSON.stringify(
               source.trim() + markHTML
             )}`
-          })
+          } as webpack.LoaderDefinitionFunction)
         },
         {
           test: /\.ts$/,
@@ -62,10 +62,10 @@ test('simple functional loader', async function () {
               expect('resourcePath' in this).toBe(true)
               expect(this.webpack).toBe(true)
               expect(this.loaderIndex).toBe(0)
-              expect(meta.foo).toBe('bar')
+              expect(meta?.foo).toBe('bar')
 
               return source
-            }),
+            } as webpack.LoaderDefinitionFunction),
             createLoader(simple)
           ]
         }

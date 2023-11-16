@@ -9,7 +9,7 @@ import {
   readAsset,
   readAssets,
   runLoaders
-} from '../src'
+} from '@/index'
 
 describe('index', () => {
   it('should exports', () => {

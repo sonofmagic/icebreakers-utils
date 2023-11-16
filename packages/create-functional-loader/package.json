@@ -2,14 +2,21 @@
   "name": "create-functional-loader",
   "version": "0.1.0",
   "description": "forked from `simple-functional-loader` and rewrite by typescript",
-  "main": "dist/index.js",
-  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "dev": "cross-env NODE_ENV=development rollup -cw",
-    "build": "cross-env NODE_ENV=production rollup -c",
+    "build": "unbuild",
     "build:tsc": "tsc",
     "sync": "cnpm sync create-functional-loader",
     "test": "vitest run",
@@ -38,7 +45,6 @@
   },
   "dependencies": {
     "@types/loader-utils": "^2.0.6",
-    "@types/webpack4": "npm:@types/webpack@^4.41.26",
     "loader-utils": "^2.0.3"
   },
   "repository": {
