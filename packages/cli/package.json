@@ -31,6 +31,6 @@
     "@icebreakers/tsconfig": "*",
     "execa": "^5.1.1",
     "fast-glob": "^3.3.2",
-    "p-queue": "6.6.2"
+    "p-queue": "7.4.1"
   }
 }
