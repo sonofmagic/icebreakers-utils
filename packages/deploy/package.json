@@ -1,6 +1,6 @@
 {
   "name": "@icebreakers/deploy",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "icebreaker's deploy frontend to cdn pkg",
   "exports": {
     ".": {
@@ -26,9 +26,11 @@
   "bin": {
     "ice-deploy": "bin/ice-deploy.js"
   },
-  "keywords": [],
+  "keywords": [
+    "deploy"
+  ],
   "author": "SonOfMagic <qq1324318532@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sonofmagic/utils.git"
@@ -51,6 +53,6 @@
     "dotenv": "^16.3.1",
     "klaw": "^4.1.0",
     "minimist": "^1.2.8",
-    "tencentcloud-sdk-nodejs": "^4.0.735"
+    "tencentcloud-sdk-nodejs-cdn": "^4.0.735"
   }
 }

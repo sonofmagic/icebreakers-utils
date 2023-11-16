@@ -17,7 +17,8 @@
     "build:app": "turbo run build --filter=./apps/*",
     "test": "vitest run --coverage.enabled",
     "lint": "turbo run lint",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "sync": "cnpm sync @icebreakers/deploy"
   },
   "repository": {
     "type": "git",

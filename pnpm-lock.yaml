@@ -147,7 +147,7 @@ importers:
       minimist:
         specifier: ^1.2.8
         version: 1.2.8
-      tencentcloud-sdk-nodejs:
+      tencentcloud-sdk-nodejs-cdn:
         specifier: ^4.0.735
         version: 4.0.735
     devDependencies:
@@ -7347,8 +7347,18 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /tencentcloud-sdk-nodejs@4.0.735:
-    resolution: {integrity: sha512-Ce/oT+Kn72JhsmmEmtnWjp5Q4GnYI82c3VqEaTc0WGXFR5uoJO4JDADoeMz3RSTtIHeWWXXO6V1/g9V8lsQh2Q==}
+  /tencentcloud-sdk-nodejs-cdn@4.0.735:
+    resolution: {integrity: sha512-Xev+rycFkf8SwpHOXWF8GG23kj3sV9KSseW3/71ltcN7Hp7YnCZ45PxT6B6sMDQZpLLDr2/7B+NgptF0W7M7nw==}
+    engines: {node: '>=10'}
+    dependencies:
+      tencentcloud-sdk-nodejs-common: 4.0.735
+    transitivePeerDependencies:
+      - encoding
+      - supports-color
+    dev: false
+
+  /tencentcloud-sdk-nodejs-common@4.0.735:
+    resolution: {integrity: sha512-L3djwzILPi96bv+UFa2YHCbiO+hwMH45SX5+DFIXWYdAyWkBXNrRPtlVvHLDn3I5I64uBhU2HR+ci18KI/jYVA==}
     engines: {node: '>=10'}
     dependencies:
       form-data: 3.0.1
