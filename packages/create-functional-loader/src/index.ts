@@ -1,8 +1,7 @@
 import loaderUtils from 'loader-utils'
-import pkg from '../package.json'
+import { name } from '../package.json'
 import type webpack from 'webpack'
 // const pkg = require('../package.json')
-const { name } = pkg
 
 export type webpackLoaderContext = webpack.LoaderContext<{
   processor: webpack.LoaderDefinitionFunction
@@ -23,7 +22,7 @@ export type CompatLoaderItem = Exclude<
   string | Function
 >
 
-export function createLoader(
+function createLoader(
   processor: webpack.LoaderDefinitionFunction,
   options?: Partial<CompatLoaderItem>
 ): Partial<CompatLoaderItem> {
@@ -46,6 +45,6 @@ export function createLoader(
   )
 }
 export type CreateLoader = typeof createLoader
-export default simpleFunctionalLoader
+// export default simpleFunctionalLoader
 simpleFunctionalLoader.createLoader = createLoader
 module.exports = simpleFunctionalLoader

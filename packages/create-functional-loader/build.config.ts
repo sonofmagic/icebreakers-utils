@@ -13,6 +13,9 @@ export default defineBuildConfig({
     dts: {
       // https://github.com/unjs/unbuild/issues/135
       respectExternal: false
+    },
+    output: {
+      exports: 'named'
     }
   },
   alias: {
