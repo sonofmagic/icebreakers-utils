@@ -22,7 +22,7 @@ export type CompatLoaderItem = Exclude<
   string | Function
 >
 
-function createLoader(
+export function createLoader(
   processor: webpack.LoaderDefinitionFunction,
   options?: Partial<CompatLoaderItem>
 ): Partial<CompatLoaderItem> {

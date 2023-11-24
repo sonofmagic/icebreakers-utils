@@ -1,13 +1,7 @@
 {
   "name": "create-functional-loader",
-  "version": "0.1.2",
-  "description": "forked from `simple-functional-loader`, fix bugs and rewrite by typescript",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs"
-    }
-  },
+  "version": "0.1.4",
+  "description": "forked from `simple-functional-loader`, fix some bugs and rewrite by typescript",
   "main": "./dist/index.cjs",
   "types": "./dist/index.d.ts",
   "files": [
