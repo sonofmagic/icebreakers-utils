@@ -1,7 +1,7 @@
 {
   "name": "create-functional-loader",
-  "version": "0.1.0",
-  "description": "forked from `simple-functional-loader` and rewrite by typescript",
+  "version": "0.1.1",
+  "description": "forked from `simple-functional-loader`, fix bugs and rewrite by typescript",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -17,11 +17,9 @@
   ],
   "scripts": {
     "build": "unbuild",
-    "build:tsc": "tsc",
     "sync": "cnpm sync create-functional-loader",
     "test": "vitest run",
-    "test:dev": "vitest",
-    "jest": "jest"
+    "test:dev": "vitest"
   },
   "publishConfig": {
     "access": "public",
@@ -39,7 +37,7 @@
   "devDependencies": {
     "@icebreakers/rollup": "*",
     "@icebreakers/tsconfig": "*",
-    "memfs": "^3.5.3",
+    "memfs": "^4.6.0",
     "tsd": "^0.29.0",
     "webpack": "^5.89.0"
   },

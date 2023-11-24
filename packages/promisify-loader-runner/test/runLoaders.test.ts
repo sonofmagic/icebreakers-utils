@@ -4,25 +4,30 @@ import * as fs from 'fs'
 import { runLoaders, getContext } from '../../webpack-build-utils/src'
 
 const fixtures = path.resolve(__dirname, 'fixtures')
-jest.setTimeout(60_000)
-describe.skip('runLoaders', function () {
-  it('should process only a resource', function (done) {
-    runLoaders(
-      {
-        resource: path.resolve(fixtures, 'resource.bin')
-      },
-      function (err, result) {
-        if (err) return done(err)
-        expect(result.result).toEqual([Buffer.from('resource', 'utf-8')])
-        expect(result.cacheable).toBe(true)
-        expect(result.fileDependencies).toContain(
-          path.resolve(fixtures, 'resource.bin')
-        )
-        expect(result.contextDependencies).toEqual([])
 
-        done()
+const runLoadersPromise = (options: any) => {
+  return new Promise((resolve, reject) => {
+    runLoaders(options, function (err, result) {
+      if (err) {
+        reject(err)
+        return
       }
+      resolve(result)
+    })
+  })
+}
+
+describe.skip('runLoaders', function () {
+  it('should process only a resource', async function () {
+    const result = await runLoadersPromise({
+      resource: path.resolve(fixtures, 'resource.bin')
+    })
+    expect(result.result).toEqual([Buffer.from('resource', 'utf-8')])
+    expect(result.cacheable).toBe(true)
+    expect(result.fileDependencies).toContain(
+      path.resolve(fixtures, 'resource.bin')
     )
+    expect(result.contextDependencies).toEqual([])
   })
   it('should process a simple sync loader', function (done) {
     runLoaders(

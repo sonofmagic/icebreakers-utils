@@ -1,8 +1,16 @@
 {
-  "extends": "@icebreakers/tsconfig/tsconfig.cjs.json",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "dist",
-    "declarationDir": "types"
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "resolveJsonModule": true
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "test"
+  ]
 }

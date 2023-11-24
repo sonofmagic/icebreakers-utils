@@ -1,17 +1,25 @@
 {
   "name": "promisify-loader-runner",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a promisify wrapper of `loader-runner`",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "dev": "cross-env NODE_ENV=development rollup -cw",
-    "build": "cross-env NODE_ENV=production rollup -c",
-    "test": "jest"
+    "build": "unbuild",
+    "test": "vitest run",
+    "test:dev": "vitest",
+    "sync": "cnpm sync promisify-loader-runner"
   },
   "publishConfig": {
     "access": "public",
@@ -30,7 +38,7 @@
     "@icebreakers/tsconfig": "*"
   },
   "dependencies": {
-    "@types/loader-runner": "^2.2.7",
+    "@types/loader-runner": "^2.2.8",
     "loader-runner": "^4.3.0"
   },
   "repository": {

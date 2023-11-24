@@ -29,7 +29,7 @@ export function createLoader(
 ): Partial<CompatLoaderItem> {
   if (
     typeof processor !== 'function' ||
-    Function.prototype.toString.call(processor).indexOf('function')
+    Function.prototype.toString.call(processor).indexOf('function') < 0
   ) {
     throw new Error(
       name + ': parameter passed to "createLoader" must be an ES5 function.'

@@ -1,18 +1,18 @@
-const { install, eachDir, run, currentDir, raw, remove } = require('../')
-const path = require('path')
-const fs = require('fs')
+import { install, eachDir, run, currentDir, raw, remove } from '@/index'
+import path from 'path'
+import fs from 'fs'
 
-function getPkgJson(p) {
+function getPkgJson(p: string) {
   return JSON.parse(
     fs.readFileSync(p, {
       encoding: 'utf-8'
     })
   )
 }
-jest.setTimeout(120000)
+
 describe('default', () => {
-  const fixtures = []
-  const fixturesPaths = []
+  const fixtures: string[] = []
+  const fixturesPaths: string[] = []
   const fixturesPath = path.resolve(__dirname, 'fixtures')
 
   beforeAll(async () => {

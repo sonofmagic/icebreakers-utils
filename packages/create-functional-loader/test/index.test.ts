@@ -106,6 +106,10 @@ test('show throw error', () => {
   }).toThrowError(errorTest)
 
   expect(() => {
+    createLoader(async () => {})
+  }).toThrowError(errorTest)
+
+  expect(() => {
     createLoader(
       class {
         // eslint-disable-next-line no-useless-constructor

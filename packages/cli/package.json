@@ -2,17 +2,24 @@
   "name": "@icebreakers/cli",
   "version": "0.1.1",
   "description": "icebreaker's cli",
-  "main": "dist/index.js",
-  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "dev": "cross-env NODE_ENV=development rollup -cw",
-    "build": "cross-env NODE_ENV=production rollup -c",
-    "dev:tsc": "tsc -p tsconfig.json --sourceMap",
-    "build:tsc": "tsc -p tsconfig.json",
-    "test": "jest"
+    "build": "unbuild",
+    "sync": "cnpm sync create-functional-loader",
+    "test": "vitest run",
+    "test:dev": "vitest"
   },
   "publishConfig": {
     "access": "public",
