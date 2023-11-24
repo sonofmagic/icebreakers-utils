@@ -1,20 +1,12 @@
 {
   "name": "webpack-build-utils",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "webpack-build-utils for build and test",
   "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
-    }
-  },
   "scripts": {
     "build": "unbuild",
     "sync": "cnpm sync webpack-build-utils",
