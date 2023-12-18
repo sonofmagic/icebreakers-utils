@@ -30,7 +30,7 @@
     "@icebreakers/rollup": "*",
     "@icebreakers/tsconfig": "*",
     "memfs": "^4.6.0",
-    "tsd": "^0.29.0",
+    "tsd": "^0.30.0",
     "webpack": "^5.89.0"
   },
   "dependencies": {
