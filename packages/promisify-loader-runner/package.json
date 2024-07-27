@@ -2,6 +2,22 @@
   "name": "promisify-loader-runner",
   "version": "1.0.1",
   "description": "a promisify wrapper of `loader-runner`",
+  "author": "SonOfMagic <qq1324318532@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/sonofmagic/utils/tree/main/packages/promisify-loader-runner#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonofmagic/utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sonofmagic/utils/issues"
+  },
+  "keywords": [
+    "webpack",
+    "loader",
+    "loader-runner",
+    "promisify"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -25,28 +41,12 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "keywords": [
-    "webpack",
-    "loader",
-    "loader-runner",
-    "promisify"
-  ],
-  "author": "SonOfMagic <qq1324318532@gmail.com>",
-  "license": "MIT",
-  "devDependencies": {
-    "@icebreakers/rollup": "*",
-    "@icebreakers/tsconfig": "*"
-  },
   "dependencies": {
     "@types/loader-runner": "^2.2.8",
     "loader-runner": "^4.3.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sonofmagic/utils.git"
-  },
-  "bugs": {
-    "url": "https://github.com/sonofmagic/utils/issues"
-  },
-  "homepage": "https://github.com/sonofmagic/utils/tree/main/packages/promisify-loader-runner#readme"
+  "devDependencies": {
+    "@icebreakers/rollup": "*",
+    "@icebreakers/tsconfig": "*"
+  }
 }

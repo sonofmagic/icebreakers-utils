@@ -2,6 +2,14 @@
   "name": "@icebreakers/cli",
   "version": "0.1.1",
   "description": "icebreaker's cli",
+  "author": "SonOfMagic <qq1324318532@gmail.com>",
+  "license": "ISC",
+  "keywords": [
+    "cli",
+    "yarn",
+    "npm",
+    "pnpm"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -25,18 +33,10 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "keywords": [
-    "cli",
-    "yarn",
-    "npm",
-    "pnpm"
-  ],
-  "author": "SonOfMagic <qq1324318532@gmail.com>",
-  "license": "ISC",
   "devDependencies": {
     "@icebreakers/rollup": "*",
     "@icebreakers/tsconfig": "*",
-    "execa": "^8.0.1",
+    "execa": "^9.3.0",
     "fast-glob": "^3.3.2",
     "p-queue": "8.0.1"
   }

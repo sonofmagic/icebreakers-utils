@@ -2,6 +2,22 @@
   "name": "webpack-build-utils",
   "version": "0.0.7",
   "description": "webpack-build-utils for build and test",
+  "author": "SonOfMagic <qq1324318532@gmail.com>",
+  "license": "ISC",
+  "homepage": "https://github.com/sonofmagic/utils/tree/main/packages/webpack-build-utils#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonofmagic/utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sonofmagic/utils/issues"
+  },
+  "keywords": [
+    "webpack",
+    "build",
+    "utils",
+    "loader"
+  ],
   "main": "./dist/index.cjs",
   "types": "./dist/index.d.ts",
   "files": [
@@ -17,30 +33,14 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "keywords": [
-    "webpack",
-    "build",
-    "utils",
-    "loader"
-  ],
-  "author": "SonOfMagic <qq1324318532@gmail.com>",
-  "license": "ISC",
-  "devDependencies": {
-    "@icebreakers/rollup": "*",
-    "@icebreakers/tsconfig": "*",
-    "webpack": "^5.90.3"
-  },
   "dependencies": {
     "create-functional-loader": "*",
     "memfs": "^4.7.7",
     "promisify-loader-runner": "*"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sonofmagic/utils.git"
-  },
-  "bugs": {
-    "url": "https://github.com/sonofmagic/utils/issues"
-  },
-  "homepage": "https://github.com/sonofmagic/utils/tree/main/packages/webpack-build-utils#readme"
+  "devDependencies": {
+    "@icebreakers/rollup": "*",
+    "@icebreakers/tsconfig": "*",
+    "webpack": "^5.90.3"
+  }
 }

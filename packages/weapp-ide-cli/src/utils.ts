@@ -1,12 +1,15 @@
-import execa from 'execa'
-import fs from 'fs/promises'
-import path from 'path'
+import fs from 'node:fs/promises'
+import path from 'node:path'
+import process from 'node:process'
+import { execa } from 'execa'
 import type { IAliasEntry } from './types'
+
 export async function exist(filepath: string, mode?: number): Promise<boolean> {
   try {
     await fs.access(filepath, mode)
     return true
-  } catch (error) {
+  }
+  catch {
     return false
   }
 }
@@ -25,7 +28,8 @@ export async function execute(cliPath: string, argv: string[]) {
 export function resolvePath(filePath: string) {
   if (path.isAbsolute(filePath)) {
     return filePath
-  } else {
+  }
+  else {
     return path.resolve(process.cwd(), filePath)
   }
 }
@@ -35,7 +39,8 @@ function alias(argv: string[], entry: IAliasEntry) {
   // alias -p as --project
   if (findIdx > -1) {
     argv[findIdx] = entry.replacement
-  } else {
+  }
+  else {
     findIdx = argv.indexOf(entry.replacement)
   }
 
@@ -45,7 +50,8 @@ function alias(argv: string[], entry: IAliasEntry) {
     // 存在项目目录
     if (param && param[0] !== '-') {
       argv[paramIdx] = resolvePath(param)
-    } else {
+    }
+    else {
       argv.splice(paramIdx, 0, process.cwd())
     }
   }
@@ -61,7 +67,8 @@ function pathCompat(argv: string[], option: string) {
     // 存在项目目录
     if (param && param[0] !== '-') {
       argv[paramIdx] = resolvePath(param)
-    } else {
+    }
+    else {
       argv.splice(paramIdx, 0, process.cwd())
     }
   }

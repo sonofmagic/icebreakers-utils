@@ -1,18 +1,18 @@
-import readline from 'readline'
-
+import readline from 'node:readline'
+import process from 'node:process'
 import {
   defaultCustomConfigFilePath,
   defaultPath,
-  operatingSystemName
+  operatingSystemName,
 } from './defaults'
 import { createCustomConfig, getConfig } from './config'
 
-import { exist, execute, createAlias, createPathCompat } from './utils'
+import { createAlias, createPathCompat, execute, exist } from './utils'
 import { compose } from './compose'
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
+  output: process.stdout,
 })
 
 const isSupported = Boolean(defaultPath)
@@ -26,10 +26,10 @@ function rlSetConfig() {
   console.log('> 提示：命令行工具默认所在位置：')
   console.log('- MacOS: <安装路径>/Contents/MacOS/cli')
   console.log('- Windows: <安装路径>/cli.bat')
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve, _reject) => {
     rl.question('请输入微信web开发者工具cli路径：', async (cliPath) => {
       await createCustomConfig({
-        cliPath
+        cliPath,
       })
       console.log(`全局配置存储位置：${defaultCustomConfigFilePath}`)
       resolve(cliPath)
@@ -44,7 +44,7 @@ const parseArgv = compose(
   createPathCompat('--qr-output'),
   createPathCompat('-o'),
   createPathCompat('--info-output'),
-  createPathCompat('-i')
+  createPathCompat('-i'),
 )
 
 async function main() {
@@ -60,13 +60,15 @@ async function main() {
       const formattedArgv = parseArgv(argv)
 
       await execute(cliPath, formattedArgv)
-    } else {
+    }
+    else {
       console.log(
-        '在当前自定义路径中,未找到微信web开发者命令行工具，请重新指定路径'
+        '在当前自定义路径中,未找到微信web开发者命令行工具，请重新指定路径',
       )
       await rlSetConfig()
     }
-  } else {
+  }
+  else {
     console.log(`微信web开发者工具不支持当前平台：${operatingSystemName} !`)
   }
 }

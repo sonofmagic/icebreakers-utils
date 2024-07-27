@@ -2,6 +2,17 @@
   "name": "@icebreakers/rollup",
   "version": "0.4.0",
   "description": "icebreaker's rollup preset",
+  "author": "SonOfMagic <qq1324318532@gmail.com>",
+  "license": "ISC",
+  "homepage": "https://github.com/sonofmagic/utils/tree/main/packages/rollup",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonofmagic/utils.git"
+  },
+  "keywords": [
+    "rollup",
+    "preset"
+  ],
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -13,24 +24,13 @@
     "build": "yarn clean && tsc -p tsconfig.json",
     "clean": "rimraf dist"
   },
-  "keywords": [
-    "rollup",
-    "preset"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sonofmagic/utils.git"
-  },
-  "homepage": "https://github.com/sonofmagic/utils/tree/main/packages/rollup",
-  "author": "SonOfMagic <qq1324318532@gmail.com>",
-  "license": "ISC",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
     "@rollup/plugin-alias": "^5.1.0",
-    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-replace": "^5.0.5",
@@ -41,8 +41,8 @@
   },
   "devDependencies": {
     "@icebreakers/tsconfig": "*",
-    "rimraf": "^5.0.5",
-    "rollup": "^4.12.1",
+    "rimraf": "^6.0.1",
+    "rollup": "^4.19.1",
     "terser": "^5.29.1"
   }
 }

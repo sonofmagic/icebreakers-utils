@@ -1,28 +1,17 @@
 {
   "name": "weapp-ide-cli",
+  "type": "module",
   "version": "1.0.1",
   "description": "让微信开发者工具，用起来更加方便吧！",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/types/index.d.ts",
-  "files": [
-    "dist",
-    "bin"
-  ],
-  "bin": {
-    "weapp": "bin/weapp.js",
-    "weapp-ide-cli": "bin/weapp.js"
+  "author": "SonOfMagic <qq1324318532@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/sonofmagic/utils/tree/main/packages/weapp-ide-cli#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonofmagic/utils.git"
   },
-  "scripts": {
-    "dev": "cross-env NODE_ENV=development rollup -cw",
-    "build": "cross-env NODE_ENV=production rollup -c",
-    "weapp": "ts-node src/cli.ts",
-    "debug": "ts-node src/cli.ts config",
-    "raw": "node bin/weapp.js"
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
+  "bugs": {
+    "url": "https://github.com/sonofmagic/utils/issues"
   },
   "keywords": [
     "weapp",
@@ -36,21 +25,33 @@
     "mini",
     "miniprogram"
   ],
-  "author": "SonOfMagic <qq1324318532@gmail.com>",
-  "license": "MIT",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "weapp": "bin/weapp.js",
+    "weapp-ide-cli": "bin/weapp.js"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsup --watch --sourcemap",
+    "build": "tsup",
+    "weapp": "tsx src/cli.ts",
+    "debug": "tsx src/cli.ts config",
+    "raw": "node bin/weapp.js"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "execa": "9.3.0"
+  },
   "devDependencies": {
     "@icebreakers/rollup": "*",
     "@icebreakers/tsconfig": "*"
-  },
-  "dependencies": {
-    "execa": "5.1.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sonofmagic/utils.git"
-  },
-  "bugs": {
-    "url": "https://github.com/sonofmagic/utils/issues"
-  },
-  "homepage": "https://github.com/sonofmagic/utils/tree/main/packages/weapp-ide-cli#readme"
+  }
 }

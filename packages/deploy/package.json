@@ -2,6 +2,16 @@
   "name": "@icebreakers/deploy",
   "version": "0.1.5",
   "description": "icebreaker's deploy frontend to cdn pkg",
+  "author": "SonOfMagic <qq1324318532@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/sonofmagic/utils/tree/main/packages/deploy",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonofmagic/utils.git"
+  },
+  "keywords": [
+    "deploy"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -12,9 +22,12 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "bin": {
+    "ice-deploy": "bin/ice-deploy.js"
+  },
   "files": [
-    "dist",
-    "bin"
+    "bin",
+    "dist"
   ],
   "scripts": {
     "build": "unbuild",
@@ -23,19 +36,14 @@
     "test": "vitest run",
     "test:dev": "vitest"
   },
-  "bin": {
-    "ice-deploy": "bin/ice-deploy.js"
+  "dependencies": {
+    "cli-progress": "^3.12.0",
+    "cos-nodejs-sdk-v5": "2.14.4",
+    "dotenv": "^16.4.5",
+    "klaw": "^4.1.0",
+    "minimist": "^1.2.8",
+    "tencentcloud-sdk-nodejs-cdn": "^4.0.795"
   },
-  "keywords": [
-    "deploy"
-  ],
-  "author": "SonOfMagic <qq1324318532@gmail.com>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sonofmagic/utils.git"
-  },
-  "homepage": "https://github.com/sonofmagic/utils/tree/main/packages/deploy",
   "devDependencies": {
     "@icebreakers/rollup": "*",
     "@icebreakers/tsconfig": "*",
@@ -46,13 +54,5 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
-  },
-  "dependencies": {
-    "cli-progress": "^3.12.0",
-    "cos-nodejs-sdk-v5": "2.13.3",
-    "dotenv": "^16.4.5",
-    "klaw": "^4.1.0",
-    "minimist": "^1.2.8",
-    "tencentcloud-sdk-nodejs-cdn": "^4.0.795"
   }
 }

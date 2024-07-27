@@ -2,6 +2,9 @@
   "name": "@icebreakers/serverless-http-proxy",
   "version": "0.0.2",
   "description": "deploy serverless http proxy on any platform",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
   "module": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "files": [
@@ -15,9 +18,6 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@icebreakers/rollup": "*",
     "@icebreakers/tsconfig": "*",
@@ -26,6 +26,6 @@
     "@types/express-serve-static-core": "^4.17.43",
     "cors": "^2.8.5",
     "express": "^4.18.3",
-    "http-proxy-middleware": "^2.0.6"
+    "http-proxy-middleware": "^3.0.0"
   }
 }
