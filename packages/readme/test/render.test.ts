@@ -1,31 +1,30 @@
 // import { ReadmeRender } from '../dist/index'
 // const { ReadmeRender } = require('..')
-import { ReadmeRender, collapse } from '../src/index'
-import fs from 'fs'
-import path from 'path'
+import fs from 'node:fs'
+import { ReadmeRender, collapse } from '@/index'
 
-describe('ReadmeRender test', () => {
+describe('readmeRender test', () => {
   beforeEach(() => {
     process.chdir(__dirname)
   })
-  test('normal usage', () => {
+  it('normal usage', () => {
     const render = new ReadmeRender({
-      templatePath: './fixtures/template.md'
+      templatePath: './fixtures/template.md',
     })
     const v = 'hello world'
-    const source = render.render([[/{{scoped}}/, v]])
+    const source = render.render([[/\{\{scoped\}\}/, v]])
     expect(source.replace(/[\r\n]/g, '')).toBe(v)
   })
 
-  test('collapse usage', () => {
+  it('collapse usage', () => {
     const render = new ReadmeRender({
-      templatePath: './fixtures/template.md'
+      templatePath: './fixtures/template.md',
     })
     const v = collapse({
       summary: 'hello world',
-      body: '# 对酒当歌人生几何!  a other row\n\naaa'
+      body: '# 对酒当歌人生几何!  a other row\n\naaa',
     })
-    const source = render.render([[/{{scoped}}/, v]])
+    const source = render.render([[/\{\{scoped\}\}/, v]])
     fs.writeFileSync('./fixtures/collapse-usage.md', source)
     expect(true).toBe(true)
   })

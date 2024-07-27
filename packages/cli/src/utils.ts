@@ -1,5 +1,6 @@
-import fs from 'fs/promises'
-import path from 'path'
+import fs from 'node:fs/promises'
+import path from 'node:path'
+import process from 'node:process'
 
 export async function currentDir(pathLike: string, cb: (...args: any) => any) {
   const stat = await fs.stat(pathLike)
@@ -24,7 +25,8 @@ export async function isExist(pathLike: string) {
   try {
     await fs.access(pathLike)
     return true
-  } catch (error) {
+  }
+  catch {
     return false
   }
 }

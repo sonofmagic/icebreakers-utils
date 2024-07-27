@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "weapp-tailwindcss-webpack-plugin": "1.12.8"
+    "postcss-rem-to-responsive-pixel": "^6.0.1",
+    "tailwindcss-rem2px-preset": "^1.0.3",
+    "weapp-tailwindcss-webpack-plugin": "3.4.0"
   }
 }

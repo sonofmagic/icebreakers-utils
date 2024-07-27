@@ -1,5 +1,6 @@
 import { raw } from './raw'
-import { PkgManager, removePkgDirective } from './enum'
+import type { PkgManager } from './enum'
+import { removePkgDirective } from './enum'
 
 export function remove(pathLike: string, pkg?: string, subDir?: boolean) {
   const getCommand = (pkgM: PkgManager) => {

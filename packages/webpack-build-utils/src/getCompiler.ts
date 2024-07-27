@@ -1,10 +1,11 @@
 import webpack5 from 'webpack'
-import { createFsFromVolume, Volume } from 'memfs'
+import { Volume, createFsFromVolume } from 'memfs'
 // import MemoryFS from 'memory-fs'
 // import webpack4 from 'webpack4'
 
-export const getMemfsCompiler5 = (options: webpack5.Configuration = {}) => {
+export function getMemfsCompiler5(options: webpack5.Configuration = {}) {
   const compiler = webpack5(options)
+  // @ts-ignore
   compiler.outputFileSystem = createFsFromVolume(new Volume())
   return compiler
 }

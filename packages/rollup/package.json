@@ -21,7 +21,7 @@
   ],
   "scripts": {
     "dev": "tsc -p tsconfig.json --sourceMap",
-    "build": "yarn clean && tsc -p tsconfig.json",
+    "build": "pnpm clean && tsc -p tsconfig.json",
     "clean": "rimraf dist"
   },
   "publishConfig": {

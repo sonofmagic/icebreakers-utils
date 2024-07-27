@@ -1,12 +1,12 @@
-import { install, eachDir, run, currentDir, raw, remove } from '@/index'
-import path from 'path'
-import fs from 'fs'
+import path from 'node:path'
+import fs from 'node:fs'
+import { currentDir, eachDir, install, raw, remove, run } from '@/index'
 
 function getPkgJson(p: string) {
   return JSON.parse(
     fs.readFileSync(p, {
-      encoding: 'utf-8'
-    })
+      encoding: 'utf-8',
+    }),
   )
 }
 
@@ -21,32 +21,32 @@ describe('default', () => {
       fixturesPaths.push(p)
     })
   })
-  test('eachDir', async () => {
+  it('eachDir', async () => {
     expect(fixtures).toEqual(['npm-case', 'pnpm-case', 'yarn-case'])
   })
 
-  test('currentDir', async () => {
+  it('currentDir', async () => {
     const res = []
     const name = 'npm-case'
-    const t = path.resolve(__dirname, 'fixtures/' + name)
+    const t = path.resolve(__dirname, `fixtures/${name}`)
     await currentDir(t, (p) => {
       res.push(p)
     })
     expect(res).toEqual([name])
   })
 
-  test('install & remove', async () => {
+  it('install & remove', async () => {
     const installPkgs = [
       'weapp-tailwindcss-webpack-plugin',
       'tailwindcss-rem2px-preset',
-      'postcss-rem-to-responsive-pixel'
+      'postcss-rem-to-responsive-pixel',
     ]
     await raw(path.resolve(__dirname, 'fixtures/pnpm-case'), 'install')
     await install(path.resolve(__dirname, 'fixtures'), true)
     await install(
       path.resolve(__dirname, 'fixtures'),
-      '-D ' + installPkgs.map((x) => x + '@latest').join(' '),
-      true
+      `-D ${installPkgs.map(x => `${x}@latest`).join(' ')}`,
+      true,
     )
     fixturesPaths.forEach((p) => {
       const pkg = path.resolve(p, 'package.json')
@@ -59,7 +59,7 @@ describe('default', () => {
     await remove(
       path.resolve(__dirname, 'fixtures'),
       removePkgs.join(' '),
-      true
+      true,
     )
 
     fixturesPaths.forEach((p) => {
@@ -74,12 +74,12 @@ describe('default', () => {
     expect(true).toBe(true)
   })
 
-  test('run', async () => {
+  it('run', async () => {
     await run(path.resolve(__dirname, 'fixtures'), 'test', true)
     expect(true).toBe(true)
   })
 
-  test('raw', async () => {
+  it('raw', async () => {
     await raw(path.resolve(__dirname, 'fixtures'), 'run test', true)
     expect(true).toBe(true)
   })

@@ -1,5 +1,6 @@
 import { raw } from './raw'
-import { PkgManager, runDirective } from './enum'
+import type { PkgManager } from './enum'
+import { runDirective } from './enum'
 
 export function run(pathLike: string, pkg?: string, subDir?: boolean) {
   const getCommand = (pkgM: PkgManager) => {

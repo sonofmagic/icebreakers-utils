@@ -1,18 +1,17 @@
-import { expect, test } from 'vitest'
-import { createFsFromVolume, Volume } from 'memfs'
+import fs from 'node:fs'
+import path from 'node:path'
+import { expect, it } from 'vitest'
+import { Volume, createFsFromVolume } from 'memfs'
 import webpack from 'webpack'
-import fs from 'fs'
-import path from 'path'
 import compile from './helper/compile'
 import readAssets from './helper/readAssets'
-
-const { createLoader } = require('../')
+import { createLoader } from '@/index'
 
 const resolve = (p: string) => path.resolve(__dirname, p)
 // jest.setTimeout(60_000)
-test('simple functional loader', async function () {
-  const markHTML = Date.now() + '_html_' + Math.random()
-  const markTs = Date.now() + '_ts_' + Math.random()
+it('simple functional loader', async () => {
+  const markHTML = `${Date.now()}_html_${Math.random()}`
+  const markTs = `${Date.now()}_ts_${Math.random()}`
   const simple: webpack.LoaderDefinitionFunction = function (source, map) {
     expect(source).toEqual(fs.readFileSync(resolve('test.ts'), 'utf8'))
     expect('resource' in this).toEqual(true)
@@ -21,9 +20,9 @@ test('simple functional loader', async function () {
 
     this.callback(
       null,
-      source.replace(/:\s*\w+? /g, ' ') + `/*${markTs}*/`,
+      `${source.replace(/:\s*\w+ /g, ' ')}/*${markTs}*/`,
       map,
-      { foo: 'bar', webpackAST: {} }
+      { foo: 'bar', webpackAST: {} },
     )
   }
   const compiler = webpack({
@@ -32,10 +31,10 @@ test('simple functional loader', async function () {
     entry: resolve('main.js'),
     output: {
       path: path.resolve(__dirname, './dist'),
-      filename: '_main.js'
+      filename: '_main.js',
     },
     optimization: {
-      minimize: false
+      minimize: false,
     },
     module: {
       rules: [
@@ -43,21 +42,21 @@ test('simple functional loader', async function () {
           test: /\.html$/,
           use: createLoader(function (source) {
             expect(source).toEqual(
-              fs.readFileSync(resolve('test.html'), 'utf8')
+              fs.readFileSync(resolve('test.html'), 'utf8'),
             )
             expect('resourceQuery' in this).toEqual(true)
             expect(this.webpack).toEqual(true)
             expect(this.loaderIndex).toEqual(0)
 
             return `module.exports = ${JSON.stringify(
-              source.trim() + markHTML
+              source.trim() + markHTML,
             )}`
-          } as webpack.LoaderDefinitionFunction)
+          } as webpack.LoaderDefinitionFunction),
         },
         {
           test: /\.ts$/,
           use: [
-            createLoader(function (source, map, meta) {
+            createLoader(function (source, _map, meta) {
               expect(source.indexOf(markTs) > 0).toBe(true)
               expect('resourcePath' in this).toBe(true)
               expect(this.webpack).toBe(true)
@@ -66,12 +65,13 @@ test('simple functional loader', async function () {
 
               return source
             } as webpack.LoaderDefinitionFunction),
-            createLoader(simple)
-          ]
-        }
-      ]
-    }
+            createLoader(simple),
+          ],
+        },
+      ],
+    },
   })
+  // @ts-ignore
   compiler.outputFileSystem = createFsFromVolume(new Volume())
 
   const stats = await compile(compiler)
@@ -98,27 +98,29 @@ test('simple functional loader', async function () {
   // })
 })
 
-test('show throw error', () => {
-  const errorTest =
-    /create-functional-loader: parameter passed to "createLoader" must be an ES5 function/
+it('show throw error', () => {
+  const errorTest
+    = /create-functional-loader: parameter passed to "createLoader" must be an ES5 function/
   expect(() => {
     createLoader(() => {})
   }).toThrowError(errorTest)
 
   expect(() => {
+    // @ts-ignore
     createLoader(async () => {})
   }).toThrowError(errorTest)
 
   expect(() => {
     createLoader(
+      // @ts-ignore
       class {
-        // eslint-disable-next-line no-useless-constructor
         constructor() {}
-      }
+      },
     )
   }).toThrowError(errorTest)
 
   expect(() => {
+    // @ts-ignore
     createLoader(this)
   }).toThrowError(errorTest)
 })

@@ -24,7 +24,7 @@
     "scss"
   ],
   "scripts": {
-    "test": "jest"
+    "test": "vitest run"
   },
   "publishConfig": {
     "access": "public",

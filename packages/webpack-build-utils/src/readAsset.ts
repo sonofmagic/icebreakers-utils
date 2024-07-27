@@ -1,5 +1,6 @@
 import path from 'node:path'
 import type { Compiler, Stats } from './types'
+
 export default (asset: string, compiler: Compiler, stats: Stats) => {
   const usedFs = compiler.outputFileSystem
   const outputPath = stats.compilation.outputOptions.path
@@ -16,7 +17,8 @@ export default (asset: string, compiler: Compiler, stats: Stats) => {
   try {
     // @ts-ignore
     data = usedFs.readFileSync(path.join(outputPath, targetFile)).toString()
-  } catch (error) {
+  }
+  catch (error) {
     data = (error as Error).toString()
   }
 
