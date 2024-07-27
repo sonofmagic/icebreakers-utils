@@ -1,23 +1,25 @@
 {
-  "$schema": "https://turborepo.org/schema.json",
-  "baseBranch": "origin/main",
-  "pipeline": {
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": [".next/**"]
-    },
-    "test": {
-      "dependsOn": ["build"],
-      "outputs": [],
-      "inputs": ["src/**/*.tsx", "src/**/*.ts", "test/**/*.ts", "test/**/*.tsx"]
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "dist/**"
+      ]
     },
     "lint": {
       "outputs": []
     },
-    "deploy": {
-      "dependsOn": ["build", "test", "lint"],
-      "outputs": []
+    "dev": {
+      "cache": false
     },
-    "dev": {}
+    "test": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "release": {}
   }
 }
