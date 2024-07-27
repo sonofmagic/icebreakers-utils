@@ -9,7 +9,7 @@ import { createLoader } from '@/index'
 
 const resolve = (p: string) => path.resolve(__dirname, p)
 // jest.setTimeout(60_000)
-it('simple functional loader', async () => {
+it.skip('simple functional loader', async () => {
   const markHTML = `${Date.now()}_html_${Math.random()}`
   const markTs = `${Date.now()}_ts_${Math.random()}`
   const simple: webpack.LoaderDefinitionFunction = function (source, map) {

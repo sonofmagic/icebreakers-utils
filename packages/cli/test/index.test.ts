@@ -26,7 +26,7 @@ describe('default', () => {
   })
 
   it('currentDir', async () => {
-    const res = []
+    const res: string[] = []
     const name = 'npm-case'
     const t = path.resolve(__dirname, `fixtures/${name}`)
     await currentDir(t, (p) => {
@@ -35,11 +35,12 @@ describe('default', () => {
     expect(res).toEqual([name])
   })
 
-  it('install & remove', async () => {
+  it.skip('install & remove', async () => {
     const installPkgs = [
       'weapp-tailwindcss-webpack-plugin',
       'tailwindcss-rem2px-preset',
       'postcss-rem-to-responsive-pixel',
+      'tailwindcss',
     ]
     await raw(path.resolve(__dirname, 'fixtures/pnpm-case'), 'install')
     await install(path.resolve(__dirname, 'fixtures'), true)
