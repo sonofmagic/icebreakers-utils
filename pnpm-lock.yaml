@@ -161,7 +161,7 @@ importers:
         version: 1.2.8
       tencentcloud-sdk-nodejs-cdn:
         specifier: ^4.0.795
-        version: 4.0.905
+        version: 4.0.906
     devDependencies:
       '@icebreakers/rollup':
         specifier: '*'
@@ -5458,12 +5458,12 @@ packages:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
     engines: {node: '>=6'}
 
-  tencentcloud-sdk-nodejs-cdn@4.0.905:
-    resolution: {integrity: sha512-SuTx10Rb2l32uaTSR9ahth0Aps+MsZ237fgddmzcTPp+UZtzldgVzZoOCkQ7gH/rPhOqvZe6b9TjuFRYCnm2Dg==}
+  tencentcloud-sdk-nodejs-cdn@4.0.906:
+    resolution: {integrity: sha512-gINYsqLnifzpBEf5ry3NniWBh+PocoACk9tlllzHxJA/68AcvKgIoH8SDJcQAYHTaMIfmQRlZY8nAfNxwKpPZw==}
     engines: {node: '>=10'}
 
-  tencentcloud-sdk-nodejs-common@4.0.905:
-    resolution: {integrity: sha512-5SKDrnJzZhHMcFwAUE70y9eJKkoJpGz45pGrKVKUuqZ8LPmViLnOZEI3kV9/dPQsBrgFj2RawvI4prBkxFtfsg==}
+  tencentcloud-sdk-nodejs-common@4.0.906:
+    resolution: {integrity: sha512-CnL6op1H6n1yWBAERB9MVMS2i1Ki/Sp8EIxoGzPLSdWgxAQ/d/hTmHErmUIPoHgOFLeYkGwtXHtBhYuxXo7uZg==}
     engines: {node: '>=10'}
 
   term-size@2.2.1:
@@ -11988,15 +11988,15 @@ snapshots:
 
   tapable@2.2.1: {}
 
-  tencentcloud-sdk-nodejs-cdn@4.0.905:
+  tencentcloud-sdk-nodejs-cdn@4.0.906:
     dependencies:
-      tencentcloud-sdk-nodejs-common: 4.0.905
+      tencentcloud-sdk-nodejs-common: 4.0.906
       tslib: 1.13.0
     transitivePeerDependencies:
       - encoding
       - supports-color
 
-  tencentcloud-sdk-nodejs-common@4.0.905:
+  tencentcloud-sdk-nodejs-common@4.0.906:
     dependencies:
       form-data: 3.0.1
       get-stream: 6.0.1
