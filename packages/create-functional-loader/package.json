@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@types/loader-utils": "^2.0.6",
-    "loader-utils": "^2.0.3"
+    "loader-utils": "^3.0.0"
   },
   "devDependencies": {
     "@icebreakers/rollup": "*",
