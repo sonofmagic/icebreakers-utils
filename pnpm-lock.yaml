@@ -79,10 +79,10 @@ importers:
         version: 2.6.3
       tsup:
         specifier: ^8.2.3
-        version: 8.2.4(jiti@1.21.6)(postcss@8.4.40)(tsx@4.16.2)(typescript@5.5.4)(yaml@2.5.0)
+        version: 8.2.4(jiti@1.21.6)(postcss@8.4.40)(tsx@4.16.5)(typescript@5.5.4)(yaml@2.5.0)
       tsx:
         specifier: ^4.16.2
-        version: 4.16.2
+        version: 4.16.5
       turbo:
         specifier: ^2.0.9
         version: 2.0.10
@@ -3440,9 +3440,6 @@ packages:
     resolution: {integrity: sha512-g0QYk1dZBxGwk+Ngc+ltRH2IBp2f7zBkBMBJZCDerh6EhlhSR6+9irMCuT/09zD6qkarHUSn529sK/yL4S27mg==}
     engines: {node: '>= 0.4'}
 
-  get-tsconfig@4.7.5:
-    resolution: {integrity: sha512-ZCuZCnlqNzjb4QprAzXKdpp/gh6KTxSJuw3IBsPnV/7fV4NxC9ckB+vPTt8w7fJA0TaSD7c55BR47JD6MEDyDw==}
-
   get-tsconfig@4.7.6:
     resolution: {integrity: sha512-ZAqrLlu18NbDdRaHq+AKXzAmqIUPswPWKUchfytdAjiRFnCe5ojG2bstg6mRiZabkKfCoL/e98pbBELIV/YCeA==}
 
@@ -5698,8 +5695,8 @@ packages:
       typescript:
         optional: true
 
-  tsx@4.16.2:
-    resolution: {integrity: sha512-C1uWweJDgdtX2x600HjaFaucXTilT7tgUZHbOE4+ypskZ1OP8CRCSDkCxG6Vya9EwaFIVagWwpaVAn5wzypaqQ==}
+  tsx@4.16.5:
+    resolution: {integrity: sha512-ArsiAQHEW2iGaqZ8fTA1nX0a+lN5mNTyuGRRO6OW3H/Yno1y9/t1f9YOI1Cfoqz63VAthn++ZYcbDP7jPflc+A==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -9824,10 +9821,6 @@ snapshots:
       es-errors: 1.3.0
       get-intrinsic: 1.2.4
 
-  get-tsconfig@4.7.5:
-    dependencies:
-      resolve-pkg-maps: 1.0.0
-
   get-tsconfig@4.7.6:
     dependencies:
       resolve-pkg-maps: 1.0.0
@@ -11424,13 +11417,13 @@ snapshots:
       postcss: 8.4.40
       ts-node: 10.9.2(@types/node@20.14.13)(typescript@5.5.4)
 
-  postcss-load-config@6.0.1(jiti@1.21.6)(postcss@8.4.40)(tsx@4.16.2)(yaml@2.5.0):
+  postcss-load-config@6.0.1(jiti@1.21.6)(postcss@8.4.40)(tsx@4.16.5)(yaml@2.5.0):
     dependencies:
       lilconfig: 3.1.2
     optionalDependencies:
       jiti: 1.21.6
       postcss: 8.4.40
-      tsx: 4.16.2
+      tsx: 4.16.5
       yaml: 2.5.0
 
   postcss-nested@6.2.0(postcss@8.4.40):
@@ -12264,7 +12257,7 @@ snapshots:
 
   tslib@2.6.3: {}
 
-  tsup@8.2.4(jiti@1.21.6)(postcss@8.4.40)(tsx@4.16.2)(typescript@5.5.4)(yaml@2.5.0):
+  tsup@8.2.4(jiti@1.21.6)(postcss@8.4.40)(tsx@4.16.5)(typescript@5.5.4)(yaml@2.5.0):
     dependencies:
       bundle-require: 5.0.0(esbuild@0.23.0)
       cac: 6.7.14
@@ -12276,7 +12269,7 @@ snapshots:
       globby: 11.1.0
       joycon: 3.1.1
       picocolors: 1.0.1
-      postcss-load-config: 6.0.1(jiti@1.21.6)(postcss@8.4.40)(tsx@4.16.2)(yaml@2.5.0)
+      postcss-load-config: 6.0.1(jiti@1.21.6)(postcss@8.4.40)(tsx@4.16.5)(yaml@2.5.0)
       resolve-from: 5.0.0
       rollup: 4.19.2
       source-map: 0.8.0-beta.0
@@ -12291,10 +12284,10 @@ snapshots:
       - tsx
       - yaml
 
-  tsx@4.16.2:
+  tsx@4.16.5:
     dependencies:
       esbuild: 0.21.5
-      get-tsconfig: 4.7.5
+      get-tsconfig: 4.7.6
     optionalDependencies:
       fsevents: 2.3.3
 
