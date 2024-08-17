@@ -1,4 +1,0 @@
-{
-  "extends": "@icebreakers/tsconfig/tsconfig.cjs.json",
-  "include": ["src"]
-}
