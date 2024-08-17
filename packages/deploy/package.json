@@ -1,6 +1,6 @@
 {
   "name": "@icebreakers/deploy",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "icebreaker's deploy frontend to cdn pkg",
   "author": "SonOfMagic <qq1324318532@gmail.com>",
   "license": "MIT",
