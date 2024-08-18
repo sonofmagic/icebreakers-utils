@@ -1,16 +1,19 @@
+import fs from 'node:fs'
+import path from 'node:path'
+import process from 'node:process'
 import COS from 'cos-nodejs-sdk-v5'
 import klaw from 'klaw'
-import fs from 'fs'
-import path from 'path'
 import cliProgress from 'cli-progress'
 import { directorySize } from '../util'
 import { isWindows } from '../env'
 import type { CleanWebsiteContentParams, UploadDirOptions } from './types'
+import type {
+  ITencentCDNClient,
+  PurgePathCacheRequest,
+  PurgeUrlsCacheRequest,
+} from './cdn'
 import {
   TencentCDNClient,
-  ITencentCDNClient,
-  PurgeUrlsCacheRequest,
-  PurgePathCacheRequest
 } from './cdn'
 
 export class TencentCOSWebsiteDeployer {
@@ -21,8 +24,8 @@ export class TencentCOSWebsiteDeployer {
     this.cdn = new TencentCDNClient({
       credential: {
         secretId: options.SecretId,
-        secretKey: options.SecretKey
-      }
+        secretKey: options.SecretKey,
+      },
     })
   }
 
@@ -55,24 +58,25 @@ export class TencentCOSWebsiteDeployer {
       Region,
       Marker,
       MaxKeys,
-      Prefix
+      Prefix,
     })
     if (getBucketRes.Contents.length) {
       const deleteMultipleObjectRes = await this.deleteMultipleObject({
         Bucket,
         Region,
-        Objects: getBucketRes.Contents.map((x) => ({
-          Key: x.Key
+        Objects: getBucketRes.Contents.map(x => ({
+          Key: x.Key,
         })),
         // @ts-ignore
-        Quiet: true
+        Quiet: true,
       })
       return deleteMultipleObjectRes
-    } else {
+    }
+    else {
       const result: COS.DeleteMultipleObjectResult = {
         Deleted: [],
         Error: [],
-        statusCode: 200
+        statusCode: 200,
       }
       return result
     }
@@ -85,7 +89,7 @@ export class TencentCOSWebsiteDeployer {
       targetDir = 'dist',
       CacheControl = 'public,max-age=31536000',
       root = process.cwd(),
-      clean = false
+      clean = false,
     } = options
     if (!Bucket) {
       throw new Error('Bucket is required')
@@ -102,7 +106,7 @@ export class TencentCOSWebsiteDeployer {
     if (clean) {
       await this.cleanWebsiteContent({
         Bucket,
-        Region
+        Region,
       })
       // TODO
       console.log('clean successfully!')
@@ -112,7 +116,7 @@ export class TencentCOSWebsiteDeployer {
     const totalSize = await directorySize(absTargetPath)
     const bar = new cliProgress.SingleBar(
       {},
-      cliProgress.Presets.shades_classic
+      cliProgress.Presets.shades_classic,
     )
     bar.start(100, 0)
     // --------------------------------------------------
@@ -129,25 +133,26 @@ export class TencentCOSWebsiteDeployer {
           Key,
           Body: fs.createReadStream(absPath),
           Bucket,
-          Region
+          Region,
         }
         // .html?文件不缓存
         if (/\.html?$/.test(absPath)) {
           opt.CacheControl = 'no-cache'
-        } else {
+        }
+        else {
           opt.CacheControl = CacheControl
         }
         res.push(await this.putObject(opt))
 
         uploadSize += stats.size
-        bar.update(parseFloat(((uploadSize * 100) / totalSize).toFixed(2)))
+        bar.update(Number.parseFloat(((uploadSize * 100) / totalSize).toFixed(2)))
       }
     }
     bar.stop()
     console.log('Deploy successfully!')
     const website = await this.getBucketWebsite({
       Bucket,
-      Region
+      Region,
     })
     if (website.statusCode === 200 && website.WebsiteConfiguration) {
       console.log(`https://${Bucket}.cos-website.${Region}.myqcloud.com`)
