@@ -2,8 +2,16 @@
   "name": "@icebreakers/postcss",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "'ice breaker' <'1324318532@qq.com'>",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonofmagic/icebreakers-utils.git",
+    "directory": "packages/postcss"
+  },
+  "bugs": {
+    "url": "https://github.com/sonofmagic/icebreakers-utils/issues"
+  },
   "keywords": [],
   "files": [
     "dist"

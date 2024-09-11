@@ -2,12 +2,16 @@
   "name": "@icebreakers/deploy",
   "version": "0.1.6",
   "description": "icebreaker's deploy frontend to cdn pkg",
-  "author": "SonOfMagic <qq1324318532@gmail.com>",
+  "author": "'ice breaker' <'1324318532@qq.com'>",
   "license": "MIT",
   "homepage": "https://github.com/sonofmagic/utils/tree/main/packages/deploy",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sonofmagic/utils.git"
+    "url": "git+https://github.com/sonofmagic/icebreakers-utils.git",
+    "directory": "packages/deploy"
+  },
+  "bugs": {
+    "url": "https://github.com/sonofmagic/icebreakers-utils/issues"
   },
   "keywords": [
     "deploy"

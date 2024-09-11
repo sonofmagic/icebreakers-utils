@@ -2,15 +2,16 @@
   "name": "create-functional-loader",
   "version": "0.1.4",
   "description": "forked from `simple-functional-loader`, fix some bugs and rewrite by typescript",
-  "author": "SonOfMagic <qq1324318532@gmail.com>",
+  "author": "'ice breaker' <'1324318532@qq.com'>",
   "license": "ISC",
   "homepage": "https://github.com/sonofmagic/utils/tree/main/packages/create-functional-loader#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sonofmagic/utils.git"
+    "url": "git+https://github.com/sonofmagic/icebreakers-utils.git",
+    "directory": "packages/create-functional-loader"
   },
   "bugs": {
-    "url": "https://github.com/sonofmagic/utils/issues"
+    "url": "https://github.com/sonofmagic/icebreakers-utils/issues"
   },
   "keywords": [
     "webpack",

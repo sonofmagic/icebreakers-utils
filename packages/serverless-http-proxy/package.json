@@ -2,8 +2,16 @@
   "name": "@icebreakers/serverless-http-proxy",
   "version": "0.0.2",
   "description": "deploy serverless http proxy on any platform",
-  "author": "",
+  "author": "'ice breaker' <'1324318532@qq.com'>",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonofmagic/icebreakers-utils.git",
+    "directory": "packages/serverless-http-proxy"
+  },
+  "bugs": {
+    "url": "https://github.com/sonofmagic/icebreakers-utils/issues"
+  },
   "keywords": [],
   "module": "dist/index.js",
   "types": "dist/types/index.d.ts",

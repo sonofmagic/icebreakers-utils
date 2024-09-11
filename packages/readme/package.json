@@ -3,15 +3,16 @@
   "type": "module",
   "version": "0.1.0",
   "description": "icebreaker's readme markdown generator",
-  "author": "SonOfMagic <qq1324318532@gmail.com>",
+  "author": "'ice breaker' <'1324318532@qq.com'>",
   "license": "ISC",
   "homepage": "https://github.com/sonofmagic/utils/tree/main/packages/readme#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sonofmagic/utils.git"
+    "url": "git+https://github.com/sonofmagic/icebreakers-utils.git",
+    "directory": "packages/readme"
   },
   "bugs": {
-    "url": "https://github.com/sonofmagic/utils/issues"
+    "url": "https://github.com/sonofmagic/icebreakers-utils/issues"
   },
   "keywords": [],
   "main": "dist/index.cjs",

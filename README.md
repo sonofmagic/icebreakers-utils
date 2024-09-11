@@ -1,16 +1,42 @@
 # icebreakers-utils
 
-## 项目目录
+## Projects
 
-- `_template`: 模板项目
-- `cli`: 自定义安装包的命令行工具，本质上是一段脚本，来让不同的子包根据 `lock` 文件的不同，自动选择 `npm`,`yarn`,`pnpm`
-- `deploy`: 前端 `OSS` 静态网页部署包，暂时只支持腾讯云 `COS`
-- `postcss`: 自用 `postcss plugin hub`， 目前里面暂时只放了一个 `px2viewport` 来给移动端使用
-- `rollup`: 预设的 `rollup` 策略
-- `serverless-http-proxy`: 快速部署一个 `serverless` 应用的代理函数
-- `tsconfig`: 预设的 `tsconfig` 配置，用于继承
-- `weapp-ide-cli`: 二次封装的微信开发者工具 `cli` 来让它更加的好用
+- [@icebreakers/cli](packages/cli) - icebreaker's cli
+- [npm-case](packages/cli/test/fixtures/npm-case)
+- [pnpm-case](packages/cli/test/fixtures/pnpm-case)
+- [yarn-case](packages/cli/test/fixtures/yarn-case)
+- [create-functional-loader](packages/create-functional-loader) - forked from `simple-functional-loader`, fix some bugs and rewrite by typescript
+- [@icebreakers/deploy](packages/deploy) - icebreaker's deploy frontend to cdn pkg
+- [@icebreakers/postcss](packages/postcss)
+- [promisify-loader-runner](packages/promisify-loader-runner) - a promisify wrapper of `loader-runner`
+- [@icebreakers/readme](packages/readme) - icebreaker's readme markdown generator
+- [@icebreakers/rollup](packages/rollup) - icebreaker's rollup preset
+- [@icebreakers/sass-utils](packages/sass-utils) - This is a collection of Sass utility functions
+- [@icebreakers/serverless-http-proxy](packages/serverless-http-proxy) - deploy serverless http proxy on any platform
+- [@icebreakers/tsconfig](packages/tsconfig) - icebreaker's tsconfig
+- [webpack-build-utils](packages/webpack-build-utils) - webpack-build-utils for build and test
 
-## 使用方法
+## Contributing
 
-具体见各个项目的 `README.md` 文件
+Contributions Welcome! You can contribute in the following ways.
+
+- Create an Issue - Propose a new feature. Report a bug.
+- Pull Request - Fix a bug and typo. Refactor the code.
+- Create third-party middleware - Instruct below.
+- Share - Share your thoughts on the Blog, X, and others.
+- Make your application - Please try to use icebreakers-utils.
+
+For more details, see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Contributors
+
+Thanks to [all contributors](https://github.com/sonofmagic/icebreakers-utils/graphs/contributors)!
+
+## Authors
+
+'ice breaker' <'1324318532@qq.com'>
+
+## License
+
+Distributed under the MIT License. See [LICENSE](LICENSE) for more information.

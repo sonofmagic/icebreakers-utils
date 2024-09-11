@@ -2,8 +2,16 @@
   "name": "@icebreakers/tsconfig",
   "version": "0.0.7",
   "description": "icebreaker's tsconfig",
-  "author": "",
+  "author": "'ice breaker' <'1324318532@qq.com'>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonofmagic/icebreakers-utils.git",
+    "directory": "packages/tsconfig"
+  },
+  "bugs": {
+    "url": "https://github.com/sonofmagic/icebreakers-utils/issues"
+  },
   "keywords": [
     "tsconfig",
     "typescript",

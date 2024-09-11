@@ -2,8 +2,16 @@
   "name": "@icebreakers/cli",
   "version": "0.1.1",
   "description": "icebreaker's cli",
-  "author": "SonOfMagic <qq1324318532@gmail.com>",
+  "author": "'ice breaker' <'1324318532@qq.com'>",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonofmagic/icebreakers-utils.git",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/sonofmagic/icebreakers-utils/issues"
+  },
   "keywords": [
     "cli",
     "yarn",

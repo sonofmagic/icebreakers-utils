@@ -2,15 +2,16 @@
   "name": "promisify-loader-runner",
   "version": "1.0.1",
   "description": "a promisify wrapper of `loader-runner`",
-  "author": "SonOfMagic <qq1324318532@gmail.com>",
+  "author": "'ice breaker' <'1324318532@qq.com'>",
   "license": "MIT",
   "homepage": "https://github.com/sonofmagic/utils/tree/main/packages/promisify-loader-runner#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sonofmagic/utils.git"
+    "url": "git+https://github.com/sonofmagic/icebreakers-utils.git",
+    "directory": "packages/promisify-loader-runner"
   },
   "bugs": {
-    "url": "https://github.com/sonofmagic/utils/issues"
+    "url": "https://github.com/sonofmagic/icebreakers-utils/issues"
   },
   "keywords": [
     "webpack",

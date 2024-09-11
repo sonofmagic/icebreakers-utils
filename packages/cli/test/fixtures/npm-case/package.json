@@ -2,15 +2,24 @@
   "name": "npm-case",
   "version": "1.0.0",
   "description": "",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "keywords": [],
-  "author": "",
+  "author": "'ice breaker' <'1324318532@qq.com'>",
   "license": "ISC",
   "devDependencies": {
     "weapp-tailwindcss-webpack-plugin": "^3.4.0"
   },
-  "packageManager": "npm@10.7.0"
+  "packageManager": "npm@10.7.0",
+  "bugs": {
+    "url": "https://github.com/sonofmagic/icebreakers-utils/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonofmagic/icebreakers-utils.git",
+    "directory": "packages/cli/test/fixtures/npm-case"
+  }
 }
