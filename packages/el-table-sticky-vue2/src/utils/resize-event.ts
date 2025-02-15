@@ -4,11 +4,11 @@ import { debounce } from 'throttle-debounce'
 const isServer = typeof window === 'undefined'
 
 /* istanbul ignore next */
-function resizeHandler(entries) {
+function resizeHandler(entries: any) {
   for (const entry of entries) {
     const listeners = entry.target.__resizeListeners__ || []
     if (listeners.length) {
-      listeners.forEach((fn) => {
+      listeners.forEach((fn: () => void) => {
         fn()
       })
     }
@@ -16,7 +16,7 @@ function resizeHandler(entries) {
 }
 
 /* istanbul ignore next */
-export function addResizeListener(element, fn) {
+export function addResizeListener(element: any, fn: any) {
   if (isServer) {
     return
   }
@@ -31,7 +31,7 @@ export function addResizeListener(element, fn) {
 }
 
 /* istanbul ignore next */
-export function removeResizeListener(element, fn) {
+export function removeResizeListener(element: any, fn: any) {
   if (!element || !element.__resizeListeners__) {
     return
   }

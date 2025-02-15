@@ -2,7 +2,6 @@
   "name": "@icebreakers/el-table-sticky-vue2",
   "type": "module",
   "version": "0.0.0",
-  "private": true,
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",

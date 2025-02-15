@@ -1,9 +1,6 @@
-/**
- * Convert value to px or string, if value is number
- * @param {string | number} value input value
- * @returns {string}
- */
-export function convertToPx(value) {
+import type { DirectiveBinding, VNode } from 'vue'
+
+export function convertToPx(value: number | string) {
   if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
     return `${value}px`
   }
@@ -15,9 +12,10 @@ export function convertToPx(value) {
  * @param {object} binding binding
  * @param {object} vnode vnode
  */
-export function checkElTable(binding, vnode) {
+export function checkElTable(binding: DirectiveBinding<object>, vnode: VNode) {
   if (
     vnode?.componentOptions?.tag === 'el-table'
+    // @ts-ignore
     || vnode.elm.classList.contains('el-table')
   ) {
     return

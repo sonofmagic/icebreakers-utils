@@ -1,4 +1,8 @@
 import type { VueConstructor } from 'vue'
+import type { HeightAdaptiveOptions } from './height-adaptive'
+import type { StickyFooterOptions } from './sticky-footer'
+import type { StickyHeaderOptions } from './sticky-header'
+import type { StickyScrollerOptions } from './sticky-scroller'
 import HeightAdaptive from './height-adaptive'
 import StickyFooter from './sticky-footer'
 import StickyHeader from './sticky-header'
@@ -10,6 +14,13 @@ export {
   StickyFooter,
   StickyHeader,
   StickyScroller,
+}
+
+export interface DirectiveOptions {
+  StickyHeader?: StickyHeaderOptions
+  StickyFooter?: StickyFooterOptions
+  StickyScroller?: StickyScrollerOptions
+  HeightAdaptive?: HeightAdaptiveOptions
 }
 
 const plugin = {
@@ -34,7 +45,7 @@ const plugin = {
    * @param {number} [options.HeightAdaptive.offsetBottom] the offset of the table from the bottom of the page
    * @example <el-table v-height-adaptive="{ offsetBottom: 0 }" height="100px">...</el-table>
    */
-  install(Vue: VueConstructor, options = {}) {
+  install(Vue: VueConstructor, options: DirectiveOptions = {}) {
     const {
       StickyHeader: headerOptions = {},
       StickyFooter: footerOptions = {},

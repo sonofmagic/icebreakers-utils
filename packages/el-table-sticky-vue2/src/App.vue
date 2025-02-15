@@ -43,13 +43,6 @@ export default {
           <el-link :underline="false" @click="jump($homeRoute)">
             EL-TABLE-STICKY {{ packageVersion }}
           </el-link>
-          <el-link :underline="false" href="https://github.com/Lruihao/el-table-sticky" target="_blank">
-            <img
-              src="https://img.shields.io/github/stars/Lruihao/el-table-sticky?style=social"
-              alt="GitHub stars"
-              style="vertical-align: middle;margin-left: 0.5rem;"
-            >
-          </el-link>
         </div>
         <el-badge class="btn-menu" @click.native="drawer = true">
           <i class="el-icon-menu" />

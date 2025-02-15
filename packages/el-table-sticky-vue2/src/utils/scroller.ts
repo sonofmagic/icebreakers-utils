@@ -1,5 +1,7 @@
+// @ts-nocheck
 import { convertToPx } from '@/utils'
 // reference https://github.com/noeldelgado/gemini-scrollbar
+// @ts-ignore
 import GeminiScrollbar from 'gemini-scrollbar'
 import { throttle } from 'throttle-debounce'
 
@@ -10,7 +12,7 @@ const THROTTLE_TIME = 1000 / 60
  * @classdesc sticky horizontal scrollbar for el-table
  */
 export default class Scroller {
-  constructor(el, binding, vnode, offsetBottom = 0) {
+  constructor(el: any, binding: any, vnode: any, offsetBottom = 0) {
     this.offsetBottom = convertToPx(offsetBottom)
     this.#createScroller(el, binding, vnode)
   }
@@ -21,7 +23,7 @@ export default class Scroller {
    * @param {object} binding binding
    * @param {object} vnode vnode
    */
-  async #createScroller(el, binding, vnode) {
+  async #createScroller(el: { scroller: any, dataset: { stickyScroll: string }, querySelector: (arg0: string) => HTMLDivElement, appendChild: (arg0: any) => void }, binding: { value: any }, vnode: { componentInstance: { $nextTick: () => any } }) {
     // create scroller only once for the same el-table
     if (el.scroller) {
       return
@@ -58,7 +60,7 @@ export default class Scroller {
    * Init scroll bar
    * @param {object} binding binding
    */
-  #initScrollBar(binding) {
+  #initScrollBar(binding: { modifiers: { always?: false | undefined } }) {
     const { always = false } = binding.modifiers
     this.scrollbar = new GeminiScrollbar({
       element: this.scroller,

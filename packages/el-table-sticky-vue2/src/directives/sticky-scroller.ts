@@ -1,5 +1,11 @@
+import type { StickyOptions } from '@/utils/sticky'
+import type { ObjectDirective } from 'vue'
 import { checkElTable } from '@/utils'
 import Scroller from '@/utils/scroller'
+
+export interface StickyScrollerOptions extends StickyOptions {
+
+}
 
 /**
  * @class StickyScroller
@@ -7,8 +13,8 @@ import Scroller from '@/utils/scroller'
  */
 export default class StickyScroller {
   static name = 'StickyScroller'
-
-  constructor({ offsetBottom = 0 }) {
+  offsetBottom: number
+  constructor({ offsetBottom = 0 }: StickyScrollerOptions) {
     this.offsetBottom = offsetBottom
   }
 
@@ -16,7 +22,7 @@ export default class StickyScroller {
    * Init directive config for Vue
    * @returns {object} directive config
    */
-  init() {
+  init(): ObjectDirective {
     return {
       inserted: (el, binding, vnode) => {
         checkElTable(binding, vnode)

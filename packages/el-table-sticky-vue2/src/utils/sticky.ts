@@ -1,5 +1,12 @@
+// @ts-nocheck
+import type { ObjectDirective } from 'vue'
 import { checkElTable, convertToPx } from '@/utils'
 import Scroller from '@/utils/scroller'
+
+export interface StickyOptions {
+  offsetTop?: number
+  offsetBottom?: number
+}
 
 /**
  * @class Sticky
@@ -143,7 +150,7 @@ export default class Sticky {
    * Init directive config for Vue
    * @returns {object} directive config
    */
-  init() {
+  init(): ObjectDirective {
     return {
       inserted: (el, binding, vnode) => {
         checkElTable(binding, vnode)
