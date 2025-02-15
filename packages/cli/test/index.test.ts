@@ -1,5 +1,5 @@
-import path from 'node:path'
 import fs from 'node:fs'
+import path from 'node:path'
 import { currentDir, eachDir, install, raw, remove, run } from '@/index'
 
 function getPkgJson(p: string) {

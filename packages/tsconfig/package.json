@@ -23,7 +23,7 @@
   ],
   "scripts": {},
   "dependencies": {
-    "@tsconfig/recommended": "^1.0.3"
+    "@tsconfig/recommended": "^1.0.8"
   },
   "publishConfig": {
     "access": "public",

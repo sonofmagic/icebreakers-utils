@@ -27,7 +27,6 @@ const compiler = webpack(webpackConfig)
 // get memory compiler
 // const compiler = getMemfsCompiler5(webpackConfig)
 
-
 // promisify webpack.run
 const stats = await compile(compiler)
 
@@ -38,8 +37,6 @@ expect(getErrors(stats)).toMatchSnapshot('errors')
 // get all warnings
 expect(getWarnings(stats)).toMatchSnapshot('warnings')
 
-
-
 // createLoader, quickly create a simple loader
 // webpackConfig
 module: {
@@ -47,8 +44,7 @@ module: {
     {
       test: /\.m?js$/,
       // https://webpack.js.org/configuration/module/#useentry
-      use: createLoader(function (source,map,meta) {
-        
+      use: createLoader((source, map, meta) => {
         return source
       })
     }

@@ -1,8 +1,8 @@
+import path from 'node:path'
 import { TencentCOSWebsiteDeployer } from '@/index'
-import path from 'path'
 
 require('dotenv').config({
-  path: path.resolve(__dirname, '.env')
+  path: path.resolve(__dirname, '.env'),
 })
 // const { TencentCOSWebsiteDeployer } = require('../dist/types')
 describe('default', () => {
@@ -11,7 +11,7 @@ describe('default', () => {
     const { TENCENT_SECRET_ID, TENCENT_SECRET_KEY } = process.env
     deployer = new TencentCOSWebsiteDeployer({
       SecretKey: TENCENT_SECRET_KEY,
-      SecretId: TENCENT_SECRET_ID
+      SecretId: TENCENT_SECRET_ID,
     })
   })
   // test('batch delete list', async () => {
@@ -24,7 +24,7 @@ describe('default', () => {
   //   expect(res.Error.length).toBe(0)
   // })
 
-  test('export functions', () => {
+  it('export functions', () => {
     expect(deployer.cdn).toBeTruthy()
     expect(deployer.cos).toBeTruthy()
     expect(deployer.purgePathCache).toBeTruthy()

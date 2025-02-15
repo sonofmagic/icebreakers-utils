@@ -1,5 +1,5 @@
+import { createFsFromVolume, Volume } from 'memfs'
 import webpack5 from 'webpack'
-import { Volume, createFsFromVolume } from 'memfs'
 // import MemoryFS from 'memory-fs'
 // import webpack4 from 'webpack4'
 

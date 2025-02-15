@@ -1,11 +1,11 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import { createLoader } from '@/index'
+import { createFsFromVolume, Volume } from 'memfs'
 import { expect, it } from 'vitest'
-import { Volume, createFsFromVolume } from 'memfs'
 import webpack from 'webpack'
 import compile from './helper/compile'
 import readAssets from './helper/readAssets'
-import { createLoader } from '@/index'
 
 const resolve = (p: string) => path.resolve(__dirname, p)
 // jest.setTimeout(60_000)

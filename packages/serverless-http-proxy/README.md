@@ -14,8 +14,8 @@ const app = createProxyExpressInstance({
     ws: true,
     changeOrigin: true,
     onProxyRes: (proxyRes) => {
-      proxyRes.headers['x-target-address'] =
-        proxyRes.req.protocol + '//' + proxyRes.req.host + proxyRes.req.path
+      proxyRes.headers['x-target-address']
+        = `${proxyRes.req.protocol}//${proxyRes.req.host}${proxyRes.req.path}`
     },
     pathRewrite: { '^/api': '' }
   }
@@ -56,7 +56,7 @@ vars: # 全局变量
   region: cn-hangzhou
   service:
     name: web-framework
-    description: 'Serverless Devs Web Framework Service'
+    description: Serverless Devs Web Framework Service
 
 services:
   framework:
@@ -70,7 +70,7 @@ services:
       service: ${vars.service}
       function:
         name: http-proxy-server
-        description: 'Serverless Devs Web Framework Function'
+        description: Serverless Devs Web Framework Function
         runtime: nodejs14
         codeUri: ./code
         handler: index.handler

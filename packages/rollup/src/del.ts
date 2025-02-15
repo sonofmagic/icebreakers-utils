@@ -1,6 +1,6 @@
 import type { Options } from 'del'
-import { deleteAsync } from 'del'
 import type { Plugin } from 'rollup'
+import { deleteAsync } from 'del'
 
 export interface DeletePluginOptions extends Options {
   /**

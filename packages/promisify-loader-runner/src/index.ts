@@ -1,10 +1,10 @@
-/* eslint-disable no-redeclare */
-import { getContext, runLoaders as callbackRunLoaders } from 'loader-runner'
 import type {
   RunLoaderOption as InternalRunLoaderOption,
-  RunLoaderResult
+  RunLoaderResult,
 } from 'loader-runner'
-import { promisify } from 'util'
+import { promisify } from 'node:util'
+import { runLoaders as callbackRunLoaders, getContext } from 'loader-runner'
+
 export type * from 'loader-runner'
 
 const promisifyRunLoaders = promisify(callbackRunLoaders)
@@ -22,7 +22,7 @@ function runLoaders(
 ): void
 function runLoaders(
   options: RunLoaderOption,
-  callback?: (err: NodeJS.ErrnoException | null, result: RunLoaderResult) => any
+  callback?: (err: NodeJS.ErrnoException | null, result: RunLoaderResult) => any,
 ) {
   if (callback !== undefined) {
     return callbackRunLoaders(options as InternalRunLoaderOption, callback)

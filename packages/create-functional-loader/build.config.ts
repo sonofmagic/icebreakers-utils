@@ -12,16 +12,16 @@ export default defineBuildConfig({
     cjsBridge: true,
     dts: {
       // https://github.com/unjs/unbuild/issues/135
-      respectExternal: false
+      respectExternal: false,
     },
     output: {
-      exports: 'named'
-    }
+      exports: 'named',
+    },
   },
   alias: {
     // 别名
-    '@': path.resolve(__dirname, './src')
+    '@': path.resolve(__dirname, './src'),
   },
   // dts
-  declaration: true
+  declaration: true,
 })

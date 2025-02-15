@@ -32,7 +32,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "markdown-table": "^3.0.3"
+    "markdown-table": "^3.0.4"
   },
   "devDependencies": {
     "@icebreakers/rollup": "*",

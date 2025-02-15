@@ -1,7 +1,7 @@
 // import { ReadmeRender } from '../dist/index'
 // const { ReadmeRender } = require('..')
 import fs from 'node:fs'
-import { ReadmeRender, collapse } from '@/index'
+import { collapse, ReadmeRender } from '@/index'
 
 describe('readmeRender test', () => {
   beforeEach(() => {

@@ -42,8 +42,8 @@
   "devDependencies": {
     "@icebreakers/rollup": "*",
     "@icebreakers/tsconfig": "*",
-    "memfs": "^4.7.7",
-    "tsd": "^0.31.1",
-    "webpack": "^5.90.3"
+    "memfs": "^4.17.0",
+    "tsd": "^0.31.2",
+    "webpack": "^5.98.0"
   }
 }

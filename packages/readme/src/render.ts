@@ -33,9 +33,9 @@ export class ReadmeRender {
       const tp = getAbsPath(templatePath as string)
       let rawTemplate
         = template
-        ?? fs.readFileSync(tp, {
-          encoding: 'utf-8',
-        })
+          ?? fs.readFileSync(tp, {
+            encoding: 'utf-8',
+          })
       for (let i = 0; i < data.length; i++) {
         const [regex, value] = data[i]
         rawTemplate = rawTemplate.replace(regex, value)

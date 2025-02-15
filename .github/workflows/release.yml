@@ -10,6 +10,11 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 env:
   HUSKY: 0
 
+permissions:
+  pull-requests: write
+  contents: write
+  id-token: write
+
 jobs:
   release:
     name: Release
@@ -23,7 +28,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: pnpm
 
       - name: Install Dependencies
@@ -44,6 +49,6 @@ jobs:
           npm_config_registry: https://registry.npmjs.org
 
       - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

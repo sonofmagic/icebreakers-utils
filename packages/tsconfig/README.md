@@ -52,5 +52,4 @@ my tsconfig
   },
   "include": ["src/**/*", "components/**/*"]
 }
-
 ```

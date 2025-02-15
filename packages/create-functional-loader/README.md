@@ -16,13 +16,13 @@ This is a fork of `simple-functional-loader` but rewrite with `Typescript` for T
 // webpack.config.js
 const { createLoader } = require('create-functional-loader')
 module.exports = {
-  //...
+  // ...
   module: {
     rules: [
       {
         test: /\.html$/,
         use: [
-          createLoader(function(source, map) { // must be an "ES5" function!
+          createLoader((source, map) => { // must be an "ES5" function!
             // use "this" as loaderContext
             return processHTML(source, map) // process source code.
           })

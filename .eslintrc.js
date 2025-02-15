@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ['@icebreakers/eslint-config-ts']
+  extends: ['@icebreakers/eslint-config-ts'],
 }

@@ -1,17 +1,18 @@
+import type { RollupCommonJSOptions } from '@rollup/plugin-commonjs'
+import type { RollupJsonOptions } from '@rollup/plugin-json'
+import type { RollupNodeResolveOptions } from '@rollup/plugin-node-resolve'
+import type { RollupReplaceOptions } from '@rollup/plugin-replace'
+import type { Options as RollupTerserOptions } from '@rollup/plugin-terser'
+import type { RollupTypescriptOptions } from '@rollup/plugin-typescript'
 import type {
-  RollupOptions,
+  ExternalOption,
+  InputOption,
   OutputOptions,
   Plugin,
-  InputOption,
-  ExternalOption
+  RollupOptions,
 } from 'rollup'
 import type { DeletePluginOptions as RollupDeletePluginOptions } from './del'
-import type { Options as RollupTerserOptions } from '@rollup/plugin-terser'
-import type { RollupReplaceOptions } from '@rollup/plugin-replace'
-import type { RollupTypescriptOptions } from '@rollup/plugin-typescript'
-import type { RollupJsonOptions } from '@rollup/plugin-json'
-import type { RollupCommonJSOptions } from '@rollup/plugin-commonjs'
-import type { RollupNodeResolveOptions } from '@rollup/plugin-node-resolve'
+
 export interface PackageJson {
   main?: string
   module?: string

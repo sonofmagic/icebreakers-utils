@@ -1,19 +1,20 @@
-import express, { type Express } from 'express'
-import { createProxyMiddleware } from 'http-proxy-middleware'
-import cors from 'cors'
+import type { Express } from 'express'
 import type { Options } from 'http-proxy-middleware'
+import cors from 'cors'
+import express from 'express'
+import { createProxyMiddleware } from 'http-proxy-middleware'
 // import type {} from 'express-serve-static-core'
 export type ServerlessHttpProxyOptions = Record<string, Options>
 
 export function createProxyExpressInstance(
-  options: ServerlessHttpProxyOptions
+  options: ServerlessHttpProxyOptions,
 ): Express {
   const app = express()
 
   app.use(
     cors({
-      origin: true
-    })
+      origin: true,
+    }),
   )
   Object.entries(options).forEach(([route, option]) => {
     app.use(route, createProxyMiddleware(option))

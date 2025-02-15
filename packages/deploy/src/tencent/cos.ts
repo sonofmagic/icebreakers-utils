@@ -1,17 +1,17 @@
-import fs from 'node:fs'
-import path from 'node:path'
-import process from 'node:process'
-import COS from 'cos-nodejs-sdk-v5'
-import klaw from 'klaw'
-import cliProgress from 'cli-progress'
-import { directorySize } from '../util'
-import { isWindows } from '../env'
-import type { CleanWebsiteContentParams, UploadDirOptions } from './types'
 import type {
   ITencentCDNClient,
   PurgePathCacheRequest,
   PurgeUrlsCacheRequest,
 } from './cdn'
+import type { CleanWebsiteContentParams, UploadDirOptions } from './types'
+import fs from 'node:fs'
+import path from 'node:path'
+import process from 'node:process'
+import cliProgress from 'cli-progress'
+import COS from 'cos-nodejs-sdk-v5'
+import klaw from 'klaw'
+import { isWindows } from '../env'
+import { directorySize } from '../util'
 import {
   TencentCDNClient,
 } from './cdn'

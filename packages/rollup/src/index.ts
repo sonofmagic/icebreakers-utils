@@ -1,18 +1,18 @@
-import typescript from '@rollup/plugin-typescript'
-import { nodeResolve } from '@rollup/plugin-node-resolve'
-import commonjs from '@rollup/plugin-commonjs'
-import type { CreateRollupConfigOptions, PackageJson } from './type'
 import type {
-  RollupOptions,
+  ExternalOption,
   OutputOptions,
   Plugin,
-  ExternalOption
+  RollupOptions,
 } from 'rollup'
-import terser from '@rollup/plugin-terser'
-import replace from '@rollup/plugin-replace'
+import type { CreateRollupConfigOptions, PackageJson } from './type'
+import path from 'node:path'
+import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
+import replace from '@rollup/plugin-replace'
+import terser from '@rollup/plugin-terser'
+import typescript from '@rollup/plugin-typescript'
 import { createDefu } from 'defu'
-import path from 'path'
 import del from './del'
 
 const defu = createDefu((obj, key, value) => {
@@ -27,10 +27,10 @@ const isDev = process.env.NODE_ENV === 'development'
 export const legacyOutputOptions: Partial<OutputOptions> = {
   esModule: true,
   generatedCode: {
-    reservedNamesAsProps: false
+    reservedNamesAsProps: false,
   },
   interop: 'compat',
-  systemNullSetters: false
+  systemNullSetters: false,
 }
 
 export function getDefaultOutputs(pkgJson: PackageJson) {
@@ -41,7 +41,7 @@ export function getDefaultOutputs(pkgJson: PackageJson) {
       format: 'cjs',
       sourcemap: isDev,
       exports: 'auto',
-      ...legacyOutputOptions
+      ...legacyOutputOptions,
     })
   }
   if (pkgJson.module) {
@@ -49,7 +49,7 @@ export function getDefaultOutputs(pkgJson: PackageJson) {
       format: 'esm',
       file: pkgJson.module,
       sourcemap: isDev,
-      ...legacyOutputOptions
+      ...legacyOutputOptions,
     })
   }
   return output
@@ -57,14 +57,15 @@ export function getDefaultOutputs(pkgJson: PackageJson) {
 
 export function createRollupConfig(
   options: CreateRollupConfigOptions = {},
-  pkg?: any
+  pkg?: any,
 ): RollupOptions {
   if (typeof pkg === 'undefined') {
     try {
       pkg = require(path.resolve(process.cwd(), 'package.json'))
-    } catch (error) {
+    }
+    catch (error) {
       throw new Error(
-        'package.json not found, you should pass parameter pkg for package.json'
+        'package.json not found, you should pass parameter pkg for package.json',
       )
     }
   }
@@ -81,7 +82,7 @@ export function createRollupConfig(
     terser: rollupTerserOptions,
     replace: rollupReplaceOptions,
     nodeResolve: rollupNodeResolveOptions,
-    commonjs: rollupCommonJSOptions
+    commonjs: rollupCommonJSOptions,
   } = defu(options, <CreateRollupConfigOptions>{
     input: 'src/index.ts',
     plugins: [],
@@ -89,24 +90,26 @@ export function createRollupConfig(
     del: {
       targets: 'dist/*',
       verbose: true,
-      runOnce: true
+      runOnce: true,
     },
     rollupOptions: {},
     typescript: {
       tsconfig: './tsconfig.json',
-      sourceMap: isDev
+      sourceMap: isDev,
     },
     nodeResolve: {
-      preferBuiltins: true
-    }
+      preferBuiltins: true,
+    },
   })
 
   let output: OutputOptions[]
   if (Array.isArray(postOutput)) {
     output = postOutput
-  } else if (typeof postOutput !== 'undefined') {
+  }
+  else if (typeof postOutput !== 'undefined') {
     output = [postOutput]
-  } else {
+  }
+  else {
     output = getDefaultOutputs(pkgJson)
   }
 
@@ -139,8 +142,8 @@ export function createRollupConfig(
   const defaultExternal = pkgJson.dependencies
     ? Object.keys(pkgJson.dependencies)
     : []
-  const external: ExternalOption =
-    typeof postExternal === 'function'
+  const external: ExternalOption
+    = typeof postExternal === 'function'
       ? postExternal
       : Array.isArray(postExternal)
         ? [...defaultExternal, ...postExternal]
@@ -152,7 +155,7 @@ export function createRollupConfig(
     plugins,
     external,
     makeAbsoluteExternalsRelative: true,
-    preserveEntrySignatures: 'strict'
+    preserveEntrySignatures: 'strict',
   }
   // rollupOptions first
   return defu(rollupOptions!, config)

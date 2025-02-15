@@ -8,7 +8,7 @@ import {
   getWarnings,
   readAsset,
   readAssets,
-  runLoaders
+  runLoaders,
 } from '@/index'
 
 describe('index', () => {
@@ -23,7 +23,7 @@ describe('index', () => {
       getWarnings,
       readAsset,
       readAssets,
-      runLoaders
+      runLoaders,
     ]) {
       expect(m).toBeDefined()
     }

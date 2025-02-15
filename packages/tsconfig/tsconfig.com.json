@@ -2,22 +2,22 @@
   // test comment
   "compilerOptions": {
     "target": "esnext",
+    "jsx": "preserve",
+    "lib": ["esnext", "dom"],
+    "baseUrl": ".",
     "module": "esnext",
     "moduleResolution": "node",
-    "declaration": true,
-    "declarationDir": "types",
-    "strict": true,
-    "jsx": "preserve",
-    "allowJs": true,
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
       "@components/*": ["./src/components/*"]
     },
-    "lib": ["esnext", "dom"]
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "strict": true,
+    "declaration": true,
+    "declarationDir": "types",
+    "sourceMap": true,
+    "esModuleInterop": true
   },
   "include": ["src/**/*", "components/**/*"]
 }

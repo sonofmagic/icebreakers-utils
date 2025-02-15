@@ -3,28 +3,28 @@ export type PkgManager = 'yarn' | 'npm' | 'pnpm'
 export const lockFileMap: Record<PkgManager, string> = {
   yarn: 'yarn.lock',
   npm: 'package-lock.json',
-  pnpm: 'pnpm-lock.yaml'
+  pnpm: 'pnpm-lock.yaml',
 }
 
 export const addPkgDirective: Record<PkgManager, string> = {
   yarn: 'add',
   npm: 'i',
-  pnpm: 'add'
+  pnpm: 'add',
 }
 
 export const removePkgDirective: Record<PkgManager, string> = {
   yarn: 'remove',
   npm: 'uninstall',
-  pnpm: 'rm'
+  pnpm: 'rm',
 }
 
 export const runDirective: Record<PkgManager, string> = {
   yarn: 'run',
   npm: 'run',
-  pnpm: 'run'
+  pnpm: 'run',
 }
 
 export const lockFileEntries = Object.entries(lockFileMap) as [
   PkgManager,
-  string
+  string,
 ][]

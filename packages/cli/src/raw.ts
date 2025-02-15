@@ -1,9 +1,9 @@
+import type { PkgManager } from './enum'
 import process from 'node:process'
 import { execa } from 'execa'
 import PQueue from 'p-queue'
-import { currentDir, eachDir, isExist } from './utils'
-import type { PkgManager } from './enum'
 import { lockFileEntries } from './enum'
+import { currentDir, eachDir, isExist } from './utils'
 // import os from 'os'
 // const createExecFile = (pkgM: PkgManager, command?: string): string => {
 //   return `${pkgM} ${command}`

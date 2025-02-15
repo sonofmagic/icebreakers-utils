@@ -1,6 +1,6 @@
-import readAsset from './readAsset'
-
 import type { Compiler, Stats } from './types'
+
+import readAsset from './readAsset'
 
 export default function readAssets(compiler: Compiler, stats: Stats) {
   const assets: Record<string, string> = {}
