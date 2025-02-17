@@ -1,4 +1,29 @@
 <!-- [height-adaptive] 高度自适应的表格（局部注册指令） -->
+<script>
+import { HeightAdaptive } from '@icebreakers/el-table-sticky-vue2'
+
+export default {
+  name: 'SetHeightView',
+  directives: {
+    HeightAdaptive1: new HeightAdaptive({ offsetBottom: 20 }).init(),
+  },
+  data() {
+    return {
+      tableData: [],
+    }
+  },
+  mounted() {
+    for (let i = 0; i < 100; i++) {
+      this.tableData.push({
+        date: '2016-05-01',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1518 弄',
+      })
+    }
+  },
+}
+</script>
+
 <template>
   <div>
     <el-alert show-icon type="info" :closable="false">
@@ -30,28 +55,3 @@
     </el-table>
   </div>
 </template>
-
-<script>
-import { HeightAdaptive } from '@/directives'
-
-export default {
-  name: 'SetHeightView',
-  directives: {
-    HeightAdaptive1: new HeightAdaptive({ offsetBottom: 20 }).init(),
-  },
-  data() {
-    return {
-      tableData: [],
-    }
-  },
-  mounted() {
-    for (let i = 0; i < 100; i++) {
-      this.tableData.push({
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄',
-      })
-    }
-  },
-}
-</script>

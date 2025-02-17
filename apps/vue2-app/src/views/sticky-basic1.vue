@@ -1,4 +1,30 @@
 <!-- [sticky-header] 基础表格（局部注册指令） -->
+<script>
+import { StickyHeader } from '@icebreakers/el-table-sticky-vue2'
+
+export default {
+  name: 'StickyBasicView',
+  directives: {
+    StickyHeader1: new StickyHeader({ offsetTop: 0 }).init(),
+  },
+  data() {
+    return {
+      tableOffsetTop: 38.5, // 可以是数字或者 CSS 支持的距离值，如 '10px', '10%', 'calc(100vh - 50px)' 等
+      tableData: [],
+    }
+  },
+  mounted() {
+    for (let i = 0; i < 100; i++) {
+      this.tableData.push({
+        date: '2016-05-01',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1518 弄',
+      })
+    }
+  },
+}
+</script>
+
 <template>
   <div>
     <el-alert
@@ -34,32 +60,6 @@
     </el-table>
   </div>
 </template>
-
-<script>
-import { StickyHeader } from '@/directives'
-
-export default {
-  name: 'StickyBasicView',
-  directives: {
-    StickyHeader1: new StickyHeader({ offsetTop: 0 }).init(),
-  },
-  data() {
-    return {
-      tableOffsetTop: 38.5, // 可以是数字或者 CSS 支持的距离值，如 '10px', '10%', 'calc(100vh - 50px)' 等
-      tableData: [],
-    }
-  },
-  mounted() {
-    for (let i = 0; i < 100; i++) {
-      this.tableData.push({
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄',
-      })
-    }
-  },
-}
-</script>
 
 <style lang="scss" scoped>
 .page-header {

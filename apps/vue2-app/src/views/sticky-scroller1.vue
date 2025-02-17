@@ -65,7 +65,7 @@
 </template>
 
 <script>
-import { StickyScroller } from '@/directives'
+import { StickyScroller } from '@icebreakers/el-table-sticky-vue2'
 
 export default {
   name: 'TableFixedColView',
