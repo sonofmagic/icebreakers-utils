@@ -1,17 +1,13 @@
 {
   "name": "@icebreakers/el-table-sticky-vue2",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.umd.cjs"
-    },
-    "./index.css": "./dist/index.css"
+    ".": "./src/directives/index.ts"
   },
-  "main": "dist/index.umd.cjs",
-  "module": "dist/index.js",
+  "main": "src/directives/index.ts",
+  "module": "src/directives/index.ts",
+  "types": "src/directives/index.ts",
   "files": [
     "dist"
   ],
@@ -24,6 +20,19 @@
     "gemini-scrollbar": "^1.5.3",
     "resize-observer-polyfill": "^1.5.1",
     "throttle-debounce": "^5.0.2"
+  },
+  "publishConfig": {
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "import": "./dist/index.js",
+        "require": "./dist/index.umd.cjs"
+      },
+      "./index.css": "./dist/index.css"
+    },
+    "main": "dist/index.umd.cjs",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts"
   },
   "devDependencies": {
     "@types/throttle-debounce": "^5.0.2",

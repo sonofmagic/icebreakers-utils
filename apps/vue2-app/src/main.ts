@@ -7,7 +7,7 @@ import App from './App.vue'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/css/index.scss'
 // production mode
-import '@icebreakers/el-table-sticky-vue2/index.css'
+// import '@icebreakers/el-table-sticky-vue2/index.css'
 // import elTableSticky from '../dist/el-table-sticky.umd.js'
 
 Vue.use(ElementUI)

@@ -156,6 +156,7 @@ export default class Sticky {
         checkElTable(binding, vnode)
         // set data-sticky-* attribute for el-table
         el.dataset[this.#target.replace(/^\S/, s => s.toLowerCase())] = ''
+        vnode.componentInstance.layout.gutterWidth = 0
         this.#initScroller(el, binding, vnode)
       },
       update: (el, binding, vnode) => {
