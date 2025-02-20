@@ -8,6 +8,8 @@ export interface StickyOptions {
   offsetBottom?: number
 }
 
+const defaultScrollbarHeight = 6
+
 /**
  * @class Sticky
  * @classdesc sticky header or footer for el-table
@@ -119,6 +121,7 @@ export default class Sticky {
    */
   async #initScroller(el, binding, vnode) {
     const { value } = binding
+    vnode.componentInstance.layout.gutterWidth = value?.scrollbarHeight ?? defaultScrollbarHeight
     const scrollerOffsetBottom = value?.offsetBottom !== void 0 ? convertToPx(value.offsetBottom) : this.offsetBottom
     if (this.#target === 'StickyFooter' && el.scroller) {
       // wait for el-table render
@@ -156,7 +159,7 @@ export default class Sticky {
         checkElTable(binding, vnode)
         // set data-sticky-* attribute for el-table
         el.dataset[this.#target.replace(/^\S/, s => s.toLowerCase())] = ''
-        vnode.componentInstance.layout.gutterWidth = 0
+
         this.#initScroller(el, binding, vnode)
       },
       update: (el, binding, vnode) => {
