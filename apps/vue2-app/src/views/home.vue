@@ -1,4 +1,22 @@
 <!-- 首页 -->
+<script>
+export default {
+  name: 'HomeView',
+  methods: {
+    jump(row) {
+      if (row.name === this.$route.name) {
+        this.$message.closeAll()
+        return this.$message.success({
+          message: '当前已经在该页面',
+          showClose: true,
+        })
+      }
+      this.$router.push(row)
+    },
+  },
+}
+</script>
+
 <template>
   <div>
     <el-table
@@ -17,7 +35,7 @@
         label="描述"
         show-overflow-tooltip
       >
-        <template slot-scope="{ row }">
+        <template #default="{ row }">
           <el-tooltip effect="dark" content="查看源码" placement="top">
             <el-link
               icon="el-icon-view"
@@ -35,21 +53,3 @@
     </el-table>
   </div>
 </template>
-
-<script>
-export default {
-  name: 'HomeView',
-  methods: {
-    jump(row) {
-      if (row.name === this.$route.name) {
-        this.$message.closeAll()
-        return this.$message.success({
-          message: '当前已经在该页面',
-          showClose: true,
-        })
-      }
-      this.$router.push(row)
-    }
-  },
-}
-</script>

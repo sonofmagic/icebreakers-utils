@@ -1,4 +1,25 @@
 <!-- [height-adaptive] 高度自适应的表格 -->
+<script>
+export default {
+  name: 'SetHeightView',
+  data() {
+    return {
+      tableData: [],
+      tableOffsetBottom: 58.5,
+    }
+  },
+  mounted() {
+    for (let i = 0; i < 100; i++) {
+      this.tableData.push({
+        date: '2016-05-01',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1518 弄',
+      })
+    }
+  },
+}
+</script>
+
 <template>
   <div>
     <el-alert show-icon type="info" :closable="false">
@@ -39,24 +60,3 @@
     </el-alert>
   </div>
 </template>
-
-<script>
-export default {
-  name: 'SetHeightView',
-  data() {
-    return {
-      tableData: [],
-      tableOffsetBottom: 58.5
-    }
-  },
-  mounted() {
-    for (let i = 0; i < 100; i++) {
-      this.tableData.push({
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄',
-      })
-    }
-  },
-}
-</script>

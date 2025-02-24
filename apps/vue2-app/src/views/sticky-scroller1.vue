@@ -1,4 +1,37 @@
 <!-- [sticky-scroller] 固定横向滚动条，并添加 .always 修饰符（局部注册指令） -->
+<script>
+import { StickyScroller } from '@icebreakers/el-table-sticky-vue2'
+
+export default {
+  name: 'TableFixedColView',
+  directives: {
+    StickyScroller1: new StickyScroller({ offsetBottom: 0 }).init(),
+  },
+  data() {
+    return {
+      showName: true,
+      tableData: [],
+    }
+  },
+  mounted() {
+    for (let i = 0; i < 100; i++) {
+      this.tableData.push({
+        date: '2016-05-01',
+        name: '王小虎',
+        city: '普陀区',
+        address: '上海市普陀区金沙江路 1518 弄',
+        zip: 200333,
+      })
+    }
+  },
+  methods: {
+    handleClick(row) {
+      console.log(row)
+    },
+  },
+}
+</script>
+
 <template>
   <div>
     <div class="page-header">
@@ -64,38 +97,6 @@
   </div>
 </template>
 
-<script>
-import { StickyScroller } from '@icebreakers/el-table-sticky-vue2'
-
-export default {
-  name: 'TableFixedColView',
-  directives: {
-    StickyScroller1: new StickyScroller({ offsetBottom: 0 }).init(),
-  },
-  data() {
-    return {
-      showName: true,
-      tableData: [],
-    }
-  },
-  mounted() {
-    for (let i = 0; i < 100; i++) {
-      this.tableData.push({
-        date: '2016-05-01',
-        name: '王小虎',
-        city: '普陀区',
-        address: '上海市普陀区金沙江路 1518 弄',
-        zip: 200333
-      })
-    }
-  },
-  methods: {
-    handleClick(row) {
-      console.log(row)
-    }
-  },
-}
-</script>
 <style lang="scss" scoped>
 .page-header {
   background-color: #fff;

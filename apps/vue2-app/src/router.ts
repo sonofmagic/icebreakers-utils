@@ -13,6 +13,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "home" */ '@/views/home.vue'),
   },
   {
+    path: '/sticky',
+    name: 'sticky',
+    component: () => import(/* webpackChunkName: "home" */ '@/views/sticky.vue'),
+  },
+  {
     path: '/set-height-adaptive',
     name: 'setHeightAdaptive',
     meta: { description: '[height-adaptive] 高度自适应的表格' },
@@ -135,7 +140,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  mode: 'hash',
+  mode: 'history',
   routes,
 })
 

@@ -37,7 +37,7 @@ class Sticky {
   options: any
   placeholderEl!: HTMLElement
   containerEl!: HTMLElement
-  constructor(el: HTMLElement, vm: Vue) {
+  constructor(el: HTMLElement, vm: Vue, options: StickyOptions) {
     this.el = el
     this.vm = vm
     this.unsubscribers = []
@@ -56,10 +56,10 @@ class Sticky {
       sticked: false,
     }
 
-    const offset = this.getAttribute('data-sticky-offset') || {}
-    const side = this.getAttribute('data-sticky-side') || 'top'
-    const zIndex = this.getAttribute('data-sticky-z-index') || '10'
-    const onStick = this.getAttribute('data-on-stick') || null
+    const offset = options.offset || {}
+    const side = options.side || 'top'
+    const zIndex = options.zIndex || '10'
+    const onStick = options.onStick || null
 
     this.options = {
       topOffset: Number(offset.top) || 0,
@@ -296,11 +296,14 @@ class Sticky {
 }
 
 export interface StickyOptions {
-  topOffset?: number
-  bottomOffset?: number
+  offset?: {
+    top?: number
+    bottom?: number
+  }
   zIndex?: number
-  shouldTopSticky?: boolean
-  shouldBottomSticky?: boolean
+  side?: 'top' | 'bottom' | 'both'
+  // shouldTopSticky?: boolean
+  // shouldBottomSticky?: boolean
   onStick?: (state: {
     top: boolean
     bottom: boolean
@@ -313,7 +316,7 @@ export const stickyInstanceMap = new WeakMap<HTMLElement, Sticky>()
 export const vSticky: ObjectDirective<HTMLElement, StickyOptions> = {
   inserted(el, bind, vnode) {
     if (typeof bind.value === 'undefined' || bind.value) {
-      const sticky = new Sticky(el, vnode.context!)
+      const sticky = new Sticky(el, vnode.context!, bind.value)
       sticky.doBind()
       stickyInstanceMap.set(el, sticky)
     }
@@ -329,7 +332,7 @@ export const vSticky: ObjectDirective<HTMLElement, StickyOptions> = {
     let sticky = stickyInstanceMap.get(el)
     if (typeof bind.value === 'undefined' || bind.value) {
       if (!sticky) {
-        sticky = new Sticky(el, vnode.context!)
+        sticky = new Sticky(el, vnode.context!, bind.value)
         stickyInstanceMap.set(el, sticky)
       }
       sticky.doBind()

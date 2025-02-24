@@ -1,4 +1,40 @@
 <!-- [sticky-header] 筛选 -->
+<script>
+export default {
+  name: 'StickyFilterView',
+  data() {
+    return {
+      tableData: [],
+    }
+  },
+  mounted() {
+    for (let i = 0; i < 100; i++) {
+      this.tableData.push({
+        date: `2016-05-0${i % 4 + 1}`,
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1518 弄',
+        tag: i % 2 === 0 ? '家' : '公司',
+      })
+    }
+  },
+  methods: {
+    resetDateFilter() {
+      this.$refs.filterTable.clearFilter('date')
+    },
+    clearFilter() {
+      this.$refs.filterTable.clearFilter()
+    },
+    filterTag(value, row) {
+      return row.tag === value
+    },
+    filterHandler(value, row, column) {
+      const property = column.property
+      return row[property] === value
+    },
+  },
+}
+</script>
+
 <template>
   <div>
     <div class="page-header">
@@ -22,7 +58,7 @@
         sortable
         width="180"
         column-key="date"
-        :filters="[{text: '2016-05-01', value: '2016-05-01'}, {text: '2016-05-02', value: '2016-05-02'}, {text: '2016-05-03', value: '2016-05-03'}, {text: '2016-05-04', value: '2016-05-04'}]"
+        :filters="[{ text: '2016-05-01', value: '2016-05-01' }, { text: '2016-05-02', value: '2016-05-02' }, { text: '2016-05-03', value: '2016-05-03' }, { text: '2016-05-04', value: '2016-05-04' }]"
         :filter-method="filterHandler"
       />
       <el-table-column
@@ -54,42 +90,6 @@
     </el-table>
   </div>
 </template>
-
-<script>
-export default {
-  name: 'StickyFilterView',
-  data() {
-    return {
-      tableData: [],
-    }
-  },
-  mounted() {
-    for (let i = 0; i < 100; i++) {
-      this.tableData.push({
-        date: `2016-05-0${i % 4 + 1}`,
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄',
-        tag: i % 2 === 0 ? '家' : '公司',
-      })
-    }
-  },
-  methods: {
-    resetDateFilter() {
-      this.$refs.filterTable.clearFilter('date')
-    },
-    clearFilter() {
-      this.$refs.filterTable.clearFilter()
-    },
-    filterTag(value, row) {
-      return row.tag === value
-    },
-    filterHandler(value, row, column) {
-      const property = column['property']
-      return row[property] === value
-    },
-  },
-}
-</script>
 
 <style lang="scss" scoped>
 .page-header {

@@ -1,4 +1,24 @@
 <!-- 固定高度的表格 -->
+<script>
+export default {
+  name: 'SetHeightView',
+  data() {
+    return {
+      tableData: [],
+    }
+  },
+  mounted() {
+    for (let i = 0; i < 100; i++) {
+      this.tableData.push({
+        date: '2016-05-01',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1518 弄',
+      })
+    }
+  },
+}
+</script>
+
 <template>
   <div>
     <el-alert show-icon type="success" :closable="false">
@@ -29,23 +49,3 @@
     </el-table>
   </div>
 </template>
-
-<script>
-export default {
-  name: 'SetHeightView',
-  data() {
-    return {
-      tableData: [],
-    }
-  },
-  mounted() {
-    for (let i = 0; i < 100; i++) {
-      this.tableData.push({
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄',
-      })
-    }
-  },
-}
-</script>

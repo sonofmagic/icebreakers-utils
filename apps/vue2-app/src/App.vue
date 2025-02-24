@@ -35,7 +35,7 @@ export default {
 <template>
   <div id="app">
     <el-container class="app-container">
-      <el-header
+      <!-- <el-header
         class="header-container"
         height="none"
       >
@@ -47,7 +47,7 @@ export default {
         <el-badge class="btn-menu" @click.native="drawer = true">
           <i class="el-icon-menu" />
         </el-badge>
-      </el-header>
+      </el-header> -->
       <el-main class="main-container">
         <transition
           name="test"

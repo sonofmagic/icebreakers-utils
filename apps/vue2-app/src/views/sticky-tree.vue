@@ -1,60 +1,4 @@
 <!-- [sticky-header] 树形数据与懒加载 -->
-<template>
-  <div>
-    <el-table
-      v-sticky-header
-      :data="tableData"
-      class="table"
-      row-key="id"
-      border
-      default-expand-all
-      :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
-    >
-      <el-table-column
-        prop="date"
-        label="日期"
-        sortable
-        width="180"
-      />
-      <el-table-column
-        prop="name"
-        label="姓名"
-        sortable
-        width="180"
-      />
-      <el-table-column
-        prop="address"
-        label="地址"
-      />
-    </el-table>
-
-    <el-table
-      v-sticky-header
-      :data="tableData1"
-      class="table1"
-      row-key="id"
-      border
-      lazy
-      :load="load"
-      :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
-    >
-      <el-table-column
-        prop="date"
-        label="日期"
-        width="180"
-      />
-      <el-table-column
-        prop="name"
-        label="姓名"
-        width="180"
-      />
-      <el-table-column
-        prop="address"
-        label="地址"
-      />
-    </el-table>
-  </div>
-</template>
 <script>
 export default {
   name: 'StickyTreeView',
@@ -161,6 +105,63 @@ export default {
   },
 }
 </script>
+
+<template>
+  <div>
+    <el-table
+      v-sticky-header
+      :data="tableData"
+      class="table"
+      row-key="id"
+      border
+      default-expand-all
+      :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
+    >
+      <el-table-column
+        prop="date"
+        label="日期"
+        sortable
+        width="180"
+      />
+      <el-table-column
+        prop="name"
+        label="姓名"
+        sortable
+        width="180"
+      />
+      <el-table-column
+        prop="address"
+        label="地址"
+      />
+    </el-table>
+
+    <el-table
+      v-sticky-header
+      :data="tableData1"
+      class="table1"
+      row-key="id"
+      border
+      lazy
+      :load="load"
+      :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
+    >
+      <el-table-column
+        prop="date"
+        label="日期"
+        width="180"
+      />
+      <el-table-column
+        prop="name"
+        label="姓名"
+        width="180"
+      />
+      <el-table-column
+        prop="address"
+        label="地址"
+      />
+    </el-table>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .table {

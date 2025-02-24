@@ -1,4 +1,32 @@
 <!-- [sticky-header] 固定列表格，横向滚动条添加 .always 修饰符 -->
+<script>
+export default {
+  name: 'TableFixedColView',
+  data() {
+    return {
+      showName: true,
+      tableData: [],
+    }
+  },
+  mounted() {
+    for (let i = 0; i < 100; i++) {
+      this.tableData.push({
+        date: '2016-05-01',
+        name: '王小虎',
+        city: '普陀区',
+        address: '上海市普陀区金沙江路 1518 弄',
+        zip: 200333,
+      })
+    }
+  },
+  methods: {
+    handleClick(row) {
+      console.log(row)
+    },
+  },
+}
+</script>
+
 <template>
   <div>
     <div class="page-header">
@@ -64,33 +92,6 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'TableFixedColView',
-  data() {
-    return {
-      showName: true,
-      tableData: [],
-    }
-  },
-  mounted() {
-    for (let i = 0; i < 100; i++) {
-      this.tableData.push({
-        date: '2016-05-01',
-        name: '王小虎',
-        city: '普陀区',
-        address: '上海市普陀区金沙江路 1518 弄',
-        zip: 200333
-      })
-    }
-  },
-  methods: {
-    handleClick(row) {
-      console.log(row)
-    }
-  },
-}
-</script>
 <style lang="scss" scoped>
 .page-header {
   background-color: #fff;

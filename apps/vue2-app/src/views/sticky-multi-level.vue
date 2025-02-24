@@ -1,4 +1,27 @@
 <!-- [sticky-header] 多级表头 -->
+<script>
+export default {
+  name: 'StickyMultiLevelView',
+  data() {
+    return {
+      tableData: [],
+    }
+  },
+  mounted() {
+    for (let i = 0; i < 100; i++) {
+      this.tableData.push({
+        date: '2016-05-01',
+        name: '王小虎',
+        province: '上海',
+        city: '普陀区',
+        address: '上海市普陀区金沙江路 1518 弄',
+        zip: 200333,
+      })
+    }
+  },
+}
+</script>
+
 <template>
   <div>
     <el-table
@@ -44,26 +67,3 @@
     </el-table>
   </div>
 </template>
-
-<script>
-export default {
-  name: 'StickyMultiLevelView',
-  data() {
-    return {
-      tableData: [],
-    }
-  },
-  mounted() {
-    for (let i = 0; i < 100; i++) {
-      this.tableData.push({
-        date: '2016-05-01',
-        name: '王小虎',
-        province: '上海',
-        city: '普陀区',
-        address: '上海市普陀区金沙江路 1518 弄',
-        zip: 200333,
-      })
-    }
-  },
-}
-</script>
