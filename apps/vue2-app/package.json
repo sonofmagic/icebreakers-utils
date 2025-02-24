@@ -10,21 +10,22 @@
     "build:web": "vue-tsc && vite build"
   },
   "dependencies": {
-    "@icebreakers/el-table-sticky-vue2": "workspace:*"
+    "@icebreakers/el-table-sticky-vue2": "workspace:*",
+    "@icebreakers/sticky-vue2": "workspace:*"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.0.7",
+    "@tailwindcss/vite": "^4.0.8",
     "@vitejs/plugin-vue2": "^2.3.3",
     "autoprefixer": "^10.4.20",
     "element-ui": "^2.15.14",
     "postcss": "^8.5.3",
     "sass": "^1.85.0",
-    "tailwindcss": "^4.0.7",
+    "tailwindcss": "^4.0.8",
     "vite": "^6.1.1",
     "vite-plugin-dts": "^4.5.0",
     "vite-tsconfig-paths": "^5.1.4",
     "vue": "^2.7.16",
     "vue-router": "3",
-    "vue-tsc": "^2.2.0"
+    "vue-tsc": "^2.2.4"
   }
 }
