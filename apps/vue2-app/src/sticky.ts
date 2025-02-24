@@ -1,8 +1,3 @@
-/* eslint-disable ts/no-unsafe-function-type */
-// @ts-nocheck
-import type { ObjectDirective } from 'vue'
-import type Vue from 'vue'
-// vue2 粘性布局指令
 const namespace = '@@vue-sticky-directive'
 const events = [
   'resize',
@@ -15,10 +10,10 @@ const events = [
 ]
 
 function batchStyle(el, style = {}, className = {}) {
-  for (const k in style) {
+  for (let k in style) {
     el.style[k] = style[k]
   }
-  for (const k in className) {
+  for (let k in className) {
     if (className[k] && !el.classList.contains(k)) {
       el.classList.add(k)
     }
@@ -28,46 +23,8 @@ function batchStyle(el, style = {}, className = {}) {
   }
 }
 
-interface UserDefineOptions {
-  offset?: { top?: number, bottom?: number }
-  side?: 'top' | 'bottom' | 'both'
-  zIndex?: number
-  onStick?: Function
-}
-
 class Sticky {
-  el: HTMLElement
-  vm: Vue
-  unsubscribers: any[]
-  isPending: boolean
-  state: {
-    isTopSticky: boolean
-    isBottomSticky: boolean
-    height: number
-    width: number
-    xOffset: number
-    placeholderElRect?: any
-    containerElRect?: any
-  }
-
-  lastState: {
-    top: boolean
-    bottom: boolean
-    sticked: boolean
-  }
-
-  options: {
-    topOffset: number
-    bottomOffset: number
-    shouldTopSticky: boolean
-    shouldBottomSticky: boolean
-    zIndex: number
-    onStick: any
-  }
-
-  placeholderEl: HTMLDivElement
-  containerEl: HTMLElement
-  constructor(el, vm, opts: UserDefineOptions = {}) {
+  constructor(el, vm) {
     this.el = el
     this.vm = vm
     this.unsubscribers = []
@@ -86,10 +43,10 @@ class Sticky {
       sticked: false,
     }
 
-    const offset = opts.offset || {}
-    const side = opts.side || 'top'
-    const zIndex = opts.zIndex || 10
-    const onStick = opts.onStick || null
+    const offset = this.getAttribute('sticky-offset') || {}
+    const side = this.getAttribute('sticky-side') || 'top'
+    const zIndex = this.getAttribute('sticky-z-index') || '10'
+    const onStick = this.getAttribute('on-stick') || null
 
     this.options = {
       topOffset: Number(offset.top) || 0,
@@ -108,7 +65,7 @@ class Sticky {
     const { el, vm } = this
     vm.$nextTick(() => {
       this.placeholderEl = document.createElement('div')
-      this.containerEl = this.getContainerEl() as HTMLElement
+      this.containerEl = this.getContainerEl()
       el.parentNode.insertBefore(this.placeholderEl, el)
       events.forEach((event) => {
         const fn = this.update.bind(this)
@@ -140,9 +97,7 @@ class Sticky {
   }
 
   isTopSticky() {
-    if (!this.options.shouldTopSticky) {
-      return false
-    }
+    if (!this.options.shouldTopSticky) { return false }
     const fromTop = this.state.placeholderElRect.top
     const fromBottom = this.state.containerElRect.bottom
 
@@ -153,9 +108,7 @@ class Sticky {
   }
 
   isBottomSticky() {
-    if (!this.options.shouldBottomSticky) {
-      return false
-    }
+    if (!this.options.shouldBottomSticky) { return false }
     const fromBottom
       = window.innerHeight - this.state.placeholderElRect.top - this.state.height
     const fromTop = window.innerHeight - this.state.containerElRect.top
@@ -196,7 +149,7 @@ class Sticky {
   }
 
   updateElements() {
-    const placeholderStyle = { paddingTop: '0' }
+    const placeholderStyle = { paddingTop: 0 }
     const elStyle = {
       position: 'static',
       top: 'auto',
@@ -246,7 +199,7 @@ class Sticky {
       elClassName['bottom-sticky'] = true
     }
     else {
-      placeholderStyle.paddingTop = '0'
+      placeholderStyle.paddingTop = 0
     }
 
     batchStyle(this.el, elStyle, elClassName)
@@ -267,7 +220,7 @@ class Sticky {
   }
 
   getContainerEl() {
-    let node = this.el.parentNode as HTMLElement
+    let node = this.el.parentNode
     while (
       node
       && node.tagName !== 'HTML'
@@ -277,7 +230,7 @@ class Sticky {
       if (node.hasAttribute('sticky-container')) {
         return node
       }
-      node = node.parentNode as HTMLElement
+      node = node.parentNode
     }
     return this.el.parentNode
   }
@@ -309,19 +262,27 @@ class Sticky {
       if (this.vm[expr]) {
         result = this.vm[expr]
       }
+      else {
+        try {
+          result = eval(`(${expr})`)
+        }
+        catch (error) {
+          result = expr
+        }
+      }
     }
     return result
   }
 }
 
-export const vSticky: ObjectDirective<HTMLElement, UserDefineOptions> = {
+export default {
   inserted(el, bind, vnode) {
     if (typeof bind.value === 'undefined' || bind.value) {
-      el[namespace] = new Sticky(el, vnode.context, bind.value)
+      el[namespace] = new Sticky(el, vnode.context)
       el[namespace].doBind()
     }
   },
-  unbind(el) {
+  unbind(el, bind, vnode) {
     if (el[namespace]) {
       el[namespace].doUnbind()
       el[namespace] = undefined
@@ -330,7 +291,7 @@ export const vSticky: ObjectDirective<HTMLElement, UserDefineOptions> = {
   componentUpdated(el, bind, vnode) {
     if (typeof bind.value === 'undefined' || bind.value) {
       if (!el[namespace]) {
-        el[namespace] = new Sticky(el, vnode.context, bind.value)
+        el[namespace] = new Sticky(el, vnode.context)
       }
       el[namespace].doBind()
     }
