@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { vSticky } from '@icebreakers/sticky-vue2'
+// import { vSticky } from '@icebreakers/sticky-vue2'
+import { vSticky } from '../sticky'
 
 function onStick(state: any) {
   console.log(state)
@@ -7,8 +8,8 @@ function onStick(state: any) {
 </script>
 
 <template>
-  <div>
-    <div data-sticky-container style="background-color: beige;height: 150vh;">
+  <div data-sticky-container style="height: 50vh;overflow:auto;">
+    <div style="background-color: beige;height: 150vh;">
       <div
         v-sticky="{
           offset: {
