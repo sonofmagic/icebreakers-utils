@@ -1,5 +1,5 @@
 import type { ObjectDirective } from 'vue'
-import type Vue from 'vue'
+import Vue from 'vue'
 
 const events = [
   'resize',
@@ -11,11 +11,10 @@ const events = [
   'load',
 ]
 
-function batchStyle(el: HTMLElement, style: Partial<CSSStyleDeclaration> = {}, className: Record<string, any> = {}) {
+function batchStyle(el: HTMLElement, style: Record<string, any> = {}, className: Record<string, any> = {}) {
   for (const k in style) {
-    if (style[k]) {
-      el.style[k] = style[k]
-    }
+    // @ts-ignore
+    el.style[k] = style[k]
   }
   for (const k in className) {
     if (className[k] && !el.classList.contains(k)) {
@@ -29,17 +28,16 @@ function batchStyle(el: HTMLElement, style: Partial<CSSStyleDeclaration> = {}, c
 
 class Sticky {
   el: HTMLElement
-  vm: Vue
+  unsubscribers: Array<() => void>
   isPending: boolean
-  unsubscribers: any[]
-  state: any
-  lastState: any
-  options: any
+  state: Record<string, any>
+  lastState: Record<string, any>
+  options: Record<string, any>
   placeholderEl!: HTMLElement
   containerEl!: HTMLElement
-  constructor(el: HTMLElement, vm: Vue, options: StickyOptions) {
+
+  constructor(el: HTMLElement, options: StickyOptions) {
     this.el = el
-    this.vm = vm
     this.unsubscribers = []
     this.isPending = false
     this.state = {
@@ -56,7 +54,10 @@ class Sticky {
       sticked: false,
     }
 
-    const offset = options.offset || {}
+    const offset = {
+      top: options.topOffset ?? 0,
+      bottom: options.bottomOffset ?? 0,
+    }
     const side = options.side || 'top'
     const zIndex = options.zIndex || '10'
     const onStick = options.onStick || null
@@ -75,8 +76,8 @@ class Sticky {
     if (this.unsubscribers.length > 0) {
       return
     }
-    const { el, vm } = this
-    vm.$nextTick(() => {
+    const { el } = this
+    Vue.nextTick(() => {
       this.placeholderEl = document.createElement('div')
       this.containerEl = this.getContainerEl()
       el.parentNode?.insertBefore(this.placeholderEl, el)
@@ -137,11 +138,13 @@ class Sticky {
   }
 
   recomputeState() {
+    const placeholderElRect = this.getPlaceholderElRect()
+    const elRect = this.getElRect()
     this.state = Object.assign({}, this.state, {
-      height: this.getHeight(),
-      width: this.getWidth(),
-      xOffset: this.getXOffset(),
-      placeholderElRect: this.getPlaceholderElRect(),
+      height: elRect.height,
+      width: placeholderElRect.width,
+      xOffset: placeholderElRect.left,
+      placeholderElRect,
       containerElRect: this.getContainerElRect(),
     })
     this.state.isTopSticky = this.isTopSticky()
@@ -166,7 +169,7 @@ class Sticky {
   }
 
   updateElements() {
-    const placeholderStyle: Record<string, any> = { paddingTop: 0 }
+    const placeholderStyle: Record<string, number | string> = { paddingTop: 0 }
     const elStyle = {
       position: 'static',
       top: 'auto',
@@ -236,7 +239,7 @@ class Sticky {
     }
   }
 
-  getContainerEl() {
+  getContainerEl(): HTMLElement {
     let node = this.el.parentNode as HTMLElement
     while (
       node
@@ -245,23 +248,15 @@ class Sticky {
       && node.nodeType === 1
     ) {
       if (node.hasAttribute('data-sticky-container')) {
-        return node
+        return node as HTMLElement
       }
       node = node.parentNode as HTMLElement
     }
     return this.el.parentNode as HTMLElement
   }
 
-  getXOffset() {
-    return this.placeholderEl.getBoundingClientRect().left
-  }
-
-  getWidth() {
-    return this.placeholderEl.getBoundingClientRect().width
-  }
-
-  getHeight() {
-    return this.el.getBoundingClientRect().height
+  getElRect() {
+    return this.el.getBoundingClientRect()
   }
 
   getPlaceholderElRect() {
@@ -271,69 +266,53 @@ class Sticky {
   getContainerElRect() {
     return this.containerEl.getBoundingClientRect()
   }
+}
 
-  getAttribute(name: string) {
-    const expr = this.el.getAttribute(name)
-    let result
-    if (expr) {
-      // @ts-ignore
-      if (this.vm[expr]) {
-        // @ts-ignore
-        result = this.vm[expr]
-      }
-      else {
-        try {
-          // eslint-disable-next-line no-eval
-          result = eval(`(${expr})`)
-        }
-        catch (_error) {
-          result = expr
-        }
-      }
-    }
-    return result
-  }
+export interface StickyState {
+  top: boolean
+  bottom: boolean
+  sticked: boolean
 }
 
 export interface StickyOptions {
-  offset?: {
-    top?: number
-    bottom?: number
-  }
-  zIndex?: number
+  enabled?: boolean
+  topOffset?: number
+  bottomOffset?: number
   side?: 'top' | 'bottom' | 'both'
-  // shouldTopSticky?: boolean
-  // shouldBottomSticky?: boolean
-  onStick?: (state: {
-    top: boolean
-    bottom: boolean
-    sticked: boolean
-  }) => void
+  zIndex?: number
+  onStick?: (state: StickyState) => void
 }
 
-export const stickyInstanceMap = new WeakMap<HTMLElement, Sticky>()
+const weakMap = new WeakMap<HTMLElement, Sticky>()
+
+export function getStickyInstance(el: HTMLElement) {
+  return weakMap.get(el)
+}
+
+export function setStickyInstance(el: HTMLElement, sticky: Sticky) {
+  weakMap.set(el, sticky)
+}
 
 export const vSticky: ObjectDirective<HTMLElement, StickyOptions> = {
-  inserted(el, bind, vnode) {
-    if (typeof bind.value === 'undefined' || bind.value) {
-      const sticky = new Sticky(el, vnode.context!, bind.value)
-      sticky.doBind()
-      stickyInstanceMap.set(el, sticky)
-    }
+  inserted(el, bind) {
+    const sticky = new Sticky(el, bind.value)
+    sticky.doBind()
+    setStickyInstance(el, sticky)
   },
   unbind(el) {
-    const sticky = stickyInstanceMap.get(el)
+    const sticky = getStickyInstance(el)
     if (sticky) {
       sticky.doUnbind()
-      stickyInstanceMap.delete(el)
+      weakMap.delete(el)
     }
   },
-  componentUpdated(el, bind, vnode) {
-    let sticky = stickyInstanceMap.get(el)
-    if (typeof bind.value === 'undefined' || bind.value) {
+  componentUpdated(el, bind) {
+    // console.log(el, bind, vnode)
+    let sticky = getStickyInstance(el)
+    if (bind.value.enabled) {
       if (!sticky) {
-        sticky = new Sticky(el, vnode.context!, bind.value)
-        stickyInstanceMap.set(el, sticky)
+        sticky = new Sticky(el, bind.value)
+        setStickyInstance(el, sticky)
       }
       sticky.doBind()
     }
