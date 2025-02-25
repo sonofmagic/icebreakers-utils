@@ -1,4 +1,5 @@
 import type { ObjectDirective } from 'vue'
+import { defu } from 'defu'
 import Vue from 'vue'
 
 const events = [
@@ -36,7 +37,7 @@ class Sticky {
   placeholderEl!: HTMLElement
   containerEl!: HTMLElement
 
-  constructor(el: HTMLElement, options: StickyOptions) {
+  constructor(el: HTMLElement, options?: StickyOptions) {
     this.el = el
     this.unsubscribers = []
     this.isPending = false
@@ -55,12 +56,12 @@ class Sticky {
     }
 
     const offset = {
-      top: options.topOffset ?? 0,
-      bottom: options.bottomOffset ?? 0,
+      top: options?.topOffset ?? 0,
+      bottom: options?.bottomOffset ?? 0,
     }
-    const side = options.side || 'top'
-    const zIndex = options.zIndex || '10'
-    const onStick = options.onStick || null
+    const side = options?.side || 'top'
+    const zIndex = options?.zIndex || '10'
+    const onStick = options?.onStick || null
 
     this.options = {
       topOffset: Number(offset.top) || 0,
@@ -293,9 +294,19 @@ export function setStickyInstance(el: HTMLElement, sticky: Sticky) {
   weakMap.set(el, sticky)
 }
 
-export const vSticky: ObjectDirective<HTMLElement, StickyOptions> = {
+export function mergeOptions(options?: StickyOptions) {
+  return defu<StickyOptions, StickyOptions[]>(options, {
+    bottomOffset: 0,
+    enabled: true,
+    side: 'top',
+    topOffset: 0,
+    zIndex: 10,
+  })
+}
+
+export const vSticky: ObjectDirective<HTMLElement, StickyOptions | undefined> = {
   inserted(el, bind) {
-    const sticky = new Sticky(el, bind.value)
+    const sticky = new Sticky(el, mergeOptions(bind.value))
     sticky.doBind()
     setStickyInstance(el, sticky)
   },
@@ -307,11 +318,11 @@ export const vSticky: ObjectDirective<HTMLElement, StickyOptions> = {
     }
   },
   componentUpdated(el, bind) {
-    // console.log(el, bind, vnode)
     let sticky = getStickyInstance(el)
-    if (bind.value.enabled) {
+    const options = mergeOptions(bind.value)
+    if (options.enabled) {
       if (!sticky) {
-        sticky = new Sticky(el, bind.value)
+        sticky = new Sticky(el, options)
         setStickyInstance(el, sticky)
       }
       sticky.doBind()
