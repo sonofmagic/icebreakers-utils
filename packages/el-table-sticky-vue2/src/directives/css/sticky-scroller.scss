@@ -2,7 +2,9 @@
 @import 'gemini-scrollbar/gemini-scrollbar.css';
 
 :root {
-  --scrollbar-height: 6px;
+  --yzc-scrollbar-height: 6px;
+  --yzc-scrollbar-bg: #c0c4cc;
+  --yzc-scrollbar-bg-hover: #909399;
 }
 
 .el-table[data-sticky-scroll] {
@@ -25,7 +27,7 @@
 
   .el-table-horizontal-scrollbar {
     position: sticky;
-    height: calc(var(--scrollbar-height) + 4px);
+    height: calc(var(--yzc-scrollbar-height) + 4px);
     width: 100%;
     z-index: 4;
 
@@ -36,7 +38,7 @@
     }
     .gm-scrollbar {
       transition: opacity 0.3s ease;
-      height: var(--scrollbar-height);
+      height: var(--yzc-scrollbar-height);
 
       &.-vertical {
         display: none;
@@ -44,9 +46,10 @@
 
       .thumb {
         transition: background-color 0.3s ease;
+        background-color: var(--yzc-scrollbar-bg, #c0c4cc);
         &:hover {
           transition: background-color 0.3s ease;
-          background-color: #7d7d7d;
+          background-color: var(--yzc-scrollbar-bg-hover, #909399);
         }
       }
     }

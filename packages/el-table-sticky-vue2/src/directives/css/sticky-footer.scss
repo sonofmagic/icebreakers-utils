@@ -5,10 +5,10 @@
 
   .el-table__body-wrapper {
     // add shadow of left and right fixed columns when scrolling
-    &.is-scrolling-right + .el-table__footer-wrapper .el-table__cell[data-sticky='end'],
-    &.is-scrolling-middle + .el-table__footer-wrapper .el-table__cell[data-sticky='end'],
-    &.is-scrolling-left + .el-table__footer-wrapper .el-table__cell[data-sticky='start'],
-    &.is-scrolling-middle + .el-table__footer-wrapper .el-table__cell[data-sticky='start'] {
+    &.is-scrolling-right + .el-table__footer-wrapper td[data-sticky='end'],
+    &.is-scrolling-middle + .el-table__footer-wrapper td[data-sticky='end'],
+    &.is-scrolling-left + .el-table__footer-wrapper td[data-sticky='start'],
+    &.is-scrolling-middle + .el-table__footer-wrapper td[data-sticky='start'] {
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
     }
   }
@@ -18,7 +18,7 @@
     z-index: 4;
 
     // show fixed columns and set sticky
-    .el-table__cell[data-sticky] {
+    td[data-sticky] {
       position: sticky;
       z-index: 4;
 
@@ -27,8 +27,8 @@
       }
     }
 
-    .el-table__cell[data-sticky='end'],
-    .el-table__cell[data-sticky='start'] {
+    td[data-sticky='end'],
+    td[data-sticky='start'] {
       z-index: 3;
     }
   }

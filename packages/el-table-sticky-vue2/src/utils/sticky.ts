@@ -8,8 +8,7 @@ export interface StickyOptions {
   offsetBottom?: number
 }
 
-const defaultScrollbarHeight = 6
-
+const defaultScrollbarHeight = 10
 /**
  * @class Sticky
  * @classdesc sticky header or footer for el-table
@@ -112,8 +111,10 @@ export default class Sticky {
     tableStickyWrapper.style[styleProperty] = value?.[offsetProperty] !== void 0
       ? convertToPx(value[offsetProperty])
       : this[offsetProperty]
-
-    return tableStickyWrapper.querySelectorAll(`${selector} .el-table__cell`)
+      // element-ui 2.15.0 是没有这个 .el-table__cell 的
+      // 但是 .el-table__cell 在 2.15.14 版本是有的
+    const selectorAll = `${selector} ${this.#target === 'StickyHeader' ? 'th' : 'td'}`
+    return tableStickyWrapper.querySelectorAll(selectorAll)
   }
 
   /**
@@ -121,6 +122,7 @@ export default class Sticky {
    */
   async #initScroller(el, binding, vnode) {
     const { value } = binding
+    // windows 下必须设置这个配置
     vnode.componentInstance.layout.gutterWidth = value?.scrollbarHeight ?? defaultScrollbarHeight
     const scrollerOffsetBottom = value?.offsetBottom !== void 0 ? convertToPx(value.offsetBottom) : this.offsetBottom
     if (this.#target === 'StickyFooter' && el.scroller) {
