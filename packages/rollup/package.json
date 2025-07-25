@@ -34,19 +34,19 @@
   },
   "dependencies": {
     "@rollup/plugin-alias": "^5.1.1",
-    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-replace": "^6.0.2",
     "@rollup/plugin-terser": "^0.4.4",
-    "@rollup/plugin-typescript": "12.1.2",
+    "@rollup/plugin-typescript": "12.1.4",
     "defu": "^6.1.4",
     "del": "^8.0.0"
   },
   "devDependencies": {
     "@icebreakers/tsconfig": "*",
     "rimraf": "^6.0.1",
-    "rollup": "^4.35.0",
-    "terser": "^5.39.0"
+    "rollup": "^4.45.1",
+    "terser": "^5.43.1"
   }
 }

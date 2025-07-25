@@ -44,7 +44,7 @@
   "devDependencies": {
     "@icebreakers/rollup": "*",
     "@icebreakers/tsconfig": "*",
-    "execa": "^9.5.2",
+    "execa": "^9.6.0",
     "fast-glob": "^3.3.3",
     "p-queue": "8.1.0"
   }

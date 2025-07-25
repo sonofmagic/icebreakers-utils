@@ -36,12 +36,12 @@
   },
   "dependencies": {
     "create-functional-loader": "*",
-    "memfs": "^4.17.0",
+    "memfs": "^4.17.2",
     "promisify-loader-runner": "*"
   },
   "devDependencies": {
     "@icebreakers/rollup": "*",
     "@icebreakers/tsconfig": "*",
-    "webpack": "^5.98.0"
+    "webpack": "^5.100.2"
   }
 }

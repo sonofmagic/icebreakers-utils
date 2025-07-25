@@ -31,11 +31,11 @@
   "devDependencies": {
     "@icebreakers/rollup": "*",
     "@icebreakers/tsconfig": "*",
-    "@types/cors": "^2.8.17",
-    "@types/express": "^5.0.0",
-    "@types/express-serve-static-core": "^5.0.6",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/express-serve-static-core": "^5.0.7",
     "cors": "^2.8.5",
-    "express": "^4.21.2",
-    "http-proxy-middleware": "^3.0.3"
+    "express": "^5.1.0",
+    "http-proxy-middleware": "^3.0.5"
   }
 }

@@ -42,17 +42,17 @@
   },
   "dependencies": {
     "cli-progress": "^3.12.0",
-    "cos-nodejs-sdk-v5": "2.14.6",
-    "dotenv": "^16.4.7",
+    "cos-nodejs-sdk-v5": "2.16.0-beta.3",
+    "dotenv": "^17.2.1",
     "klaw": "^4.1.0",
     "minimist": "^1.2.8",
-    "tencentcloud-sdk-nodejs-cdn": "^4.0.1029"
+    "tencentcloud-sdk-nodejs-cdn": "^4.1.80"
   },
   "devDependencies": {
     "@icebreakers/rollup": "*",
     "@icebreakers/tsconfig": "*",
     "@types/cli-progress": "^3.11.5",
-    "@types/klaw": "^3.0.6",
+    "@types/klaw": "^3.0.7",
     "@types/minimist": "^1.2.5"
   },
   "publishConfig": {
